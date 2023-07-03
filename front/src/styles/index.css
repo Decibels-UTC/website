@@ -3,3 +3,21 @@
     width: 20%;
 
 }
+.background-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.background-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('..\\pictures\\scene.jpg') center center / cover no-repeat, rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
