@@ -6,8 +6,10 @@ import ContactCard from "../components/Contact/ContactCard";
 function Contact() {
   return (
     <div>
-        <br/>
-        <ContactCard/>
+
+        <div className="background">
+        {<ContactCard/>}
+        </div>
         <Separation/>
         <Forms/>
         <br/>
