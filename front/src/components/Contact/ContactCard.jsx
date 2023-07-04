@@ -1,23 +1,30 @@
-import { Card } from 'semantic-ui-react'
+import { Container, Divider, Header, Card, Icon, Grid } from 'semantic-ui-react';
 
-function CardContact(props){
-
-
-    return(
-        <>
-
-            <Card
-                className={"cardcontact"}
-            link={props.link}
-            header={props.name}
-                meta={props.meta}
-                description={props.description}
-            />
-
-        </>
-
-    );
-
+function FormulaireCDV() {
+  return (
+    <>
+      <br/><Icon name="envelope" size="large" /> <a href="mailto:decibels@assos.utc.fr">decibels@assos.utc.fr</a>
+    </>
+  )
 }
-
-export default CardContact;
+function ContactCard() {
+  return (
+    <>
+      <br/><br/>
+      <div>
+        <Container Align='center'>
+          <Card className="Contact-Card">
+            <Card.Content className="Contact-Card-Content">
+              <Icon name="envelope" size="huge" />
+              <Card.Header>Nous contacter</Card.Header>
+              <Card.Description>
+                <FormulaireCDV />
+              </Card.Description>
+            </Card.Content>
+          </Card>
+        </Container>
+      </div>
+    </>
+  );
+}
+export default ContactCard;

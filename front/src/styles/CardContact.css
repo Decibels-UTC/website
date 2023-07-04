@@ -1,4 +1,14 @@
-.cardcontact{
-    background-color: grey;
-
+.background {
+  background-image: url("../../public/pictures/scene_light_violet.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30vh;
+}
+.Contact-Card {
+  height: 150px;
+  opacity: 0.92;
+}
+.custom-icon {
+  width: 5rem;
+  height: 5rem;
 }

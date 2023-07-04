@@ -7,9 +7,7 @@ function LoginButton(){
 
     return(
   <div>
-
-    <Button color='red'>Login</Button>
-
+    <Button color='violet'>Login</Button>
   </div>
 )}
 
