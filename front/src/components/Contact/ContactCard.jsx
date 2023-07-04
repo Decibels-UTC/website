@@ -3,14 +3,7 @@ import { Container, Divider, Header, Card, Icon, Grid } from 'semantic-ui-react'
 function FormulaireCDV() {
   return (
     <>
-      <br/>
-      <Grid columns={1} divided>
-        <Grid.Row>
-          <Grid.Column>
-            <Icon name="envelope" size="large" /> <a href="mailto:decibels@assos.utc.fr">decibels@assos.utc.fr</a>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <br/><Icon name="envelope" size="large" /> <a href="mailto:decibels@assos.utc.fr">decibels@assos.utc.fr</a>
     </>
   )
 }

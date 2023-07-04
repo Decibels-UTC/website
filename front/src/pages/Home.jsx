@@ -5,15 +5,15 @@ import {Container} from "semantic-ui-react";
 
 
 function Home() {
-  return (
-    <div>
+  return (<>    <div>
 
             <MessageMainPage/>
 
 
 
 
-    </div>
+
+    </div></>
   );
 }
 

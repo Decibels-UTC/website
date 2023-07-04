@@ -1,8 +1,7 @@
 import {Divider, Header} from "semantic-ui-react";
 function Separation() {
 
-    return(
-        <><Divider/>
+    return(<>
         <Header textAlign={"center"}>Choisir un formulaire : </Header><br/></>
     )
 }
