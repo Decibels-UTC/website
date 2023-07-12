@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function Anciens() {
+function Anciens({setPageCallback}) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -11,6 +11,10 @@ function Anciens() {
     return () => {
       clearInterval(slideInterval);
     };
+  }, []);
+
+  useEffect(() => {
+    setPageCallback("anciens")
   }, []);
 
   const slides = [
