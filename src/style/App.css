@@ -1,0 +1,10 @@
+.container{
+  background-color: #444444;
+  border-radius: 1vmin;
+  border: solid 0.4vmin #5B5B5B;
+  color: beige;
+}
+
+.img{
+  width: 100%;
+}

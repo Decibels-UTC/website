@@ -1,0 +1,27 @@
+.content-middle{
+    text-align: center;
+}
+
+.banner{
+    position: sticky;
+    top: 0;
+}
+
+.image-flyht{
+    width: 35vmin;
+    height: 35vmin;
+}
+
+.item5-first{
+    margin-left: 40vmin;
+}
+
+.item5-second{
+    margin-right: 40vmin;
+}
+
+.footer-main-page{
+    display: flex;
+    align-items: center;
+    width: auto;
+}

@@ -1,0 +1,13 @@
+.item1-first{
+    transform: rotate(-90deg);
+}
+.item1-second{
+    transform: rotate(-90deg);
+}
+.item1-third{
+    transform: rotate(-90deg);
+}
+.place-holder-img{
+    border-radius: 10px;
+    background-color: #444444;
+}
