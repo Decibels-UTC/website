@@ -12,7 +12,9 @@ function App() {
         <Desc/>
         <Son />
         <Lights/>
-        <Footer/>
+        <footer>
+            <Footer/>
+        </footer>
     </div>
   );
 }

@@ -10,18 +10,16 @@ function Footer(){
 
                 <div className={"wrapper"}>
 
-                    <div className={"subwrapper1"} >
+                    <div className={"subwrapper1"}>
                         <div>
-                        <div>
-                            <img src={utc} className={"img-footer-utc"} />
+                            <a href={"https://utc.fr"}> <img src={utc} className={"img-footer-utc"} /></a>
                         </div>
-                    <div>
-                        <h1 className={"title"}>Contact</h1>
-                    </div>
-                    <div>
-                        <img src={bde} className={"img-footer-bde"} />
-                    </div>
-                     </div>
+                        <div>
+                            <p className={"footer-title"}>Contact</p>
+                        </div>
+                        <div>
+                            <a href={"https://assos.utc.fr"}><img src={bde} className={"img-footer-bde"} /></a>
+                        </div>
                     </div>
 
                      <div className={"subwrapper2"}>

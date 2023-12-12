@@ -1,14 +1,29 @@
+.wrapper {
+    background-color: #161616;
+    position: absolute;
+    bottom: -370vmin;
+    left: 0;
+    z-index: 10;
+}
+
+
+
+
+
 .img-footer-bde{
-    width: 3%;
+    width: 50%;
     height: auto;
+    margin-left: 60%;
 }
 .img-footer-utc{
-    width: 7%;
+    width: 40%;
     height: auto;
 }
 
 .img-socials{
-    width: 3%;
+    width: 60%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     height: auto;
 }
 
@@ -17,18 +32,97 @@
     font-weight: bolder;
 }
 
-.wrapper {
-    text-align: center;
-    position: absolute;
-    background-color: azure;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-}
+
+
+
+
+
+
 
 .subwrapper1 {
+    padding-bottom: 1%;
+    padding-top:1%;
     display: flex;
-    justify-content: center;
-    background-color: pink;
-    padding: 10px;
+    flex-direction: row;
+    align-items: center;
+    width: 40%;
+    height: auto;
+    margin-left: 19%;
+    margin-right: auto;
 }
+
+.subwrapper1 > div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.footer-title{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.subwrapper1 > div {
+    align-items: center;
+    align-content: center;
+}
+
+.subwrapper1 > div > a {
+    margin-left: 35%;
+    margin-right: auto;
+}
+
+.subwrapper1 > div > p {
+
+
+}
+
+
+
+.footer-title{
+    font-weight: bolder;
+}
+
+
+
+.subwrapper2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subwrapper2 > div{
+        margin-left: auto;
+    margin-right: auto;
+}
+
+.subwrapper3 {
+
+    display: flex;                  /* establish flex container */
+    flex-direction: row;            /* default value; can be omitted */
+    align-items: center;
+        width: 40%;
+        margin-left: auto;
+    margin-right: auto;
+
+}
+.subwrapper3 > div{
+    padding-right: 1%;
+    padding-left: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subwrapper3 > div > a {
+    text-decoration: none;
+    color: beige;
+}
+
+
+
