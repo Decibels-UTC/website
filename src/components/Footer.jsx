@@ -5,7 +5,7 @@ import mail from "../ressources/mail.png";
 
 function Footer(){
     return(
-        <>
+
             <Footer>
                 <div>
                     <div>
@@ -43,7 +43,6 @@ function Footer(){
                 </div>
 
             </Footer>
-        </>
     );
 }
 export default Footer;

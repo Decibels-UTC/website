@@ -1,10 +1,31 @@
+body{
+  color: beige;
+}
+
+.page{
+  margin-top: 45vmin;
+}
+
 .container{
   background-color: #444444;
   border-radius: 1vmin;
   border: solid 0.4vmin #5B5B5B;
   color: beige;
+  text-align: center;
+  align-items: center;
+}
+
+
+.title-container{
+
 }
 
 .img{
   width: 100%;
+}
+
+.title{
+  font-size: xx-large;
+  margin-top: 2%;
+  margin-left: 2%;
 }

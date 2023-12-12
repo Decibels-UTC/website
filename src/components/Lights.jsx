@@ -1,8 +1,8 @@
-import Container from "../components/Container";
+import Container from "./Container";
 import item1 from "../ressources/item1.png";
-import item2 from "../ressources/item2.png";
+import item3 from "../ressources/item3.png";
 
-function Son(){
+function Lights(){
     return(
         <>
             <h1>Son</h1>
@@ -13,7 +13,7 @@ function Son(){
                 <img src={item1} />
             </div>
             <div>
-                <img src={item2}/>
+                <img src={item3}/>
             </div>
 
 
@@ -21,4 +21,4 @@ function Son(){
     );
 }
 
-export default Son;
+export default Lights;

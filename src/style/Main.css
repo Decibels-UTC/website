@@ -1,15 +1,36 @@
-.content-middle{
-    text-align: center;
+.stick{
+    filter: blur(0.5rem);
 }
 
-.banner{
-    position: sticky;
-    top: 0;
+.content-middle{
+    margin-top: 15%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
+
+
+
+.item1-fourth {
+  transform: rotate(90deg);
+  position: absolute;
+  right: 0;
+    bottom: 0.1vmin;
+}
+
 
 .image-flyht{
+    position: absolute;;
+    top: -1%;
+    right: 0;
     width: 35vmin;
     height: 35vmin;
+}
+
+.image-mic1{
+    position: absolute;
+    top: -5%;
+    left: 3%;
 }
 
 .item5-first{
@@ -20,8 +41,22 @@
     margin-right: 40vmin;
 }
 
-.footer-main-page{
-    display: flex;
-    align-items: center;
-    width: auto;
+.footer-main-page {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: absolute;
+ bottom: 0;
+ width: 50%;
+ height: auto;
+ margin-left: 25%;
+ margin-top: -2%;
+}
+
+
+
+
+.backpageimg{
+    width: 100%;
+    height: auto;
 }

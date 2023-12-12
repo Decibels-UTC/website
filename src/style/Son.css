@@ -1,0 +1,14 @@
+.item{
+    z-index: 0;
+    filter : blur(0.5rem);
+}
+
+.item1{
+    transform: rotate(180deg);
+    margin-bottom: -5%;
+    margin-left: 2%;
+}
+
+.son{
+    margin-left: 25%;
+}
