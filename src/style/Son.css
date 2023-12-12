@@ -3,12 +3,17 @@
     filter : blur(0.5rem);
 }
 
-.item1{
-    transform: rotate(180deg);
-    margin-bottom: -5%;
-    margin-left: 2%;
+.item1-son{
+    position: absolute;
+    transform: rotate(90deg);
+    right: 0;
+    bottom: -220%;
 }
 
 .son{
+    position: absolute;
     margin-left: 25%;
+    top: 190vmin;
 }
+
+

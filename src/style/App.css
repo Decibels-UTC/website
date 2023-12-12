@@ -2,8 +2,14 @@ body{
   color: beige;
 }
 
-.page{
+.page-desc{
   margin-top: 45vmin;
+}
+.page-son{
+  margin-top: 10vmin;
+}
+.text-middle{
+    padding: 4%;
 }
 
 .container{
@@ -13,6 +19,7 @@ body{
   color: beige;
   text-align: center;
   align-items: center;
+
 }
 
 

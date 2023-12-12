@@ -10,6 +10,9 @@ function App() {
     <div className="App">
         <Main />
         <Desc/>
+        <Son />
+        <Lights/>
+        <Footer/>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Container from "./Container";
 function Desc() {
   return (
       <>
-          <div className="page" >
+          <div className="page-desc" >
               <h1 className={"title"}>Décibels c'est : </h1>
           </div>
           <div className={"container-items"}>

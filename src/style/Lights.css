@@ -1,0 +1,24 @@
+.item3-light{
+    position: absolute;
+    width: 60%;
+    height: auto;
+}
+
+.text-middle-light{
+    position: absolute;
+    right: 0;
+
+}
+
+
+.item1-light-first{
+    transform: rotate(90deg);
+    right: 0;
+    position: absolute;
+}
+.item1-light-second{
+    transform: rotate(-90deg);
+    left: 0;
+    position: absolute;
+    bottom: -350%;
+}

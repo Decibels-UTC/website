@@ -6,9 +6,9 @@
 .zone-texte {
     padding: 2%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 300px 300px 800px;
     gap: 30px; /* Augmentation de l'espacement horizontal à 30px */
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(30px, auto);
 }
 
 .first-text {
@@ -41,8 +41,6 @@
    flex-direction: column;
    align-items: flex-start;
     position: relative;
-    display: grid;
-
 }
 
 .item1-first{
