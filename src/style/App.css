@@ -1,5 +1,10 @@
 body{
   color: beige;
+  overflow-x: hidden;
+  opacity: 1;
+}
+::-webkit-scrollbar {
+display: none;
 }
 
 .page-desc{

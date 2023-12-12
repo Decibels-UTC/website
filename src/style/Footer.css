@@ -1,28 +1,41 @@
 .wrapper {
-    background-image: url("../ressources/footer-background.png");
-    background-position: 50% 50%;
+    background-color: #151515;
     position: absolute;
     bottom: -370vmin;
     left: 0;
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
 }
 
-
+.wrapper > div{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper > div > a{
+    text-decoration: none;
+    color:beige;
+}
 
 
 
 .img-footer-bde{
-    width: 50%;
+    width: 20%;
     height: auto;
     margin-left: 60%;
 }
 .img-footer-utc{
-    width: 40%;
+    width: 50%;
     height: auto;
 }
 
 .img-socials{
-    width: 60%;
+    width: 50%;
     padding-top: 1%;
     padding-bottom: 1%;
     height: auto;
@@ -33,92 +46,6 @@
     font-weight: bolder;
 }
 
-.footer-title{
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: bolder;
-    font-size: x-large;
-}
-
-
-
-.subwrapper1 {
-    padding-bottom: 1%;
-    padding-top:1%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 40%;
-    height: auto;
-    margin-left: 20%;
-    margin-right: auto;
-}
-
-.subwrapper1 > div {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
-.subwrapper1 > div {
-    align-items: center;
-    align-content: center;
-}
-
-.subwrapper1 > div > a {
-    margin-left: 35%;
-    margin-right: auto;
-}
-
-.subwrapper1 > div > p {
-
-
-}
-
-
-
-.footer-title{
-    font-weight: bolder;
-}
-
-
-
-.subwrapper2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 10%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.subwrapper2 > div{
-        margin-left: auto;
-    margin-right: auto;
-}
-
-.subwrapper3 {
-
-    display: flex;                  /* establish flex container */
-    flex-direction: row;            /* default value; can be omitted */
-    align-items: center;
-        width: 40%;
-        margin-left: auto;
-    margin-right: auto;
-
-}
-.subwrapper3 > div{
-    padding-right: 1%;
-    padding-left: 1%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.subwrapper3 > div > a {
-    text-decoration: none;
-    color: beige;
-}
 
 
 

@@ -16,7 +16,7 @@ function Main() {
       <div className={"main"}>
 
           <div className={"banner"}>
-              <img src={item1} className={"image-mic1 stick"}/>
+              <img src={item1} className={"image-mic1"}/>
               <img className={"image-flyht"} src={item4} />
           </div>
 
@@ -24,13 +24,13 @@ function Main() {
           <div className={"content-middle"}>
               <img src={item5} className={"item5-first"}/>
           <div>
-              <img src={decibels}></img>
+              <img className={"img-dbs"} src={decibels}></img>
           </div>
           <img src={item5} className={"item5-second"} />
           </div>
 
         <div className={"item1-fourth-container"}>
-            <img src={item1} className={"item1-fourth stick"} />
+            <img src={item1} className={"item1-fourth"} />
         </div>
 
 

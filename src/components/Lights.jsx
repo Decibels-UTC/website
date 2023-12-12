@@ -16,7 +16,7 @@ function Lights(){
                 <img className={"item item1-light-first"} src={item1} />
             </div>
             <div>
-                <img className={"item item1-light-second"} src={item1} />
+                <img className={" item1-light-second"} src={item1} />
             </div>
 
             <div>
