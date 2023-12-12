@@ -31,13 +31,13 @@
 }
 
 .place-holder-img{
-    filter : blur(0.5rem);
-    grid-column: 3;
-    grid-row: 1;
+position:absolute;
+    top:137vmin;
+    right: 5%;
 }
 
 .img-placeholder{
-    backdrop-filter: opacity(100%);
+    border-radius: 10px;
 }
 
 
