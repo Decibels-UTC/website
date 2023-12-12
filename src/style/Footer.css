@@ -1,5 +1,6 @@
 .wrapper {
-    background-color: #161616;
+    background-image: url("../ressources/footer-background.png");
+    background-position: 50% 50%;
     position: absolute;
     bottom: -370vmin;
     left: 0;
@@ -32,10 +33,12 @@
     font-weight: bolder;
 }
 
-
-
-
-
+.footer-title{
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bolder;
+    font-size: x-large;
+}
 
 
 
@@ -47,18 +50,11 @@
     align-items: center;
     width: 40%;
     height: auto;
-    margin-left: 19%;
+    margin-left: 20%;
     margin-right: auto;
 }
 
 .subwrapper1 > div {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
-.footer-title{
     margin-left: auto;
     margin-right: auto;
 }

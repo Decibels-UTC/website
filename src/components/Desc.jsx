@@ -7,7 +7,7 @@ function Desc() {
   return (
       <>
           <div className="page-desc" >
-              <h1 className={"title"}>Décibels c'est : </h1>
+              <h1 className={"title desc-title"}>Décibels c'est : </h1>
           </div>
           <div className={"container-items"}>
               <img src={item1} className={"item1-first items"} />

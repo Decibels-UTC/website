@@ -7,7 +7,7 @@ import '../style/Lights.css';
 function Lights(){
     return(
         <>
-            <h1 className={"title"} >Lumières</h1>
+            <h1 className={"title title-lights"} >Lumières</h1>
             <div className={"text-middle text-middle-light"} >
                 <Container height={600} width={600} text={"coucou"}/>
             </div>

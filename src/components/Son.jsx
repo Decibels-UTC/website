@@ -8,7 +8,7 @@ import '../style/Son.css'
 function Son(){
     return(
         <div className="page-son">
-            <h1 className={"title"}>Son</h1>
+            <h1 className={"title son-title"}>Son</h1>
             <div className={"text-middle"}>
                 <Container height={600} width={600} text={"coucou"}/>
             </div>
