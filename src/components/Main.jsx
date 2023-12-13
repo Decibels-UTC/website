@@ -1,4 +1,5 @@
 
+import { motion } from "framer-motion"
 
 import decibels from "../ressources/decibels.png";
 import item6 from "../ressources/item6.png";
@@ -16,21 +17,43 @@ function Main() {
       <div className={"main"}>
 
           <div className={"banner"}>
-              <img src={item1} className={"image-mic1"}/>
+              <motion.img src={item1} className={"image-mic1"}
+                initial={{ y:-300, opacity: 0.5, scale: 1 }}
+                animate={{ y:0,opacity: 1, scale: 1 }}
+                transition={{ duration: 2 }}
+              ></motion.img>
+
+
               <img className={"image-flyht"} src={item4} />
           </div>
 
 
           <div className={"content-middle"}>
-              <img src={item5} className={"item5-first"}/>
+              <motion.img src={item5} className={"item5-first"}
+                 initial={{ x:-500, opacity: 0.5, scale: 1 }}
+                animate={{ x:0,opacity: 0.8, scale: 1 }}
+                transition={{ duration: 2 }}
+              >
+              </motion.img>
           <div>
-              <img className={"img-dbs"} src={decibels}></img>
+              <motion.img className={"img-dbs"} src={decibels}
+
+              ></motion.img>
           </div>
-          <img src={item5} className={"item5-second"} />
+              <motion.img src={item5} className={"item5-second"}
+                          initial={{ x:500, opacity: 0.5, scale: 1 }}
+                animate={{ x:0,opacity: 0.8, scale: 1 }}
+                transition={{ duration: 2 }}
+              ></motion.img>
           </div>
 
         <div className={"item1-fourth-container"}>
-            <img src={item1} className={"item1-fourth"} />
+            <motion.img src={item1} className={"item1-fourth"}
+                initial={{ x:300, opacity: 0.5, scale: 1, rotate: 90 }}
+                animate={{ x:0,opacity: 1, scale: 1, rotate: 90 }}
+                transition={{ duration: 2 }}
+
+            ></motion.img>
         </div>
 
 
