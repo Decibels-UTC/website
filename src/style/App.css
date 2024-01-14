@@ -1,5 +1,5 @@
 body{
-  font-family: 'Afacad', sans-serif;
+  font-family: "Robotto", sans-serif;
   color: beige;
   overflow-x: hidden;
   opacity: 1;
@@ -9,10 +9,10 @@ display: none;
 }
 
 .page-desc{
-  margin-top: 45vmin;
+  margin-top: 55vmin;
 }
 .page-son{
-  margin-top: 10vmin;
+  margin-top: 40vmin;
 }
 .text-middle{
     padding: 4%;

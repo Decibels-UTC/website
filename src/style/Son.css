@@ -12,13 +12,13 @@
     position: absolute;
     transform: rotate(90deg);
     right: 0;
-    bottom: -220%;
+    margin-top: -20%;
 }
 
 .son{
     position: absolute;
     margin-left: 25%;
-    top: 190vmin;
+    margin-top: -60%;
 }
 
 

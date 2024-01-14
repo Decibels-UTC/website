@@ -17,6 +17,7 @@ function Main() {
       <div className={"main"}>
 
           <div className={"banner"}>
+
               <motion.img src={item1} className={"image-mic1"}
                 initial={{ y:-300, opacity: 0.5, scale: 1 }}
                 animate={{ y:0,opacity: 1, scale: 1 }}

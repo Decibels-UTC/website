@@ -10,13 +10,13 @@ import Lights from "./components/Lights";
 function App() {
   return (
     <div className="App">
-        <Main />
+        <Main/>
         <Desc/>
-        <Son />
+        <Son/>
         <Lights/>
-        <footer>
-            <Footer/>
-        </footer>
+        <Footer/>
+
+
     </div>
   );
 }
