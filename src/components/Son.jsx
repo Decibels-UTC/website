@@ -10,7 +10,7 @@ function Son(){
         <div className="page-son">
             <h1 className={"title son-title"}>Son</h1>
             <div className={"text-middle"}>
-                <Container height={600} width={600} text={"coucou"}/>
+                <Container classname={"container"} height={600} width={600} text={"coucou"}/>
             </div>
             <div>
                 <img src={item2} className={"item son"}  />

@@ -2,6 +2,10 @@
     padding-left: 10%;
 }
 
+.text-middle{
+    position: relative;
+    display: block;
+}
 
 .item{
     z-index: 0;

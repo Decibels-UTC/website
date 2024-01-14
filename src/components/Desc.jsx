@@ -36,12 +36,12 @@ function Desc() {
           </div>
 
           <div className={"zone-texte"}>
-              <div className={"first-text "}><Container className={"container"} width={300} height={200}
-                                                        text={"Lorem ipusm"}/></div>
+
+              <div className={"first-text "}><Container className={"container"} width={300} height={200} text={"Lorem ipusm"}/></div>
               <div className={"second-text "}><Container className={"container"} width={300} height={200} text={"Lorem ipusm"}/></div>
               <div className={"third-text "}><Container className={"container"}  width={300} height={200} text={"Lorem ipusm"}/></div>
 
-              </div>
+          </div>
             <div className={"place-holder-img"}>
               <Container  className={"img-placeholder"} width={700} height={"auto"} src={imgdBs}/>
             </div>

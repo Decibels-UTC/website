@@ -21,7 +21,7 @@ function Lights(){
                 ></motion.img>
             </div>
             <div>
-                <motion.img className={" item1-light-second"} src={item1}
+                <motion.img className={"item item1-light-second"} src={item1}
                             initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
                             whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
                             viewport={{once: true}}

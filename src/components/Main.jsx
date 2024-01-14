@@ -19,43 +19,46 @@ function Main() {
           <div className={"banner"}>
 
               <motion.img src={item1} className={"image-mic1"}
-                initial={{ y:-300, opacity: 0.5, scale: 1 }}
-                animate={{ y:0,opacity: 1, scale: 1 }}
-                transition={{ duration: 2 }}
+                          initial={{y: -300, opacity: 0.5, scale: 1}}
+                          animate={{y: 0, opacity: 1, scale: 1}}
+                          transition={{duration: 2}}
               ></motion.img>
 
 
-              <img className={"image-flyht"} src={item4} />
+              <img className={"image-flyht"} src={item4}/>
           </div>
 
+          <div className="tenor-gif-embed" data-postid="12971119" data-share-method="host" data-aspect-ratio="1.77778"
+               data-width="100%"></div>
+          <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
           <div className={"content-middle"}>
               <motion.img src={item5} className={"item5-first"}
-                 initial={{ x:-500, opacity: 0.5, scale: 1 }}
-                animate={{ x:0,opacity: 0.8, scale: 1 }}
-                transition={{ duration: 2 }}
+                          initial={{x: -500, opacity: 0.5, scale: 1}}
+                          animate={{x: 0, opacity: 0.8, scale: 1}}
+                          transition={{duration: 2}}
               >
               </motion.img>
-          <div>
-              <motion.img className={"img-dbs"} src={decibels}
+              <div>
+                  <motion.img className={"img-dbs"} src={decibels}
 
-              ></motion.img>
-          </div>
+                  ></motion.img>
+              </div>
               <motion.img src={item5} className={"item5-second"}
-                          initial={{ x:500, opacity: 0.5, scale: 1 }}
-                animate={{ x:0,opacity: 0.8, scale: 1 }}
-                transition={{ duration: 2 }}
+                          initial={{x: 500, opacity: 0.5, scale: 1}}
+                          animate={{x: 0, opacity: 0.8, scale: 1}}
+                          transition={{duration: 2}}
               ></motion.img>
           </div>
 
-        <div className={"item1-fourth-container"}>
-            <motion.img src={item1} className={"item1-fourth"}
-                initial={{ x:300, opacity: 0.5, scale: 1, rotate: 90 }}
-                animate={{ x:0,opacity: 1, scale: 1, rotate: 90 }}
-                transition={{ duration: 2 }}
+          <div className={"item1-fourth-container"}>
+              <motion.img src={item1} className={"item1-fourth"}
+                          initial={{x: 300, opacity: 0.5, scale: 1, rotate: 90}}
+                          animate={{x: 0, opacity: 1, scale: 1, rotate: 90}}
+                          transition={{duration: 2}}
 
-            ></motion.img>
-        </div>
+              ></motion.img>
+          </div>
 
 
           <div className={"footer-main-page"}>
@@ -63,10 +66,10 @@ function Main() {
                   <img src={liveevent} className={"backpageimg"}/>
               </div>
               <div>
-                  <img src={item5} className={"backpageimg"} />
+                  <img src={item5} className={"backpageimg"}/>
               </div>
               <div>
-                  <img src={recording} className={"backpageimg"} />
+                  <img src={recording} className={"backpageimg"}/>
               </div>
           </div>
 

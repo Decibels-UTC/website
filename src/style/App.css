@@ -25,7 +25,7 @@ display: none;
   color: beige;
   text-align: center;
   align-items: center;
-
+  position: relative;
 }
 
 
