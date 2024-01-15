@@ -48,12 +48,18 @@ function Desc() {
 
           </div>
           <div className={"place-holder-img"}>
-              <motion.img src={imgdBs} className={"img-placeholder"}
+
+
+              <figure>
+                <motion.img src={imgdBs} className={"img-placeholder"}
                           initial={{x: 0, opacity: 0.8, scale: 1, rotate: 0}}
                           whileInView={{x: 0, opacity: 1, scale: 1, rotate: 0}}
                           viewport={{once: true}}
                           transition={{duration: 2}}
-              ></motion.img>
+                ></motion.img>
+            <figcaption>Crédits photo : PAE UTC - Picsart</figcaption>
+            </figure>
+
           </div>
 
 

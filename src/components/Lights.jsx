@@ -3,6 +3,8 @@ import item1 from "../ressources/item1.png";
 import item3 from "../ressources/item3.png";
 import { motion } from "framer-motion"
 import '../style/Lights.css';
+import VideoComponent from "./Video";
+import vid2 from "../ressources/vid2.mp4";
 
 function Lights(){
     return(
@@ -29,6 +31,16 @@ function Lights(){
                             transition={{duration: 2}}
                 ></motion.img>
             </div>
+
+            <motion.div className={"vid2"}
+            initial={{x: -200, opacity: 0.5, scale: 1, rotate: 0}}
+                            whileInView={{x: 0, opacity: 1, scale: 1, rotate: 0}}
+                            viewport={{once: true}}
+                            transition={{duration: 3}}
+            >
+                <VideoComponent  src={vid2} width={"50%"} height={"auto"}/>
+
+            </motion.div>
 
             <div>
                 <img className={"item item3-light"} src={item3}/>

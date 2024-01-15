@@ -26,9 +26,6 @@ function Footer(){
                         <div>
                             <a href={"/legals"}><p className={"footer-info"} >mention légales</p></a>
                         </div>
-                        <div>
-                            <a href={"https://assos.utc.fr/picsart"} ><p className={"footer-info"} >crédits photo : Picsart UTC</p></a>
-                        </div>
 
 
                         <div>

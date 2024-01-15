@@ -24,7 +24,15 @@
     margin-top: 30%;
 }
 
-
+figure {
+  border: none;
+}
+figcaption {
+  color: black;
+  font: italic smaller sans-serif;
+  text-align: center;
+    margin-right: 60%;
+}
 
 .zone-texte {
     width: 100%;
@@ -36,18 +44,21 @@
     position: relative;
     right: -15%;
     padding: 2%;
+    z-index: 2;
 }
 
 .second-text {
     position: relative;
     left: 5%;
     padding: 2%;
+       z-index: 2;
 }
 
 .third-text {
     position: relative;
     right: -15%;
     padding: 2%;
+       z-index: 2;
 
 }
 
