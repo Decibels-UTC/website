@@ -10,7 +10,9 @@ function Legals(){
         <div className="page-legals">
             <h1 className={"title legals-title"}>Mentions légales</h1>
             <div className={"text-middle-legals"}>
-                <Container classname={"text-legals"} height={800} width={800} text={"coucou"}/>
+                <Container classname={"text-legals"} height={800} width={800} title={"Politique de confidentialité"} text={"Cookies : "+ "\n" +
+                ""
+                }/>
             </div>
             <div className={"div-son-legals"}>
                 <img src={item2} className={"item-son-legals"}  />

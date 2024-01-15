@@ -13,12 +13,13 @@
 
 .div-son-legals{
     position: absolute;
-    margin-top: -55%;
+    margin-top: -45%;
     right: 20%;
     z-index: 1;
 
 }
 .item-son-legals{
+    filter: blur(4px);
     width: 130%;
     height: auto;
 }
