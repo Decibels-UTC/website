@@ -1,8 +1,9 @@
 import Footer from "../components/Footer"
+import Error404 from "../components/404";
 
 function NoSite(){
     return(<>
-            <p>404</p>
+            <Error404/>
             <Footer/>
         </>
     );

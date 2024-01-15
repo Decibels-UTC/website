@@ -19,11 +19,11 @@
     transform: rotate(90deg);
     right: 0;
     position: absolute;
-    bottom: -370%;
+    bottom: -320%;
 }
 .item1-light-second{
     transform: rotate(-90deg);
     left: 0;
     position: absolute;
-    bottom: -356%;
+    bottom: -306%;
 }

@@ -1,7 +1,7 @@
 .wrapper {
     background-color: #151515;
-    position: absolute;
-    bottom: -370vmin;
+    position: relative;
+    bottom: 0;
     left: 0;
     z-index: 10;
     display: flex;
