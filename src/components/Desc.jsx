@@ -42,12 +42,14 @@ function Desc() {
               <div className={"third-text "}><Container className={"container"}  width={300} height={200} text={"Lorem ipusm"}/></div>
 
           </div>
-            <div className={"place-holder-img"}>
-              <Container  className={"img-placeholder"} width={700} height={"auto"} src={imgdBs}/>
-            </div>
-
-
-
+          <div className={"place-holder-img"}>
+              <motion.img src={imgdBs} className={"img-placeholder"}
+                          initial={{x: 0, opacity: 0.8, scale: 1, rotate: 0}}
+                          whileInView={{x: 0, opacity: 1, scale: 1, rotate: 0}}
+                          viewport={{once: true}}
+                          transition={{duration: 2}}
+              ></motion.img>
+          </div>
 
 
       </>
