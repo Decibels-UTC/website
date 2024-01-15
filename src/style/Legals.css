@@ -1,0 +1,24 @@
+.page-legals{
+    text-align: center;
+}
+
+.text-middle-legals{
+    position: relative;
+    padding: 2%;
+    margin: 0 auto;
+    margin-left: 22%;
+    margin-right: auto;
+    z-index: 2;
+}
+
+.div-son-legals{
+    position: absolute;
+    margin-top: -55%;
+    right: 20%;
+    z-index: 1;
+
+}
+.item-son-legals{
+    width: 130%;
+    height: auto;
+}
