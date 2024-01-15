@@ -9,7 +9,8 @@ function Lights(){
         <>
             <h1 className={"title title-lights"} >Lumières</h1>
             <div className={"text-middle text-middle-light"} >
-                <Container height={600} width={600} text={"coucou"}/>
+                <Container height={600} width={600} text={"Décibels c'est aussi de la lumière : " + "\n" +
+                    ""}/>
             </div>
 
             <div>

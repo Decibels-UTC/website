@@ -1,21 +1,23 @@
 import './style/App.css';
-
-import Footer from "./components/Footer"
-import Son from "./components/Son.jsx";
-import Main from "./components/Main";
-import Desc from "./components/Desc"
-import Lights from "./components/Lights";
-import Legals from "./components/Legals";
+import Site from "./pages/Site";
+import MentionLegals from "./pages/MentionLegals";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NoSite from "./pages/NoSite";
 
 
 function App() {
   return (
     <div className="App">
-        <Main/>
-        <Desc/>
-        <Son/>
-        <Lights/>
-        <Footer/>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Site />}>
+        <Route path="legals" element={<MentionLegals />} />
+        <Route path="*" element={<NoSite />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+
     </div>
   );
 }

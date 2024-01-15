@@ -37,8 +37,11 @@ function Desc() {
 
           <div className={"zone-texte"}>
 
-              <div className={"first-text "}><Container className={"container"} width={300} height={200} text={"Lorem ipusm"}/></div>
-              <div className={"second-text "}><Container className={"container"} width={300} height={200} text={"Lorem ipusm"}/></div>
+              <div className={"first-text "}><Container className={"container"} width={300} height={200} text={"Décibels c'est 12 évènnements en A23\n" +
+                  "" +
+                  ""}/></div>
+              <div className={"second-text "}><Container className={"container"} width={300} height={200} text={"Une équipe de XX personnes " + "\n" +
+                  ""}/></div>
               <div className={"third-text "}><Container className={"container"}  width={300} height={200} text={"Lorem ipusm"}/></div>
 
           </div>

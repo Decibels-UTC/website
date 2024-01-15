@@ -32,3 +32,11 @@
     z-index: 2;
 }
 
+
+.vid1{
+  position: absolute;
+    z-index: 3;
+    right: -45%;
+    top: 225%;
+
+}
