@@ -14,9 +14,7 @@
     position: relative;
 }
 
-.item1-first{
 
-}
 .item1-second{
     left: -2%;
     margin-top: 15%;
@@ -67,7 +65,11 @@ position:relative;
     width: auto;
 }
 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
+
+
+}
 
 
 

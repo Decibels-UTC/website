@@ -52,7 +52,10 @@ display: none;
   .title {
     font-size: x-large;
   }
-
+  img{
+    height: 20%;
+    width: auto;
+  }
 
 
 
