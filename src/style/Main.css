@@ -36,13 +36,16 @@
 
 .item5-first{
     margin-left: 40vmin;
+    z-index: 2;
 }
 
 .item5-second{
     margin-right: 40vmin;
+    z-index: 2;
 }
 
 .footer-main-page {
+    z-index: 1;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -58,6 +61,16 @@
     width: 100%;
     height: auto;
 }
+
+.anim-onde1-main{
+    z-index: 0;
+    position: absolute;
+    width: 50%;
+    right: 25%;
+    top: 45%;
+
+}
+
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {

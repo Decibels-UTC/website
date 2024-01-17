@@ -31,8 +31,7 @@ function Son(){
                             transition={{duration: 2}}
             >
                 <VideoComponent  src={vid1} width={"38%"} height={"auto"}/>
-
-            </motion.div>
+        </motion.div>
             <div>
                 <motion.img src={item1} className={"item item1-son"}
                             initial={{x: 150, opacity: 0.8, scale: 1, rotate: 90}}

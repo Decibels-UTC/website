@@ -1,5 +1,6 @@
 import item1 from "../ressources/item1.png"
 import imgdBs from "../ressources/imgdbs.jpg"
+import onde3 from "../ressources/animations/onde3.gif"
 import "../style/Desc.css";
 import Container from "./Container";
 import { motion } from "framer-motion"
@@ -49,6 +50,8 @@ function Desc() {
           </div>
           <div className={"place-holder-img"}>
 
+              <motion.img className={"onde3-desc"} src={onde3}>
+              </motion.img>
 
               <figure>
                 <motion.img src={imgdBs} className={"img-placeholder"}

@@ -71,13 +71,45 @@ position:relative;
 }
 
 .img-placeholder{
-    border-radius: 10px;
     height: 500px;
     width: auto;
+    z-index: 2;
+}
+
+.onde3-desc{
+    position: absolute;
+    z-index: 0;
+    width: 150%;
+    right: 0px;
+    top: -500px;
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
+    .zone-texte{
+        position: relative;
+        padding: 2%;
+    }
+
+    .zone-texte > div {
+        position: relative;
+        z-index: 2;
+        padding: 2%;
+        left: 0%;
+        right: 0%;
+    }
+
+    .place-holder-img{
+        position:relative;
+        left: 40%;
+        margin-bottom: 20%;
+    }
+
+    .img-placeholder{
+    border-radius: 10px;
+    height: 275px;
+    width: auto;
+    }
 
 
 }

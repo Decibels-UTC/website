@@ -2,6 +2,8 @@
 import { motion } from "framer-motion"
 
 import decibels from "../ressources/decibels.png";
+import onde1 from "../ressources/animations/onde1.gif";
+
 import item6 from "../ressources/item6.png";
 import item5 from "../ressources/item5.png";
 import item4 from "../ressources/item4.png";
@@ -28,9 +30,7 @@ function Main() {
               <img className={"image-flyht"} src={item4}/>
           </div>
 
-          <div className="tenor-gif-embed" data-postid="12971119" data-share-method="host" data-aspect-ratio="1.77778"
-               data-width="100%"></div>
-          <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
 
           <div className={"content-middle"}>
               <motion.img src={item5} className={"item5-first"}
@@ -41,8 +41,12 @@ function Main() {
               </motion.img>
               <div>
                   <motion.img className={"img-dbs"} src={decibels}
-
                   ></motion.img>
+
+                  <motion.img className={"anim-onde1-main"} src={onde1}>
+
+                  </motion.img>
+
               </div>
               <motion.img src={item5} className={"item5-second"}
                           initial={{x: 500, opacity: 0.5, scale: 1}}
