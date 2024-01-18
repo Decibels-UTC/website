@@ -76,12 +76,36 @@ position:relative;
     z-index: 2;
 }
 
-.onde3-desc{
+.onde3-desc1{
     position: absolute;
     z-index: 0;
-    width: 150%;
-    right: 0px;
-    top: -500px;
+    width: 30%;
+    left: -21em;
+    top: -52%;
+
+}
+.onde3-desc2{
+    position: absolute;
+    z-index: 0;
+    width: 30%;
+    left: -31em;
+    top: 0%;
+
+}
+.onde3-desc3{
+    position: absolute;
+    z-index: 0;
+    width: 30%;
+    left: -21em;
+    top: 50%;
+}
+
+.onde5-desc{
+    position: absolute;
+    z-index: 0;
+    width: 35%;
+    top: 220%;
+    left: 7%;
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {

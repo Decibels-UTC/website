@@ -31,6 +31,13 @@
 .vid2{
   position: absolute;
     z-index: 3;
-    bottom: -295%;
+    bottom: -340%;
     left: -5%;
+}
+
+.light-onde4{
+    position: absolute;
+    right: 25%;
+    width: 40%;
+    bottom: -310%;
 }

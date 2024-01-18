@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import '../style/Lights.css';
 import VideoComponent from "./Video";
 import vid2 from "../ressources/vid2.mp4";
+import onde4 from "../ressources/animations/onde4.gif"
 
 function Lights(){
     return(
@@ -44,6 +45,12 @@ function Lights(){
 
             <div>
                 <img className={"item item3-light"} src={item3}/>
+            </div>
+
+            <div>
+                <motion.img src={onde4} className={"light-onde4"}>
+
+                </motion.img>
             </div>
 
 
