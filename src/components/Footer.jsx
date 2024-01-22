@@ -29,7 +29,7 @@ function Footer(){
 
 
                         <div>
-                             <a href={"https://instagram.com"}><img src={insta} className={"img-socials"} /></a>
+                             <a href={"https://www.instagram.com/dbsutc/?hl=fr"}><img src={insta} className={"img-socials"} /></a>
                          </div>
                          <div>
                              <a href={"mailto://decibels@assos.utc.fr"}><img src={mail} className={"img-socials"} /></a>

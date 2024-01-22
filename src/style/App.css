@@ -19,10 +19,10 @@ display: none;
 }
 
 .container{
-  background-color: #444444;
+  background-color: #353535;
   border-radius: 1vmin;
   border: solid 0.4vmin #5B5B5B;
-  color: beige;
+  color: white;
   text-align: center;
   align-items: center;
   position: relative;
