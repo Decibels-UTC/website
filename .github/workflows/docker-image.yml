@@ -21,4 +21,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: lchappuis/dbs-website:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/dbs-website:latest
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
