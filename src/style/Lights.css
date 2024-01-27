@@ -36,8 +36,7 @@
 }
 
 .light-onde4{
-    position: absolute;
-    right: 25%;
-    width: 40%;
-    bottom: -310%;
+    position: relative;
+    z-index: 0;
+
 }

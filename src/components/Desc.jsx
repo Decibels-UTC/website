@@ -39,26 +39,24 @@ function Desc() {
 
           <div className={"zone-texte"}>
 
-              <div className={"first-text "}><Container width={300} height={200}
-                                                        text={"Décibels c'est 12 évènnements en A23\n" +
-                                                            "" +
-                                                            ""}/></div>
+              <div className={"first-text "}>
+                  <Container className={"first-container-desc"} width={300} height={200}text={"Décibels c'est 12 évènnements en A23\n" + "" + ""}/>
+              </div>
+                  <motion.img className={"onde3-desc1"} src={onde3}></motion.img>
 
-              <div className={"second-text "}><Container width={300} height={200}
-                                                         text={"Une équipe de XX personnes " + "\n" +
-                                                             ""}/></div>
+              <div className={"second-text "}>
+                  <Container className={"second-container-desc"} width={300} height={200} text={"Une équipe de XX personnes " + "\n" +""}/>
+              </div>
+                  <motion.img className={"onde3-desc2"} src={onde3}></motion.img>
 
-              <div className={"third-text "}><Container width={300} height={200} text={"Lorem ipusm"}/></div>
+              <div className={"third-text "}>
+                  <Container className={"third-container-desc"} width={300} height={200} text={"Lorem ipusm"}/>
+              </div>
+                  <motion.img className={"onde3-desc3"} src={onde3}></motion.img>
 
           </div>
           <div className={"place-holder-img"}>
 
-              <motion.img className={"onde3-desc1"} src={onde3}>
-              </motion.img>
-              <motion.img className={"onde3-desc2"} src={onde3}>
-              </motion.img>
-              <motion.img className={"onde3-desc3"} src={onde3}>
-              </motion.img>
 
               <figure>
                   <motion.img src={imgdBs} className={"img-placeholder"}

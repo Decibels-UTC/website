@@ -12,8 +12,9 @@ function Lights(){
         <>
             <h1 className={"title title-lights"} >Lumières</h1>
             <div className={"text-middle text-middle-light"} >
-                <Container height={600} width={600} text={"Décibels c'est aussi de la lumière : " + "\n" +
-                    ""}/>
+                <motion.img src={onde4} className={"light-onde4"}></motion.img>
+                <Container height={600} width={600} text={"Décibels c'est aussi de la lumière : " + "\n" + ""}/>
+
             </div>
 
             <div>
@@ -33,13 +34,17 @@ function Lights(){
                 ></motion.img>
             </div>
 
-            <motion.div className={"vid2"}
-            initial={{x: -200, opacity: 0.5, scale: 1, rotate: 0}}
+                <motion.div className={"vid2"}
+                            initial={{x: -200, opacity: 0.5, scale: 1, rotate: 0}}
                             whileInView={{x: 0, opacity: 1, scale: 1, rotate: 0}}
                             viewport={{once: true}}
                             transition={{duration: 3}}
-            >
-                <VideoComponent  src={vid2} width={"50%"} height={"auto"}/>
+                >
+
+
+                <div>
+                   <VideoComponent  src={vid2} width={"50%"} height={"auto"}/>
+                </div>
 
             </motion.div>
 
@@ -47,11 +52,7 @@ function Lights(){
                 <img className={"item item3-light"} src={item3}/>
             </div>
 
-            <div>
-                <motion.img src={onde4} className={"light-onde4"}>
 
-                </motion.img>
-            </div>
 
 
         </>
