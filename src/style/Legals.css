@@ -1,12 +1,14 @@
 .page-legals{
     text-align: center;
+    align-items: center;
+    align-content: center;
 }
 
 .text-middle-legals{
     position: relative;
     padding: 2%;
     margin: 0 auto;
-    margin-left: 22%;
+    margin-left: 25%;
     margin-right: auto;
     z-index: 2;
 }
@@ -18,8 +20,15 @@
     z-index: 1;
 
 }
+
 .item-son-legals{
     filter: blur(4px);
     width: 130%;
     height: auto;
+}
+
+.logo-legals{
+    width: 35%;
+    height: auto;
+    margin: 1%;
 }
