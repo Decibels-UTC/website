@@ -15,7 +15,14 @@ function Legals(){
                 }/>
             </div>
             <div className={"div-son-legals"}>
-                <img src={item2} className={"item-son-legals"}  />
+                <motion.img
+                initial={{opacity: 0, scale: 0.9}}
+                whileInView={{opacity: 1, scale: 1}}
+                viewport={{once: true}}
+                transition={{duration: 2}}
+                src={item2} className={"item-son-legals"} >
+
+                </motion.img>
             </div>
 
 

@@ -13,7 +13,7 @@ function Lights(){
             <h1 className={"title title-lights"} >Lumières</h1>
             <div className={"text-middle text-middle-light"} >
                 <motion.img src={onde4} className={"light-onde4"}></motion.img>
-                <Container height={600} width={600} text={"Décibels c'est aussi de la lumière : " + "\n" + ""}/>
+                <Container classname={"container-light"} height={300} width={400} text={"Décibels c'est aussi de la lumière : " + "\n" + ""}/>
 
             </div>
 

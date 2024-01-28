@@ -38,5 +38,9 @@
 .light-onde4{
     position: relative;
     z-index: 0;
+    margin-bottom: -4em;
+}
 
+.container-light{
+    margin-top: -2em;
 }

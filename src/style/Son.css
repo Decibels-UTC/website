@@ -6,6 +6,7 @@
     position: relative;
     display: block;
     z-index: 2;
+    margin-left: 10em;
 }
 
 .item{
@@ -22,8 +23,8 @@
 
 .son{
     position: absolute;
-    margin-left: 25%;
-    margin-top: -60%;
+    margin-left: 18em;
+    margin-top: -28em;
 }
 
 .text-son{
@@ -34,20 +35,20 @@
 
 
 .vid1{
-  position: absolute;
+    position: absolute;
     z-index: 3;
-    right: -35%;
-    top: 225%;
-
+    margin-left: 43em;
+    margin-top: -30em;
+    width: 80%;
 }
 
 .son-onde2{
     z-index: 1;
     position: absolute;
     width: 50%;
-    right: 5%;
-    bottom: -130em;
-}
+    margin-right: 1em;
+    margin-left: 7em;
+    }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
