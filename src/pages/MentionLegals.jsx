@@ -13,14 +13,7 @@ function MentionLegals(){
                 transition={{duration: 1.5}}
                 src={decibels} className={"logo-legals"}>
             </motion.img></a>
-
             <Legals/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
             <Footer/>
         </>
     );
