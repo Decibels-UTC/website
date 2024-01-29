@@ -21,7 +21,6 @@ function Legals(){
                 viewport={{once: true}}
                 transition={{duration: 2}}
                 src={item2} className={"item-son-legals"} >
-
                 </motion.img>
             </div>
 
