@@ -129,3 +129,59 @@
     }
 
 }
+
+
+@media only screen and (min-device-width : 0px) and (max-device-width : 768px) {
+ .image-flyht{
+    position: absolute;;
+    top: -1%;
+    width: 20vmin;
+    height: 20vmin;
+    margin-right: -1em;
+     }
+    .item5-first{
+        width: 20%;
+        height: auto;
+        margin-left: 40vmin;
+
+    }
+
+    .item5-second{
+        width: 20%;
+        height: auto;
+        margin-right: 40vmin;
+    }
+
+    .img-dbs{
+        width: 50%;
+        height: auto;
+    }
+
+    .footer-main-page {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: absolute;
+     bottom: 0;
+     width: 50%;
+     height: auto;
+     margin-left: 25%;
+    top: 20%;
+    }
+
+    .backpageimg{
+    width: 100%;
+    height: auto;
+    }
+    .image-mic1{
+    position: absolute;
+    top: -5%;
+    left: 3em;
+}
+
+    .item1-fourth {
+      transform: rotate(90deg);
+      position: absolute;
+    }
+
+}
