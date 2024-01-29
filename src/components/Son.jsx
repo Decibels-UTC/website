@@ -24,7 +24,7 @@ function Son(){
                             viewport={{once: true}}
                             transition={{duration: 2}}
                 >
-                    <VideoComponent src={vid1} width={"38%"} height={"auto"}/>
+                    <VideoComponent src={vid1} width={"500px"} height={"auto"}/>
                 </motion.div>
             </div>
             <motion.div

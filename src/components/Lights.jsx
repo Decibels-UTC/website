@@ -43,7 +43,7 @@ function Lights(){
 
 
                 <div>
-                   <VideoComponent  src={vid2} width={"50%"} height={"auto"}/>
+                   <VideoComponent className={"vid2-comp"} width={"100%"} height={"auto"} src={vid2} />
                 </div>
 
             </motion.div>

@@ -29,11 +29,15 @@
 }
 
 .vid2{
-  position: absolute;
+  position: relative;
     z-index: 3;
-    bottom: -340%;
-    left: -5%;
+    width: 50%;
+    height: auto;
+    margin-top: -28em;
+    padding-bottom: 10em;
+    padding-left: 2em;
 }
+
 
 .light-onde4{
     position: relative;

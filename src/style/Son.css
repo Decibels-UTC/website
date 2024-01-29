@@ -24,7 +24,7 @@
 .son{
     position: absolute;
     margin-left: 18em;
-    margin-top: -28em;
+    margin-top: -50em;
 }
 
 .text-son{
@@ -35,7 +35,7 @@
 
 
 .vid1{
-    position: absolute;
+    position: relative;
     z-index: 3;
     margin-left: 43em;
     margin-top: -30em;
