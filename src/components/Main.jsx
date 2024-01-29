@@ -57,7 +57,7 @@ function Main() {
           <div className={"item1-fourth-container"}>
               <motion.img src={item1} className={"item1-fourth"}
                           initial={{x: 300, opacity: 0.5, scale: 1, rotate: 90}}
-                          animate={{x: 0, opacity: 1, scale: 1, rotate: 90}}
+                          animate={{x: -29, opacity: 1, scale: 1, rotate: 90}}
                           transition={{duration: 2}}
 
               ></motion.img>

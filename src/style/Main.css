@@ -75,12 +75,13 @@
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
+
      .image-flyht{
     position: absolute;;
     top: -1%;
-    right: 2em;
     width: 20vmin;
     height: 20vmin;
+    margin-right: -1em;
      }
     .item5-first{
         width: 20%;
@@ -121,11 +122,10 @@
     top: -5%;
     left: 3em;
 }
+
     .item1-fourth {
-  transform: rotate(90deg);
-  position: absolute;
-  right: 2em;
-    bottom: 0.1vmin;
-}
+      transform: rotate(90deg);
+      position: absolute;
+    }
 
 }

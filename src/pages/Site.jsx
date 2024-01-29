@@ -6,12 +6,13 @@ import Lights from "../components/Lights";
 
 
 function Site(){
-    return(<>
-         <Main/>
-        <Desc/>
-        <Son/>
-        <Lights/>
-        <Footer/>
+    return(
+        <>
+            <Main/>
+            <Desc/>
+            <Son/>
+            <Lights/>
+            <Footer/>
         </>
     );
 }
