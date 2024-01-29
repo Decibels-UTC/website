@@ -133,14 +133,47 @@ position:relative;
 
     .place-holder-img{
         position:relative;
-        left: 40%;
-        margin-bottom: 20%;
+        left: 50%;
+        margin-top: -55%;
+        width: 50%;
     }
 
     .img-placeholder{
     border-radius: 10px;
     height: 275px;
     width: auto;
+    }
+
+    .onde3-desc1{
+        position: relative;
+        z-index: 0;
+        width: 30%;
+        margin-top: -22%;
+        margin-left: 22%;
+    }
+    .onde3-desc2{
+
+        position: relative;
+        z-index: 0;
+        width: 30%;
+        margin-top: -22%;
+        margin-left: 22%;
+
+    }
+    .onde3-desc3{
+        position: relative;
+        z-index: 0;
+        width: 30%;
+        margin-top: -22%;
+        margin-left: 22%;
+    }
+
+    .onde5-desc{
+        position: absolute;
+        z-index: 0;
+        width: 35%;
+        margin-top: 6em;
+        left: 7%;
     }
 
 

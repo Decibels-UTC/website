@@ -2,6 +2,7 @@
     text-align: center;
     align-items: center;
     align-content: center;
+    padding-bottom: 1em;
 }
 
 .text-middle-legals{
@@ -11,6 +12,7 @@
     margin-left: 25%;
     margin-right: auto;
     z-index: 2;
+    padding-bottom: 20%;
 }
 
 .div-son-legals{
@@ -33,4 +35,9 @@
     width: 35%;
     height: auto;
     margin: 1%;
+}
+
+@media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
+
+
 }

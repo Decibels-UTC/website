@@ -3,7 +3,6 @@ body{
   color: beige;
   overflow-x: hidden;
   opacity: 1;
-  overflow: hidden;
 }
 ::-webkit-scrollbar {
 display: none;
