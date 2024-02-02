@@ -9,7 +9,6 @@ function Site(){
     return(
         <>
             <Main/>
-
         </>
     );
 }
