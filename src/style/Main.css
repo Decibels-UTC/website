@@ -52,14 +52,9 @@
     height: 5%;
 }
 
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
 
-}
-
-
-@media only screen and (min-device-width : 0px) and (max-device-width : 768px) {
+@media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
 
 
 }
