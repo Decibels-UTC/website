@@ -5,6 +5,7 @@
     align-items: center;
     flex-wrap: wrap; /* Permet le retour à la ligne des éléments sur les petits écrans */
     padding-top: 0.3%;
+    animation: changeBackgroundColor 30s infinite;
 }
 
 .footer-item {
@@ -29,4 +30,16 @@
     font-weight: bolder;
     color: beige;
     margin: 0;
+}
+
+@keyframes changeBackgroundColor {
+  0% {
+    background-color: #0A0908;
+  }
+  50% {
+    background-color: #1E1E1E;
+  }
+  100% {
+    background-color: #0A0908;
+  }
 }
