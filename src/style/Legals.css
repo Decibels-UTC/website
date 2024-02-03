@@ -1,7 +1,6 @@
 .main-content-legals > div{
     display: flex;
     justify-content: center;
-
 }
 .legals-title{
     z-index: 2;
@@ -13,7 +12,7 @@
     height: auto;
 }
 .main-content-legals-3{
-    margin-top: -40%;
+    margin-top: -30%;
     padding-bottom: 5%;
 }
 
@@ -21,4 +20,10 @@
     width: 30%;
     height: auto;
     padding-bottom: 2%;
+}
+
+.text-legals{
+    margin-top: 5%;
+    width: 50%;
+    height: 30em;
 }

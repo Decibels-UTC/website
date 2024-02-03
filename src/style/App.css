@@ -8,14 +8,16 @@ body{
 display: none;
 }
 
+
 .container{
-  background-color: #353535;
+  background-color: black;
   border-radius: 1vmin;
-  border: solid 0.4vmin #5B5B5B;
+  border: solid 0.1vmin #5B5B5B;
   color: white;
   text-align: center;
   align-items: center;
   position: relative;
+  z-index: 2;
 }
 
 

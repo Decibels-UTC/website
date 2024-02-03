@@ -25,7 +25,6 @@ function Main() {
                           transition={{duration: 2}}
               ></motion.img>
 
-
               <img className={"image-flyht"} src={item4}/>
           </div>
 

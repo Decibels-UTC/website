@@ -1,4 +1,3 @@
-import Container from "./Container";
 import item1 from "../ressources/item1.png";
 import item2 from "../ressources/item2.png";
 import { motion } from "framer-motion"
@@ -15,9 +14,12 @@ function Legals(){
                 <h1 className={"title legals-title"}>Mentions légales</h1>
             </div>
             <div className={"main-content-legals-2"}>
-                <Container classname={"text-legals"} height={"800px"} width={"800px"} title={"Politique de confidentialité"} text={"Cookies : "+ "\n" +
-                ""
-                }/>
+                <motion.div className={"container text-legals"}
+                whileHover={{scale : 1.1}}
+                >
+                    <h1>Politique de confidentialité</h1>
+                    <p>Cookies :</p>
+                  </motion.div>
             </div>
 
             <div className={"main-content-legals-3"}>

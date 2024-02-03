@@ -3,7 +3,6 @@ import imgdBs from "../ressources/imgdbs.jpg"
 import onde3 from "../ressources/animations/onde3.gif"
 import onde5 from "../ressources/animations/onde5.gif"
 import "../style/Desc.css";
-import Container from "./Container";
 import { motion } from "framer-motion"
 
 
@@ -36,17 +35,33 @@ function Desc() {
 
 
               <div className={"first-text "}>
-                  <Container className={"first-container-desc"} width={300} height={200}text={"Décibels c'est 12 évènnements en A23\n" + "" + ""}/>
+                  <motion.div className={"container first-container-desc"}
+                  whileHover={{scale : 1.1}}
+                  >
+                    <h1></h1>
+                    <p>Décibels c'est 12 évènnements en A23</p>
+                  </motion.div>
               </div>
                   <motion.img className={"onde3-desc1"} src={onde3}></motion.img>
 
               <div className={"second-text "}>
-                  <Container className={"second-container-desc"} width={300} height={200} text={"Une équipe de XX personnes " + "\n" +""}/>
+                  <motion.div className={"container second-container-desc"}
+                  whileHover={{scale : 1.1}}
+                  >
+                    <h1></h1>
+                    <p>Une équipe de XX personnes</p>
+                  </motion.div>
+
               </div>
                   <motion.img className={"onde3-desc2"} src={onde3}></motion.img>
 
               <div className={"third-text "}>
-                  <Container className={"third-container-desc"} width={300} height={200} text={"Lorem ipusm"}/>
+                  <motion.div className={"container third-container-desc"}
+                  whileHover={{scale : 1.1}}
+                  >
+                    <h1></h1>
+                    <p>Lorem ipusm</p>
+                  </motion.div>
               </div>
                   <motion.img className={"onde3-desc3"} src={onde3}></motion.img>
 

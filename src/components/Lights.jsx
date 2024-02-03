@@ -1,4 +1,3 @@
-import Container from "./Container";
 import item1 from "../ressources/item1.png";
 import item3 from "../ressources/item3.png";
 import { motion } from "framer-motion"
@@ -24,9 +23,15 @@ function Lights(){
 
                    <VideoComponent className={"vid2-comp"} width={"100%"} height={"auto"} src={vid2} />
                 </motion.div>
-                <div className={"superposage-light"}>
+                <div className={"superpose-light"}>
                     <motion.img src={onde4} className={"light-onde4"}></motion.img>
-                    <Container classname={"container-light"} height={300} width={400} text={"Décibels c'est aussi de la lumière : " + "\n" + ""}/>
+                    <motion.div className={"container container-light"}
+                    whileHover={{scale : 1.1}}
+                    >
+                    <h1></h1>
+                    <p>Décibels c'est aussi de la lumière :</p>
+                  </motion.div>
+
                 </div>
 
 

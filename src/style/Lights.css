@@ -22,10 +22,13 @@
     margin-left: -10%;
 }
 
-.superposage-light{
+.superpose-light{
     z-index: 2;
     display: flex;
+    justify-content: center;
     align-items: center;
+    width: 50%;
+    height: 100%;
 }
 .light-onde4{
     height: 100%;
@@ -73,4 +76,9 @@
     filter: blur(0.3em);
     width: 50%;
     height: auto;
+}
+
+.container-light{
+    width: 50%;
+    height: 20em;
 }
