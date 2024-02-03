@@ -34,6 +34,8 @@ function Legals(){
                         UTC - Centre Benjamin Franklin, MDE, Rue Roger Couttolenc 60200 Compiègne<br/>
                         decibels@assos.utc.fr
                     </p>
+                    <p>Hébergement</p>
+                    <p>OVH - Adresse : 2, rue Kellermann, 59100 Roubaix</p>
                     <br/>
                     <br/>
                     <h2>II - Définitions</h2>
