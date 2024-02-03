@@ -6,7 +6,7 @@ function Error404(){
             <div className={"div-error404"}>
                 <a href={"/"}><img src={error} className={"img-error404"} /></a>
             </div>
-            <div className={"fix-footer"}></div>
+
     </>
 
     );
