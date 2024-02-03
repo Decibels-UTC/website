@@ -17,6 +17,8 @@
     display: flex;
     justify-content: center;
     margin-left: 10%;
+    margin-top: 4%;
+    margin-bottom: 3%;
 }
 .backpageimg{
     width: 60%;
@@ -55,6 +57,40 @@
 
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
+    .image-flyht{
+        width: 30%;
+        height: 33%;
+    }
+    .image-mic1{
+    width: 10%;
+    height: 10%;
+    }
+
+    .content-mid{
+    width: 60%;
+    height: 60%;
+    }
+    .item5-first{
+        width: 40%;
+        height: 40%;
+        margin-right: -10%;
+    }
+    .item5-second{
+        width: 40%;
+        height: 40%;
+        margin-left: -10%;
+    }
+
+    .content-middle{
+        margin-top: 20%;
+    }
+    .item1-fourth{
+        width: 10%;
+        height: 10%;
+    }
+    .footer-main-page{
+        margin-top: 45%;
+    }
 
 
 }

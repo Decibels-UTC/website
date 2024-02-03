@@ -21,7 +21,9 @@
     width: auto;
     margin-right: -10%;
     z-index: 2;
+    overflow: hidden;
 }
+
 
 .son-div{
     z-index: 0;
@@ -50,7 +52,7 @@
 .son-onde2-div{
     display: flex;
     justify-content: center;
-    margin-top: 1%;
+    margin-top: 3%;
 }
 .son-onde2{
     width: 30%;

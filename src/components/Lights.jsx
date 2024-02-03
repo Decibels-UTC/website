@@ -24,7 +24,6 @@ function Lights(){
                    <VideoComponent className={"vid2-comp"} width={"100%"} height={"auto"} src={vid2} />
                 </motion.div>
                 <div className={"superpose-light"}>
-                    <motion.img src={onde4} className={"light-onde4"}></motion.img>
                     <motion.div className={"container container-light"}
                     whileHover={{scale : 1.1}}
                     >
