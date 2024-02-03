@@ -8,16 +8,6 @@ body{
 display: none;
 }
 
-.page-desc{
-  margin-top: 55vmin;
-}
-.page-son{
-  margin-top: 40vmin;
-}
-.text-middle{
-    padding: 4%;
-}
-
 .container{
   background-color: #353535;
   border-radius: 1vmin;
@@ -29,35 +19,9 @@ display: none;
 }
 
 
-.title-container{
-
-}
-
-.img{
-  width: 100%;
-}
-
 .title{
   font-size: xxx-large;
   margin-top: 2%;
   margin-left: 2%;
 }
 
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-
-  /* réduire la taille des images etc */
-
-  .title {
-    font-size: x-large;
-  }
-  img{
-    height: 20%;
-    width: auto;
-  }
-
-
-
-
-}

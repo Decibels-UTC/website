@@ -13,7 +13,7 @@ function Desc() {
           <div className="page-desc">
               <h1 className={"title desc-title"}>Décibels c'est : </h1>
           </div>
-          <div className={"container-items"}>
+          <div className={"grid-desc"}>
 
               <motion.img src={item1} className={"item1-first items"}
                           initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
@@ -35,10 +35,6 @@ function Desc() {
               ></motion.img>
 
 
-          </div>
-
-          <div className={"zone-texte"}>
-
               <div className={"first-text "}>
                   <Container className={"first-container-desc"} width={300} height={200}text={"Décibels c'est 12 évènnements en A23\n" + "" + ""}/>
               </div>
@@ -54,9 +50,7 @@ function Desc() {
               </div>
                   <motion.img className={"onde3-desc3"} src={onde3}></motion.img>
 
-          </div>
           <div className={"place-holder-img"}>
-
 
               <figure>
                   <motion.img src={imgdBs} className={"img-placeholder"}
@@ -70,8 +64,12 @@ function Desc() {
 
           </div>
 
-          <motion.img className={"onde5-desc"} src={onde5}>
+          </div>
+            <div className={"onde5-desc-container"}>
+                <motion.img className={"onde5-desc"} src={onde5}>
           </motion.img>
+            </div>
+
       </>
   );
 }
