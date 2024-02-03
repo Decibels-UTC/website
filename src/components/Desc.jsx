@@ -40,8 +40,8 @@ function Desc() {
                   <motion.div className={"container first-container-desc"}
                               whileHover={{scale: 1.1}}
                   >
-                      <h1></h1>
-                      <p>Décibels c'est 12 évènnements en A23</p>
+                      <h2>Tout au long de l'année...</h2>
+                      <h5>Décibels c'est 12 évènnements en A23</h5>
                   </motion.div>
               </div>
               <motion.img className={"onde3-desc1"} src={onde3}></motion.img>
@@ -50,8 +50,8 @@ function Desc() {
                   <motion.div className={"container second-container-desc"}
                               whileHover={{scale: 1.1}}
                   >
-                      <h1></h1>
-                      <p>Une équipe de XX personnes</p>
+                      <h2>Une grande famille</h2>
+                      <h5>Une équipe de plus de 20 personnes ! </h5>
                   </motion.div>
 
               </div>
@@ -61,8 +61,8 @@ function Desc() {
                   <motion.div className={"container third-container-desc"}
                               whileHover={{scale: 1.1}}
                   >
-                      <h1></h1>
-                      <p>Lorem ipusm</p>
+                      <h2>Matériel</h2>
+                      <h5>Décibels a amassé au fur et à mesure de son avancement 100 000 euros de matériel son & lumières !</h5>
                   </motion.div>
               </div>
                   <motion.img className={"onde3-desc3"} src={onde3}></motion.img>

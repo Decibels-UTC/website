@@ -22,6 +22,9 @@ display: none;
 .container p {
   text-align: justify;
 }
+.container h5{
+  text-align: center;
+}
 .container h2{
   text-align: center;
 }
