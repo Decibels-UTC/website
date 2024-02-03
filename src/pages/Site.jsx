@@ -9,10 +9,6 @@ function Site(){
     return(
         <>
             <Main/>
-            <Desc/>
-            <Son/>
-            <Lights/>
-            <Footer/>
         </>
     );
 }

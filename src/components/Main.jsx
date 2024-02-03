@@ -32,26 +32,24 @@ function Main() {
 
 
           <div className={"content-middle"}>
-              <motion.img src={item5} className={"item5-first"}
+              <motion.img src={item5} className={"content-mid item5-first"}
                           initial={{x: -500, opacity: 0.5, scale: 1}}
                           animate={{x: 0, opacity: 0.8, scale: 1}}
                           transition={{duration: 2}}
               >
               </motion.img>
-              <div>
-                  <motion.img className={"img-dbs"} src={decibels}
+
+                  <motion.img className={"content-mid img-dbs"} src={decibels}
                   ></motion.img>
 
-                  <motion.img className={"anim-onde1-main"} src={onde1}>
-
-                  </motion.img>
-
-              </div>
-              <motion.img src={item5} className={"item5-second"}
+              <motion.img src={item5} className={"content-mid item5-second"}
                           initial={{x: 500, opacity: 0.5, scale: 1}}
                           animate={{x: 0, opacity: 0.8, scale: 1}}
                           transition={{duration: 2}}
               ></motion.img>
+              <motion.img className={"content-mid anim-onde1-main"} src={onde1}>
+
+                  </motion.img>
           </div>
 
           <div className={"item1-fourth-container"}>
