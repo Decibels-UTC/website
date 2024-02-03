@@ -1,65 +1,51 @@
-.son-title{
-    padding-left: 10%;
-}
-
 .text-middle{
-    position: relative;
-    display: block;
+    display: flex;
+    justify-content: space-between;
     z-index: 2;
-    margin-left: 10em;
+}
+.text-son-div{
+    z-index: 2;
+    padding: 2%;
+    margin-left: 20%;
+    align-self: center;
+}
+.vid1{
+    height: 60%;
+    width: auto;
+    margin-right: -10%;
+    z-index: 2;
 }
 
-.item{
+.son-div{
     z-index: 0;
-    filter : blur(0.5rem);
-}
-
-.item1-son{
-    position: absolute;
-    transform: rotate(90deg);
-    right: 0;
-    margin-top: -20%;
+    display: flex;
+    justify-content: center;
+    filter: blur(0.3em);
+    margin-top: -40%;
 }
 
 .son{
-    position: absolute;
-    margin-left: 18em;
-    margin-top: -50em;
+    width: 70%;
+    height: auto;
 }
 
-.text-son{
-    position: relative;
-    opacity: 1;
-    z-index: 2;
+.item1-son-container{
+    filter: blur(0.3em);
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -20%;
+}
+.item1-son{
+    width: 5%;
+    height: auto;
 }
 
-
-.vid1{
-    position: relative;
-    z-index: 3;
-    margin-left: 43em;
-    margin-top: -30em;
-    width: 80%;
+.son-onde2-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
 }
-
 .son-onde2{
-    z-index: 1;
-    position: absolute;
-    width: 50%;
-    margin-right: 1em;
-    margin-left: 7em;
-    }
-
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    .son{
-        position: absolute;
-        margin-left: 13em;
-        margin-top: -30em;
-        width: 80%;
-        height: auto;
-    }
-
-
-
-
+    width: 30%;
+    height: auto;
 }

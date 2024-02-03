@@ -15,16 +15,19 @@ function Son(){
         <div className="page-son">
             <h1 className={"title son-title"}>Son</h1>
             <div className={"text-middle"}>
-                <Container classname={"text-son"} height={300} width={400}
+                <div className={"text-son-div"}>
+                    <Container classname={"text-son"} height={300} width={400}
                            text={"Décibels c'est de la technique du son " + "\n" +
                                ""}/>
+                </div>
+
                 <motion.div className={"vid1"}
                             initial={{x: 50, opacity: 0.5, scale: 1, rotate: 0}}
                             whileInView={{x: 0, opacity: 1, scale: 1, rotate: 0}}
                             viewport={{once: true}}
                             transition={{duration: 2}}
                 >
-                    <VideoComponent src={vid1} width={"500px"} height={"auto"}/>
+                    <VideoComponent src={vid1} width={"50%"} height={"auto"}/>
                 </motion.div>
             </div>
             <motion.div
@@ -32,21 +35,22 @@ function Son(){
                 whileInView={{x: 0, opacity: 1, scale: 1, rotate: 0}}
                 viewport={{once: true}}
                 transition={{duration: 3}}
+                className={"son-div"}
             >
-                <img src={item2} className={"item son"}/>
+                <img src={item2} className={"son"}/>
             </motion.div>
 
-            <div>
-                <motion.img src={item1} className={"item item1-son"}
+            <div className={"item1-son-container"}>
+                <motion.img src={item1} className={"item1-son"}
                             initial={{x: 150, opacity: 0.8, scale: 1, rotate: 90}}
                             whileInView={{x: 0, opacity: 1, scale: 1, rotate: 90}}
                             viewport={{once: true}}
                             transition={{duration: 2}}
                 ></motion.img>
             </div>
-            <div>
-                <motion.img   src={onde2} className={"son-onde2"}>
 
+            <div className={"son-onde2-div"}>
+                <motion.img   src={onde2} className={"son-onde2"}>
                 </motion.img>
             </div>
 
