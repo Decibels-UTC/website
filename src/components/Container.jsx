@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 function Container(props) {
     return(
         <>
-            <motion.div className={"container"} style={{width:props.width, height:props.height}}
+            <motion.div className={"container"} style={{width:props.width, height:props.height, "z-index":"2"}}
 
 
             >

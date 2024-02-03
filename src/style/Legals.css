@@ -1,43 +1,24 @@
-.page-legals{
-    text-align: center;
-    align-items: center;
-    align-content: center;
-    padding-bottom: 1em;
-}
+.main-content-legals > div{
+    display: flex;
+    justify-content: center;
 
-.text-middle-legals{
-    position: relative;
-    padding: 2%;
-    margin: 0 auto;
-    margin-left: 25%;
-    margin-right: auto;
+}
+.legals-title{
     z-index: 2;
-    padding-bottom: 20%;
 }
-
-.div-son-legals{
-    position: relative;
-    width: 70%;
-    height: auto;
-    z-index: 1;
-    padding-bottom: 10em;
-    margin-top: -50em;
-    margin-left: 4em;
-}
-
 .item-son-legals{
-    filter: blur(4px);
-    width: 130%;
+    z-index: 0;
+    filter: blur(0.3em);
+    width: 80%;
     height: auto;
+}
+.main-content-legals-3{
+    margin-top: -40%;
+    padding-bottom: 5%;
 }
 
 .logo-legals{
-    width: 35%;
+    width: 30%;
     height: auto;
-    margin: 1%;
-}
-
-@media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
-
-
+    padding-bottom: 2%;
 }

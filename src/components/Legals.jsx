@@ -7,14 +7,20 @@ import '../style/Legals.css'
 
 function Legals(){
     return(
-        <div className="page-legals">
-            <h1 className={"title legals-title"}>Mentions légales</h1>
-            <div className={"text-middle-legals"}>
-                <Container classname={"text-legals"} height={800} width={800} title={"Politique de confidentialité"} text={"Cookies : "+ "\n" +
+        <>
+            <div className={"main-content-legals"} >
+
+
+            <div className={"main-content-legals-1"}>
+                <h1 className={"title legals-title"}>Mentions légales</h1>
+            </div>
+            <div className={"main-content-legals-2"}>
+                <Container classname={"text-legals"} height={"800px"} width={"800px"} title={"Politique de confidentialité"} text={"Cookies : "+ "\n" +
                 ""
                 }/>
             </div>
-            <div className={"div-son-legals"}>
+
+            <div className={"main-content-legals-3"}>
                 <motion.img
                 initial={{opacity: 0, scale: 0.9}}
                 whileInView={{opacity: 1, scale: 1}}
@@ -24,8 +30,8 @@ function Legals(){
                 </motion.img>
             </div>
 
-
-        </div>
+            </div>
+        </>
     );
 }
 
