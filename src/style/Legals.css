@@ -30,5 +30,18 @@
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
 
+.legals-title{
+    margin-top: 8%;
+    margin-bottom: 15%;
+}
+.text-legals{
+    width: 70%;
+}
+.item-son-legals{
+    width: 98%;
+    margin-top: -40%;
+    padding-bottom: 50%;
+}
+
 
 }
