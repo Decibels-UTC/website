@@ -5,6 +5,11 @@
 .legals-title{
     z-index: 2;
 }
+
+.keyword{
+    color: #5B5B5B;
+}
+
 .item-son-legals{
     z-index: 0;
     filter: blur(0.3em);
@@ -25,7 +30,7 @@
 .text-legals{
     margin-top: 5%;
     width: 50%;
-    height: 30em;
+    height: auto;
 }
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {

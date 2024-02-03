@@ -14,11 +14,21 @@ display: none;
   border-radius: 1vmin;
   border: solid 0.1vmin #5B5B5B;
   color: white;
-  text-align: center;
-  align-items: center;
   position: relative;
   z-index: 2;
+  padding: 2%;
 }
+
+.container p {
+  text-align: justify;
+}
+.container h2{
+  text-align: center;
+}
+.container h1{
+  text-align: center;
+}
+
 
 
 
