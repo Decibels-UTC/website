@@ -12,6 +12,7 @@ function Site(){
             <Desc/>
             <Son/>
             <Lights/>
+            <Footer/>
         </>
     );
 }
