@@ -8,7 +8,7 @@ import Lights from "../components/Lights";
 function Site(){
     return(
         <>
-         <Son/>
+         <Main/>
         </>
     );
 }

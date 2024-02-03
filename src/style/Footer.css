@@ -47,5 +47,11 @@
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
 
+    .footer-item {
+        width: 7%;
+        white-space : pre-wrap;
+        font-size: x-small;
+    }
+
 
 }
