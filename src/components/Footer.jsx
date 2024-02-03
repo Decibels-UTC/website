@@ -23,7 +23,7 @@ function Footer() {
             <motion.div className={"footer-item"}
             whileHover={{scale : 1.05}}
             >
-                <a href={"/"}><p className={"footer-info"}>@2023 PAE - Decibels</p></a>
+                <a href={"/"}><p className={"footer-info"}>@2024 PAE - Decibels</p></a>
             </motion.div>
             <motion.div className={"footer-item"}
             whileHover={{scale : 1.05}}
