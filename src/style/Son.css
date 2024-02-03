@@ -24,6 +24,9 @@
     overflow: hidden;
 }
 
+.vid1-object{
+    object-fit: contain;
+}
 
 .son-div{
     z-index: 0;
@@ -60,6 +63,64 @@
 }
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
+    .page-son{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .text-middle{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 2;
+        height: 100%;
+    }
+    .text-middle > div{
+        padding: 2%;
+    }
+    .text-son-div{
+        margin: 0;
+    }
+
+    .vid1{
+        visibility: hidden;
+        height: 1%;
+        width: 1%;
+    }
+
+    .son-onde2-div{
+        display: flex;
+        justify-content: center;
+        margin-top: 50%;
+    }
+    .son-onde2{
+        width: 60%;
+        height: auto;
+    }
+    .item1-son-container{
+        filter: blur(0.3em);
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -80%;
+        margin-right: 10%;
+    }
+    .item1-son{
+        width: 10%;
+        height: auto;
+    }
+
+    .son-div{
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+        filter: blur(0.3em);
+        margin-top: 0%;
+    }
+
+    .son{
+        width: 100%;
+        height: auto;
+    }
 
 
 }

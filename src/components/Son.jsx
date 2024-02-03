@@ -5,7 +5,6 @@ import onde2 from "../ressources/animations/onde2.gif";
 import { motion } from "framer-motion"
 import '../style/Son.css'
 import VideoComponent from "./Video";
-import video from "./Video";
 
 
 function Son(){
@@ -28,7 +27,7 @@ function Son(){
                             viewport={{once: true}}
                             transition={{duration: 2}}
                 >
-                    <VideoComponent src={vid1} width={"50%"} height={"auto"}/>
+                    <VideoComponent className={"vid1-object"} src={vid1} width={"50%"} height={"auto"}  />
                 </motion.div>
             </div>
             <motion.div

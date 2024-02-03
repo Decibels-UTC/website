@@ -14,53 +14,55 @@ function Desc() {
           </div>
           <div className={"grid-desc"}>
 
-              <motion.img src={item1} className={"item1-first items"}
-                          initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
-                          whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
-                          viewport={{once: true}}
-                          transition={{duration: 2}}
-              ></motion.img>
-              <motion.img src={item1} className={"item1-second items"}
-                          initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
-                          whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
-                          viewport={{once: true}}
-                          transition={{duration: 2}}
-              ></motion.img>
-              <motion.img src={item1} className={"item1-third items"}
-                          initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
-                          whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
-                          viewport={{once: true}}
-                          transition={{duration: 2}}
-              ></motion.img>
+              <div className={"items1"}>
+                  <motion.img src={item1} className={"item1-first items"}
+                              initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
+                              whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
+                              viewport={{once: true}}
+                              transition={{duration: 2}}
+                  ></motion.img>
+                  <motion.img src={item1} className={"item1-second items"}
+                              initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
+                              whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
+                              viewport={{once: true}}
+                              transition={{duration: 2}}
+                  ></motion.img>
+                  <motion.img src={item1} className={"item1-third items"}
+                              initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
+                              whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
+                              viewport={{once: true}}
+                              transition={{duration: 2}}
+                  ></motion.img>
+              </div>
 
 
               <div className={"first-text "}>
                   <motion.div className={"container first-container-desc"}
-                  whileHover={{scale : 1.1}}
+                              whileHover={{scale: 1.1}}
                   >
-                    <h1></h1>
-                    <p>Décibels c'est 12 évènnements en A23</p>
+                      <h1></h1>
+                      <p>Décibels c'est 12 évènnements en A23</p>
                   </motion.div>
               </div>
-                  <motion.img className={"onde3-desc1"} src={onde3}></motion.img>
+              <motion.img className={"onde3-desc1"} src={onde3}></motion.img>
 
               <div className={"second-text "}>
                   <motion.div className={"container second-container-desc"}
-                  whileHover={{scale : 1.1}}
+                              whileHover={{scale: 1.1}}
                   >
-                    <h1></h1>
-                    <p>Une équipe de XX personnes</p>
+                      <h1></h1>
+                      <p>Une équipe de XX personnes</p>
                   </motion.div>
 
               </div>
-                  <motion.img className={"onde3-desc2"} src={onde3}></motion.img>
+              <motion.img className={"onde3-desc2"} src={onde3}></motion.img>
 
               <div className={"third-text "}>
                   <motion.div className={"container third-container-desc"}
-                  whileHover={{scale : 1.1}}
+                              whileHover={{scale: 1.1}}
                   >
-                    <h1></h1>
-                    <p>Lorem ipusm</p>
+                      <h1></h1>
+                      <p>Lorem ipusm</p>
                   </motion.div>
               </div>
                   <motion.img className={"onde3-desc3"} src={onde3}></motion.img>
