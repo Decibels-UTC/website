@@ -1,14 +1,18 @@
 import { motion } from "framer-motion"
 import TableData from "./TableData";
 import '../style/Matos.css'
+import LogoutButton from "./LogoutButton";
 
 
 function Matos(){
 
 
     return(<>
-            <div>
+            <div className={"header-inventory"}>
                 <h1>Notre matériel : </h1>
+                <div>
+                    <LogoutButton/>
+                </div>
             </div>
 
 

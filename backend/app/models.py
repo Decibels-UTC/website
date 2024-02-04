@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 # Create your models here.
 class Item(models.Model):
     TYPES_CHOICES1 = [
@@ -26,5 +27,24 @@ class Item(models.Model):
     creation = models.DateTimeField(auto_now=True)
     removed = models.DateTimeField(null=True, blank=True)
     modification_date = models.DateTimeField(auto_now=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

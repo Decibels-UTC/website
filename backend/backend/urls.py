@@ -22,4 +22,6 @@ urlpatterns = [
    # path('youwillneverfindme/', admin.site.urls),
     path('', ItemView.as_view(), name="Main"),
     path('items/<int:pk>/', ItemView.as_view(), name='item-update'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]

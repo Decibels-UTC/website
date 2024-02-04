@@ -6,6 +6,13 @@ from . serializer import *
 from rest_framework.response import Response
 from rest_framework import status
 from datetime import datetime, timezone
+from django.contrib.auth import get_user_model, login, logout
+from rest_framework.authentication import SessionAuthentication
+from rest_framework import permissions, status
+from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
+
+
 
 
 
@@ -78,3 +85,32 @@ class ItemView(APIView):
             "removed" : item.removed,
             "modification_date" : item.modification_date}
             )
+
+
+class LoginView(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        serializer = LoginSerializer(data=self.request.data, context={'request': self.request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request, user)
+
+        # Générer un token pour l'utilisateur authentifié
+        token, created = Token.objects.get_or_create(user=user)
+
+        # Vérifier si l'utilisateur est connecté
+        if request.user.is_authenticated:
+            print("Utilisateur connecté")
+        else:
+            print("Utilisateur non connecté")
+
+        # Renvoyer le token dans la réponse
+        return Response({'token': token.key}, status=status.HTTP_200_OK)
+
+class LogoutView(APIView):
+    def post(self, request, format=None):
+        if request.user.is_authenticated:
+            request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)
+
