@@ -1,0 +1,57 @@
+.table-data-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+
+}
+.table-data{
+    width: 80%;
+}
+
+.modal-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.modal-add-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2%;
+}
+
+.wrapper-options-tabledata{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search {
+    margin-right: 2%;
+}
+
+.matos-content{
+    margin-bottom: 10%;
+}
+
+.stats{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+    margin-top: -10%;
+}
+
+.wrapper-export{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 1%;
+    margin-right: 1%;
+}

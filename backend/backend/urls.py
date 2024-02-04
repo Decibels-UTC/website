@@ -20,5 +20,6 @@ from app.views import *
 
 urlpatterns = [
    # path('youwillneverfindme/', admin.site.urls),
-    path('', ItemView.as_view(), name="Main")
+    path('', ItemView.as_view(), name="Main"),
+    path('items/<int:pk>/', ItemView.as_view(), name='item-update'),
 ]
