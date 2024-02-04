@@ -10,15 +10,12 @@ function Legals(){
             <div className={"main-content-legals"} >
 
 
-            <div className={"main-content-legals-1"}>
-                <h1 className={"title legals-title"}>Mentions légales</h1>
-            </div>
-            <div className={"main-content-legals-2"}>
-                <motion.div className={"container text-legals"}
-                            whileHover={{scale: 1.1}}
-                >
-                    <h1>Politique de confidentialité</h1>
-                    <br/>
+            <h1 className={"title legals-title"}>Mentions légales</h1>
+            
+            <section className={"main-content-legals-2"}>
+                <h1>Politique de confidentialité</h1>
+                <br/>
+                <article>
                     <h2>I - Informations légales</h2>
                     <p>Le site internet dbs.etu-utc.fr appartient à PAE - Decibels (ci-après dénommée «dBs»), comission
                         de l'association loi 1901 PAE-UTC (Pôle Artistique et Evénementiel de l'Université de
@@ -36,8 +33,10 @@ function Legals(){
                     </p>
                     <p>Hébergement</p>
                     <p>OVH - Adresse : 2, rue Kellermann, 59100 Roubaix</p>
-                    <br/>
-                    <br/>
+                </article>
+                <br/>
+                <br/>
+                <article>
                     <h2>II - Définitions</h2>
                     <br/>
                     <p>Utilisateur : toute personne qui utilise le site de dBs.<br/><br/>CGU : Conditions générales
@@ -57,8 +56,11 @@ function Legals(){
                         rapprochement ou l’interconnexion, la limitation, l’effacement ou la destruction. (art 4.2 RGPD)<br/><br/>
                         Responsable de traitement : La personne physique ou morale, l’autorité publique, le service ou
                         un autre organisme qui, seul ou conjointement avec d’autres, détermine les finalités et les
-                        moyens du traitement. (art 4.7 RGPD)<br/><br/></p>
-
+                        moyens du traitement. (art 4.7 RGPD)</p>
+                </article>
+                <br/>
+                <br/>
+                <article>
                     <h2>III - Objet des présentes CGU</h2>
                     <p>Les présentes Conditions Générales ont pour objet de définir les conditions d’utilisation et de
                         mise à disposition du site et ses services pour l’Utilisateur (ci-après désignées les « CGU»).
@@ -80,8 +82,10 @@ function Legals(){
                         consultables.</p>
                     <p>dBs se réserve le droit de modifier à tout moment et sans préavis les CGU, l’utilisateur est donc
                         invité à les consulter régulièrement.</p>
-
-
+                </article>
+                <br/>
+                <br/>
+                <article>
                     <h2>IV - Données à caractère personnel</h2>
 
                     <p>dBs met à disposition des utilisateurs sa Politique de Confidentialité.</p>
@@ -140,8 +144,10 @@ function Legals(){
 
                     <p>Si l’utilisateur n’est pas satisfait du traitement de sa demande d’exercice de droits en matière
                         de données personnelles, il lui est possible de déposer une réclamation auprès de la CNIL.</p>
-
-
+                </article>
+                <br/>
+                <br/>
+                <article>
                     <h2>V - Cookies</h2>
 
                     <p>L’utilisateur est informé qu’un ou plusieurs cookies, pourront être déposés sur son navigateur
@@ -178,7 +184,10 @@ function Legals(){
                         polices de caractères en cache du navigateur pendant 1 an. Une analyse statistique du nombre de
                         téléchargements est réalisée par Google pour évaluer la popularité de ces polices de caractères
                         (expiration : 12 mois)</p>
-
+                </article>
+                <br/>
+                <br/>
+                <article>
                     <h2>VI - Propriété intellectuelle</h2>
                     <p>Les contenus de ce site (structure, design, texte, image, animation, logo, logiciel…) sont la
                         propriété exclusive de la commission PAE-Décibels. Toute reproduction totale ou partielle de ce
@@ -190,6 +199,10 @@ function Legals(){
                         decibels@assos.utc.fr
                         Les photos utilisées sur ce site sont sous licence d’utilisation. Toute utilisation par
                         l’utilisateur sans autorisation engage la responsabilité de l’utilisateur.</p>
+                </article>
+                <br/>
+                <br/>
+                <article>
                     <h2>VII - Limitation de responsabilité</h2>
                     <p>dBs met tout en œuvre pour offrir aux utilisateurs des informations et/ou outils disponibles et
                         vérifiés, mais ne saurait être tenu pour responsable direct ou indirect des erreurs, d’une
@@ -204,41 +217,52 @@ function Legals(){
                         L’éditeur du site internet ne saurait être tenu responsable de l’accès à d’autres ressources
                         présentes sur le réseau Internet, par les utilisateurs, via les liens hypertextes mis en place
                         dans le cadre du site internet.</p>
+                </article>
+                <br/>
+                <br/>
+                <article>
                     <h2>VIII - Comportement de l’utilisateur</h2>
                     <p>L’utilisateur est seul juge de sa faculté, légale, contractuelle et/ou judiciaire à accéder au
                         site et/ou utiliser le site. À ce titre, en utilisant le Site, l’utilisateur reconnait qu’il ne
                         viole aucune disposition légale, contractuelle ou statutaire.
                         Comportements strictement interdits :<br/>
-                        tout comportement de nature à interrompre, suspendre, ralentir ou empêcher le bon fonctionnement
-                        du Site,<br/>
-                        toute atteinte aux mesures de sécurité,<br/>
-                        toute intrusion ou tentative d’intrusion via tout type de programme informatique visant à
-                        endommager ou à intercepter clandestinement tout système informatique, données ou informations
-                        nominatives,<br/>
-                        tout détournement des ressources système du site,<br/>
-                        toute action de nature à imposer une charge disproportionnée sur les infrastructures de ce
-                        dernier,<br/>
-                        toute tentative d’induire en erreur d’autres utilisateurs en usurpant l’identité ou une
-                        dénomination sociale ou en portant atteinte à l’image ou à la réputation d’autres personnes,
-                        tout acte susceptible de porter atteinte aux droits et intérêts de dBs ou des utilisateurs de
-                        son site.<br/>
-                        tout non-respect total ou partiel des présentes CGU, ou des dispositions règlementaires
-                        applicables.<br/>
+                        <ul>
+                            <li> Tout comportement de nature à interrompre, suspendre, ralentir ou empêcher le bon fonctionnement
+                            du Site</li>
+                            <li> Toute atteinte aux mesures de sécurité</li>
+                            <li> Toute intrusion ou tentative d’intrusion via tout type de programme informatique visant à
+                            endommager ou à intercepter clandestinement tout système informatique, données ou informations
+                            nominatives</li>
+                            <li> Tout détournement des ressources système du site</li>
+                            <li> Toute action de nature à imposer une charge disproportionnée sur les infrastructures de ce
+                            dernier</li>
+                            <li> Toute tentative d’induire en erreur d’autres utilisateurs en usurpant l’identité ou une
+                            dénomination sociale ou en portant atteinte à l’image ou à la réputation d’autres personnes</li>
+                            <li> Tout acte susceptible de porter atteinte aux droits et intérêts de dBs ou des utilisateurs de
+                            son site</li>
+                            <li> Tout non-respect total ou partiel des présentes CGU, ou des dispositions règlementaires
+                            applicables<li/>
+                        </ul>
+                    </p>
+                </article>
+                <br/>
+                <br/>
+                <article>
                         <h2>IX - Nullité partielle</h2>
                         <p>Si l’une des dispositions des CGU est déclarée nulle et sans effet par une décision
                             définitive rendue par une autorité compétente, les conditions restantes resteront en vigueur
                             et ne seront pas affectées par une telle déclaration de nullité.</p>
+                </article>
+                <br/>
+                <br/>
+                <article>
                         <h2>X - Droit applicable en cas de litiges</h2>
                         <p>Les CGU, et toute question relative à l’interprétation, à l’exécution ou à l’inexécution de
                             celles-ci sont régies par les lois françaises, sans préjudice de l’application de la
                             réglementation communautaire et des traités internationaux en vigueur, le cas échéant.
                             Tout litige afférent aux CGU sera de la compétence des tribunaux français.</p>
-
-                    </p>
-
-
-                </motion.div>
-            </div>
+                </article>
+            </section>
 
                 <div className={"main-content-legals-3"}>
                     <motion.img
