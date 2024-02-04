@@ -5,6 +5,11 @@
     height: 100%;
 }
 
+.son-title-container{
+    display: flex;
+    justify-content: center;
+}
+
 .text-son{
     width: 80%;
     height: 15em;

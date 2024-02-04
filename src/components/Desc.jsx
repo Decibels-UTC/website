@@ -16,7 +16,7 @@ function Desc() {
 
               <div className={"items1"}>
                   <motion.img src={item1} className={"item1-first items"}
-                              initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
+                              initial={{x: -100, opacity: 0.8, scale: 1, rotate: -90}}
                               whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
                               viewport={{once: true}}
                               transition={{duration: 2}}

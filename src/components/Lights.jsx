@@ -23,7 +23,6 @@ function Lights(){
 
                    <VideoComponent className={"vid2-comp"} width={"100%"} height={"auto"} src={vid2} />
                 </motion.div>
-                <div className={"superpose-light"}>
                     <motion.div className={"container container-light"}
                     whileHover={{scale : 1.1}}
                     >
@@ -31,15 +30,13 @@ function Lights(){
                     <h5>Décibels s'occupe également des lumières ...</h5>
                   </motion.div>
 
-                </div>
-
 
             </div>
 
 
                 <div className={"item1-light-first-container"}>
                 <motion.img className={"item1-light-first"} src={item1}
-                            initial={{x: -150, opacity: 0.8, scale: 1, rotate: -90}}
+                            initial={{x: 150, opacity: 0.8, scale: 1, rotate: -90}}
                             whileInView={{x: 0, opacity: 1, scale: 1, rotate: -90}}
                             viewport={{once: true}}
                             transition={{duration: 2}}
@@ -47,7 +44,7 @@ function Lights(){
             </div>
             <div className={"item1-light-second-container"}>
                 <motion.img className={"item1-light-second"} src={item1}
-                            initial={{x: 150, opacity: 0.8, scale: 1, rotate: 90}}
+                            initial={{x: -150, opacity: 0.8, scale: 1, rotate: 90}}
                             whileInView={{x: 0, opacity: 1, scale: 1, rotate: 90}}
                             viewport={{once: true}}
                             transition={{duration: 2}}

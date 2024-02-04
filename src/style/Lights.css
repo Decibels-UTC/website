@@ -3,11 +3,12 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-around;
 }
 
 .title-lights-container{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .title-lights{
@@ -22,14 +23,7 @@
     margin-left: -10%;
 }
 
-.superpose-light{
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-}
+
 .light-onde4{
     height: 100%;
     width: auto;
@@ -90,6 +84,10 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
+    .container-light{
+        width: 70%;
+    }
+
     .vid2{
     z-index: 2;
     width: 60%;
@@ -99,8 +97,7 @@
 }
 
 .title-lights-container{
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
 .item3-light{
     filter: blur(0.3em);

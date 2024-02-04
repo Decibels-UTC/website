@@ -10,7 +10,8 @@ import VideoComponent from "./Video";
 function Son(){
     return(
         <div className="page-son">
-            <h1 className={"title son-title"}>Son</h1>
+            <div className={"son-title-container"}><h1 className={"title son-title"}>Son</h1></div>
+
             <div className={"text-middle"}>
                 <div className={"text-son-div"}>
                     <motion.div className={"container text-son"}
@@ -44,7 +45,7 @@ function Son(){
 
             <div className={"item1-son-container"}>
                 <motion.img src={item1} className={"item1-son"}
-                            initial={{x: 150, opacity: 0.8, scale: 1, rotate: 90}}
+                            initial={{x: -100, opacity: 0, scale: 1, rotate: 90}}
                             whileInView={{x: 0, opacity: 1, scale: 1, rotate: 90}}
                             viewport={{once: true}}
                             transition={{duration: 2}}
