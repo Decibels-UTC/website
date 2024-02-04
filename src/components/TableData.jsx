@@ -17,21 +17,17 @@ import ModalEdit from "./ModalEdit";
 import _ from 'lodash';
 import ModalAdd from "./ModalAdd";
 import Stats from "./Stats";
+import ModalSuccess from "./ModalSuccess";
 
 function TableData() {
   const [state, setState] = useState({ isLoading: false, results: [], value: '' });
   const [tableData, setTableData] = useState([]);
-  const [tableDataTemp1, setTableDataTemp1] = useState([]);
-  const [tableDataTemp2, setTableDataTemp2] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [showDeleted, setShowDeleted] = useState(false);
   const [sortedColumn, setSortedColumn] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedState, setSelectedState] = useState(null);
   const [filteredDataCombined, setFilteredDataCombined] = useState([]);
-
-
-
 
   useEffect(() => {
     // Fetching data from the server
@@ -47,32 +43,40 @@ function TableData() {
       });
   }, [showDeleted]);
 
-  const handleResultSelect = (e, { result }) => setState({ value: result.title });
   function convertDateFormat(isoDateString) {
       const dateObject = new Date(isoDateString);
       const readableDate = dateObject.toISOString().replace("T", " ").replace("Z", "");
 
       return readableDate;
   }
-
   const handleSearchChange = (e, { value }) => {
   setState({ isLoading: true, value });
 
   setTimeout(() => {
     if (value.length < 1) {
-      setFilteredData(tableData.filter(item => showDeleted ? item.removed !== null : item.removed === null));
+      // Utiliser les filtres appliqués sur la tableData au lieu de simplement showDeleted
+      const filteredData = tableData.filter(item =>
+        (selectedCategory === null || item.type === selectedCategory) &&
+        (selectedState === null || item.state === selectedState) &&
+        (showDeleted ? item.removed !== null : item.removed === null)
+      );
+
+      setFilteredData(filteredData);
       return setState({ isLoading: false, results: [], value });
     }
 
     const re = new RegExp(_.escapeRegExp(value), 'i');
 
-    // Adjusted filter condition based on showDeleted value
+    // Utiliser les filtres appliqués sur la tableData au lieu de simplement showDeleted
     const filteredData = tableData.filter((item) => {
-      if (showDeleted) {
-        return item.removed !== null && (re.test(item.name) || re.test(item.brand));
-      } else {
-        return item.removed === null && (re.test(item.name) || re.test(item.brand));
-      }
+      return (
+        (selectedCategory === null || item.type === selectedCategory) &&
+        (selectedState === null || item.state === selectedState) &&
+        (showDeleted ?
+          (item.removed !== null && (re.test(item.name) || re.test(item.brand))) :
+          (item.removed === null && (re.test(item.name) || re.test(item.brand)))
+        )
+      );
     });
 
     setFilteredData(filteredData);
@@ -83,7 +87,7 @@ function TableData() {
     });
   }, 0);
 };
-
+  const handleResultSelect = (e, { result }) => setState({ value: result.title });
    const sortByColumn = (columnName) => {
     const sortedData = [...filteredData].sort((a, b) => {
       if (columnName === 'price' || columnName === 'creation') {
@@ -94,8 +98,6 @@ function TableData() {
     setFilteredData(sortedData);
     setSortedColumn(columnName);
   };
-
-
    const [totalItems, setTotalItems] = useState(0);
    const [totalPrice, setTotalPrice] = useState(0);
    const [totalQuantity, setTotalQuantity] = useState(0);
@@ -109,8 +111,7 @@ function TableData() {
       setTotalPrice(price);
       setTotalQuantity(quantity);
     }, [filteredData]);
-
-  const options = [
+    const options = [
     { key: 1, text: 'Light', value: 'light' },
     { key: 2, text: 'Son', value: 'son' },
     { key: 3, text: 'Structure', value: 'structure' },
@@ -124,70 +125,116 @@ function TableData() {
   ];
 
 const handleCategoryChange = (e, { value }) => {
-  const tempShowDeleted = showDeleted;
-  if(selectedCategory === null){
-      setTableDataTemp1(filteredData)
-  }
-  setSelectedCategory(value);
+      if(value !== null){
+          const tempShowDeleted = showDeleted;
+      if(selectedCategory === null){
+          setTableDataTemp1(filteredData)
+      }
+      setSelectedCategory(value);
 
+      const filteredByCategory = tableData.filter(item => {
+        if (tempShowDeleted) {
+          return item.removed !== null && item.type === value && (!selectedState || item.state === selectedState);
+        } else {
+          return item.removed === null && item.type === value && (!selectedState || item.state === selectedState);
+        }
+      }
+      );
+      setShowDeleted(tempShowDeleted);
+      setFilteredData(filteredByCategory);
+      setFilteredDataCombined(filteredByCategory);
+      }
 
-  const filteredByCategory = tableData.filter(item => {
-    if (tempShowDeleted) {
-      return item.removed !== null && item.type === value && (!selectedState || item.state === selectedState);
-    } else {
-      return item.removed === null && item.type === value && (!selectedState || item.state === selectedState);
-    }
-  });
-
-  setShowDeleted(tempShowDeleted);
-  setFilteredData(filteredByCategory);
-  setFilteredDataCombined(filteredByCategory);
-};
-
+    };
 const handleStateChange = (e, { value }) => {
-  const tempShowDeleted = showDeleted;
+        if(value !== null) {
 
-  if(selectedState === null){
-      setTableDataTemp2(filteredData)
-  }
-    setSelectedState(value);
-  const filteredByState = tableData.filter(item => {
-    if (tempShowDeleted) {
-      return item.removed !== null && item.state === value && (!selectedCategory || item.type === selectedCategory);
-    } else {
-      return item.removed === null && item.state === value && (!selectedCategory || item.type === selectedCategory);
-    }
-  });
+            const tempShowDeleted = showDeleted;
 
-  setShowDeleted(tempShowDeleted);
-  setFilteredData(filteredByState);
-  setFilteredDataCombined(filteredByState);
-};
+            if (selectedState === null) {
+                setTableDataTemp2(filteredData)
+            }
+            setSelectedState(value);
+            const filteredByState = tableData.filter(item => {
+                if (tempShowDeleted) {
+                    return item.removed !== null && item.state === value && (!selectedCategory || item.type === selectedCategory);
+                } else {
+                    return item.removed === null && item.state === value && (!selectedCategory || item.type === selectedCategory);
+                }
+            });
+
+            setShowDeleted(tempShowDeleted);
+            setFilteredData(filteredByState);
+            setFilteredDataCombined(filteredByState);
+        }
+
+    };
 
 
+const [tableDataTemp1, setTableDataTemp1] = useState(null);
+const [tableDataTemp2, setTableDataTemp2] = useState(null);
 const handleResetFilterState = () => {
   if (selectedState !== null) {
     setSelectedState(null);
     // Réinitialiser en utilisant la copie des données filtrées initiales
-    setFilteredData(tableDataTemp2);
+    if(selectedCategory === null){
+        setFilteredData(tableData);
+          const filteredByCategory = tableData.filter(item => {
+            if (showDeleted) {
+              return item.removed !== null;
+            } else {
+              return item.removed === null;
+            }
+          }
+          );
+          setFilteredData(filteredByCategory);
+    }else{
+            setFilteredData(tableData);
+          const filteredByCategory = tableData.filter(item => {
+            if (showDeleted) {
+              return item.removed !== null && item.type === selectedCategory;
+            } else {
+              return item.removed === null && item.type === selectedCategory;
+            }
+          }
+          );
+          setFilteredData(filteredByCategory);
+    }
   }
-  if(selectedCategory !== null){
-      setFilteredData(tableDataTemp1);
-  }
+  // si déjà à null ne rien faire
 };
-
 const handleResetFilter = () => {
+
   if (selectedCategory !== null) {
     setSelectedCategory(null);
-    // Réinitialiser en utilisant la copie des données filtrées initiales
-    setFilteredData(tableDataTemp1);
+    if(selectedState === null){
+        setFilteredData(tableData);
+          const filteredByCategory = tableData.filter(item => {
+            if (showDeleted) {
+              return item.removed !== null;
+            } else {
+              return item.removed === null;
+            }
+          }
+          );
+          setFilteredData(filteredByCategory);
+    }else{
+        console.log("coucou")
+        console.log(tableData)
+        setFilteredData(tableData);
+        const filteredByState = tableData.filter(item => {
+            if (showDeleted) {
+                return item.removed !== null && item.state === selectedState;
+            } else {
+                return item.removed === null && item.state === selectedState;
+            }
+        });
+        setFilteredData(filteredByState);
+    }
   }
-  if(selectedState !== null){
-      setFilteredData(tableDataTemp2);
-  }
+  // si déjà à null ne rien faire
 };
-
-    const exportToExcel = () => {
+const exportToExcel = () => {
       const jsonData = filteredData;
       const ws = XLSX.utils.json_to_sheet(jsonData);
       const wb = XLSX.utils.book_new();
@@ -213,8 +260,8 @@ const handleResetFilter = () => {
           value={state.value}
           showNoResults={false}
         />
-        <Button content='Inventaire actuel' onClick={() => setShowDeleted(false) && setSelectedCategory(null) && setSelectedState(null) && setTableDataTemp1(null)&& setTableDataTemp2(null)} />
-        <Button content='Items supprimés' onClick={() => setShowDeleted(true) && setSelectedCategory(null) && setSelectedState(null) && setTableDataTemp1(null)&& setTableDataTemp2(null)} />
+        <Button content='Inventaire actuel' onClick={() => setShowDeleted(false) && setSelectedCategory(null) && setSelectedState(null) && setTableDataTemp1([])&& setTableDataTemp2([])} />
+        <Button content='Items supprimés' onClick={() => setShowDeleted(true) && setSelectedCategory(null) && setSelectedState(null) && setTableDataTemp1([])&& setTableDataTemp2([])} />
          <div className={"dropdown-filters"}>
               <Dropdown
                 options={options}

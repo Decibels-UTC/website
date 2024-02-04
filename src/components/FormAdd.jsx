@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import {
   FormInput,
   FormGroup,
@@ -23,6 +24,7 @@ const options2 = [
 const FormAdd = () => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+
 
   const validateForm = () => {
     const newErrors = {};
@@ -82,7 +84,6 @@ const FormAdd = () => {
 
   return (
     <Form  onSubmit={handleSubmit} error={Object.keys(errors).length > 0}>
-
         <FormInput
 
           fluid
