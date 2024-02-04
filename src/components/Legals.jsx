@@ -241,7 +241,7 @@ function Legals(){
                             <li> Tout acte susceptible de porter atteinte aux droits et intérêts de dBs ou des utilisateurs de
                             son site</li>
                             <li> Tout non-respect total ou partiel des présentes CGU, ou des dispositions règlementaires
-                            applicables<li/>
+                            applicables</li>
                         </ul>
                     </p>
                 </article>
