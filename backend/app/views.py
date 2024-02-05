@@ -11,6 +11,7 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework import permissions, status
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
 
 
 
@@ -114,3 +115,12 @@ class LogoutView(APIView):
             request.user.auth_token.delete()
         return Response(status=status.HTTP_200_OK)
 
+class VerifyTokenView(APIView):
+    def get(self, request):
+        token = request.META.get('HTTP_AUTHORIZATION', '')[6:] # Retirez 'Token ' du début
+        try:
+            token_obj = Token.objects.get(key=token)
+            user = User.objects.get(id=token_obj.user_id)
+            return Response({'user': user.username})
+        except Token.DoesNotExist:
+            return Response({'error': 'Token does not exist'}, status=401)

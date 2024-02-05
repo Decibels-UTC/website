@@ -8,7 +8,7 @@ function Inventory(){
 
             <div className={"login-form"}>
                 <div className={"login-form-component"}>
-                    <LoginForm/>
+                        <LoginForm/>
                 </div>
 
 

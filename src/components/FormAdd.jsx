@@ -21,7 +21,7 @@ const options2 = [
   { key: 'casse', text: 'Cassé', value: 'casse' },
 ];
 
-const FormAdd = () => {
+const FormAdd = (props) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
 

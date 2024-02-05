@@ -9,7 +9,7 @@ function Matos(){
 
     return(<>
             <div className={"header-inventory"}>
-                <h1>Notre matériel : </h1>
+                <h1>Matériel</h1>
                 <div>
                     <LogoutButton/>
                 </div>

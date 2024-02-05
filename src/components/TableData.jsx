@@ -11,13 +11,13 @@ import {
   Button,
   Dropdown
 } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
 import ModalDelete from "./ModalDelete";
 import ModalEdit from "./ModalEdit";
 import _ from 'lodash';
 import ModalAdd from "./ModalAdd";
 import Stats from "./Stats";
 import ModalSuccess from "./ModalSuccess";
+import ModalFailed from "./ModalFailed";
 
 function TableData() {
   const [state, setState] = useState({ isLoading: false, results: [], value: '' });
@@ -29,12 +29,11 @@ function TableData() {
   const [selectedState, setSelectedState] = useState(null);
   const [filteredDataCombined, setFilteredDataCombined] = useState([]);
 
+
   useEffect(() => {
-    // Fetching data from the server
     fetch('http://localhost:8000')
       .then((resp) => resp.json())
       .then(function (data) {
-        // Filter data based on the showDeleted state
         setTableData(data);
         setFilteredData(data.filter(item => showDeleted ? item.removed !== null : item.removed === null));
       })
@@ -54,7 +53,6 @@ function TableData() {
 
   setTimeout(() => {
     if (value.length < 1) {
-      // Utiliser les filtres appliqués sur la tableData au lieu de simplement showDeleted
       const filteredData = tableData.filter(item =>
         (selectedCategory === null || item.type === selectedCategory) &&
         (selectedState === null || item.state === selectedState) &&
@@ -67,7 +65,6 @@ function TableData() {
 
     const re = new RegExp(_.escapeRegExp(value), 'i');
 
-    // Utiliser les filtres appliqués sur la tableData au lieu de simplement showDeleted
     const filteredData = tableData.filter((item) => {
       return (
         (selectedCategory === null || item.type === selectedCategory) &&
@@ -176,7 +173,6 @@ const [tableDataTemp2, setTableDataTemp2] = useState(null);
 const handleResetFilterState = () => {
   if (selectedState !== null) {
     setSelectedState(null);
-    // Réinitialiser en utilisant la copie des données filtrées initiales
     if(selectedCategory === null){
         setFilteredData(tableData);
           const filteredByCategory = tableData.filter(item => {
@@ -256,7 +252,6 @@ const exportToExcel = () => {
           loading={state.isLoading}
           onResultSelect={handleResultSelect}
           onSearchChange={_.debounce(handleSearchChange, 0, { leading: true })}
-          //results={selectedCategory ? [] : state.results}
           value={state.value}
           showNoResults={false}
         />
@@ -326,7 +321,7 @@ const exportToExcel = () => {
       </Table>
       {showDeleted ? null :
       <div className={"modal-add-wrapper"}>
-       <ModalAdd/>
+       <ModalAdd />
       </div>}
     </>
   );

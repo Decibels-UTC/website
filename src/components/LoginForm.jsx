@@ -1,12 +1,13 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Form, FormInput, Button } from 'semantic-ui-react';
 import {AuthContext} from "../context/AuthContext";
+import {useNavigate} from "react-router-dom";
 
 function LoginForm() {
  const [username, setUsername] = useState('');
  const [password, setPassword] = useState('');
  const [error, setError] = useState(null);
- const { setIsAuthenticated } = useContext(AuthContext);
+ const {isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
  const handleInputChange = (e, { name, value }) => {
     if (name === 'username') {
@@ -15,6 +16,15 @@ function LoginForm() {
       setPassword(value);
     }
  };
+
+ const navigate = useNavigate(); // Obtenez la fonction de navigation
+
+ useEffect(() => {
+ if (isAuthenticated) {
+      navigate('/inventory');
+ }
+}, [isAuthenticated]);
+
 
  const handleFormSubmit = async () => {
     try {
@@ -39,7 +49,7 @@ function LoginForm() {
       const data = await response.json();
       setIsAuthenticated(true);
       localStorage.setItem('token', data.token);
-      window.location.href = '/inventory';
+       navigate('/inventory');
     } catch (error) {
         console.log("raté")
       setError(error.message);
@@ -51,7 +61,6 @@ function LoginForm() {
       <FormInput
         error={error ? { content: error, pointing: 'below' } : null}
         fluid
-        label='Username'
         placeholder='Username'
         id='username'
         name='username'
@@ -61,7 +70,6 @@ function LoginForm() {
       <FormInput
         error={error ? { content: 'Please enter your password', pointing: 'below' } : null}
         fluid
-        label='Password'
         placeholder='Password'
         type='password'
         name='password'

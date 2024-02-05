@@ -28,10 +28,6 @@ function ModalAdd(props) {
 
   const [formData, setFormData] = useState({}); // Nouvel état pour stocker les valeurs du formulaire
 
-  const handleSubmit = () => {
-    // Faire quelque chose avec les données du formulaire (formData)
-    //console.log('Formulaire soumis avec succès !', formData);
-  };
 
   return (
     <>
