@@ -34,7 +34,7 @@ function ModalDelete(props) {
     };
     console.log(dataToUpdate);
       const token = localStorage.getItem('token');
-      const apiUrl = process.env.REACT_APP_API_URL+'/items/'+props.item_id+'/';
+      const apiUrl = process.env.REACT_APP_API_URL+'items/'+props.item_id+'/';
       const requestOptions = {
         method: 'PUT',
         headers: {
