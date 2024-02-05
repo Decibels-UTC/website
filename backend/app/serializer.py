@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model, authenticate
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ['id','name' , 'brand','state', 'price','type', 'quantity', 'modification_reason', 'creation', 'removed', 'modification_date']
+        fields = ['id','name' , 'brand','state','power', 'price','type', 'quantity', 'modification_reason', 'creation', 'removed', 'modification_date']
 
 
 class LoginSerializer(serializers.Serializer):

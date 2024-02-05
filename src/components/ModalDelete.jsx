@@ -29,14 +29,17 @@ function ModalDelete(props) {
   const handleApiCall = () => {
 
     const dataToUpdate = {
-    modification_reason : "item deleted",
-    removed : true
+      modification_reason : "item deleted",
+      removed : true
     };
-      const apiUrl = 'http://localhost:8000/items/'+props.item_id+'/';
+    console.log(dataToUpdate);
+      const token = localStorage.getItem('token');
+      const apiUrl = 'http://localhost:8000/api/items/'+props.item_id+'/';
       const requestOptions = {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+           'Authorization': `Token ${token}`,
         },
         body: JSON.stringify(dataToUpdate),
       };
@@ -64,7 +67,7 @@ function ModalDelete(props) {
         <ModalHeader>Suppression d'un item</ModalHeader>
         <ModalContent>
           <div className={"modal-wrapper"} >
-            <p>Êtes-vous sûr de vouloir supprimer cet item ?</p><br/>
+            <p>Êtes-vous sûr de vouloir supprimer cet item ? Cette action est irréversible</p><br/>
             <CardRecap name={props.name} brand={props.brand} quantity={props.quantity} price={props.price} date={props.date} />
           </div>
         </ModalContent>

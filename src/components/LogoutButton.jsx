@@ -11,7 +11,7 @@ function LogoutButton() {
       if (!token) {
         throw new Error('No token found');
       }
-      const response = await fetch('http://localhost:8000/logout/', {
+      const response = await fetch('http://localhost:8000/api/logout/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

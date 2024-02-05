@@ -25,7 +25,7 @@ useEffect(() => {
  // Fonction pour vérifier la validité du token
  const verifyToken = async (token) => {
  try {
-    const response = await fetch('http://localhost:8000/verify-token/', {
+    const response = await fetch('http://localhost:8000/api/verify-token/', {
       method: 'GET',
       headers: {
         'Authorization': `Token ${token}`, // Utilisez 'Token ' au lieu de 'Bearer '

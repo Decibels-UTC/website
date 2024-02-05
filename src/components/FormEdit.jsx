@@ -50,13 +50,15 @@ const FormEdit = (props) => {
     modification_reason : values.reason,
     state: values.state,
     };
+    const token = localStorage.getItem('token');
 
     if (isValid) {
-      const apiUrl = 'http://localhost:8000/items/'+props.item_id+'/';
+      const apiUrl = 'http://localhost:8000/api/items/'+props.item_id+'/';
       const requestOptions = {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+           'Authorization': `Token ${token}`
         },
         body: JSON.stringify(dataToUpdate),
       };

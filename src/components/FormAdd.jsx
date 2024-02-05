@@ -52,7 +52,7 @@ const FormAdd = (props) => {
 
     if (isValid) {
 
-        const apiUrl = 'http://localhost:8000';
+        const apiUrl = 'http://localhost:8000/api';
 
         const postData = {
           name: values.reference,
@@ -63,10 +63,12 @@ const FormAdd = (props) => {
           state: values.state,
           power: values.power,
         };
+        const token = localStorage.getItem('token');
         const requestOptions = {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+             'Authorization': `Token ${token}`
           },
           body: JSON.stringify(postData)
         };

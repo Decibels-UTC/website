@@ -29,7 +29,7 @@ function LoginForm() {
  const handleFormSubmit = async () => {
     try {
       // Remplacez 'YOUR_API_ENDPOINT' par l'URL de votre endpoint d'authentification
-      const response = await fetch('http://localhost:8000/login/', {
+      const response = await fetch('http://localhost:8000/api/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ function LoginForm() {
  return (
     <Form>
       <FormInput
-        error={error ? { content: error, pointing: 'below' } : null}
+        error={error ? { content: "Please enter your username", pointing: 'below' } : null}
         fluid
         placeholder='Username'
         id='username'

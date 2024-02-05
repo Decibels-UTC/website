@@ -31,7 +31,12 @@ function TableData() {
 
 
   useEffect(() => {
-    fetch('http://localhost:8000')
+    const token = localStorage.getItem('token');
+    fetch('http://localhost:8000/api', {
+         headers: {
+            'Authorization': `Token ${token}`
+         }
+        })
       .then((resp) => resp.json())
       .then(function (data) {
         setTableData(data);
