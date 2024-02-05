@@ -30,15 +30,10 @@ class ItemView(APIView):
         # Check if the request contains an Authorization header with a token
         auth_header = request.META.get('HTTP_AUTHORIZATION')
         if auth_header and auth_header.startswith('Token '):
-            token_key = auth_header[6:]  # Remove 'Token ' prefix
+            token_key = auth_header[6:]
             try:
-                # Attempt to retrieve the token object
                 token = Token.objects.get(key=token_key)
-                # Define the token expiration duration
-                token_expiration_duration = timedelta(hours=1)  # Example: tokens expire after 1 hour
-                # Check if the token is valid (not expired)
-                if token.created > dj_timezone.now() - token_expiration_duration:
-                    # Proceed with the request handling
+                if token.created < datetime.now():
                     output = [
                         {
                             "id": item.id,
@@ -72,8 +67,7 @@ class ItemView(APIView):
             token_key = auth_header[6:] # Remove 'Token ' prefix
             try:
                 token = Token.objects.get(key=token_key)
-                token_expiration_duration = timedelta(hours=1) # Example: tokens expire after 1 hour
-                if token.created > dj_timezone.now() - token_expiration_duration:
+                if token.created < datetime.now() :
                     serializer = ItemSerializer(data=request.data)
                     if serializer.is_valid(raise_exception=True):
                         serializer.save()
@@ -92,7 +86,7 @@ class ItemView(APIView):
                     try:
                         token = Token.objects.get(key=token_key)
                         token_expiration_duration = timedelta(hours=1)  # Example: tokens expire after 1 hour
-                        if token.created > dj_timezone.now() - token_expiration_duration:
+                        if token.created < datetime.now() :
                             try:
                                 item = Item.objects.get(pk=pk)
                             except Item.DoesNotExist:
@@ -142,11 +136,6 @@ class ItemView(APIView):
                     raise AuthenticationFailed('Authentication credentials were not provided')
 
 
-
-
-
-
-
 class LoginView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -155,16 +144,10 @@ class LoginView(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         login(request, user)
-
-        # Générer un token pour l'utilisateur authentifié
         token, created = Token.objects.get_or_create(user=user)
-
-        # Définir une date d'expiration pour le token
-        expiry_duration = timedelta(minutes=30) # Le token expire après 30 minutes
+        expiry_duration = timedelta(minutes=30)
         token.expires = datetime.now() + expiry_duration
         token.save()
-
-        # Renvoyer le token dans la réponse
         return Response({'token': token.key}, status=status.HTTP_200_OK)
 
 class LogoutView(APIView):
