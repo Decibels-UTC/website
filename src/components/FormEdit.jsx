@@ -53,7 +53,7 @@ const FormEdit = (props) => {
     const token = localStorage.getItem('token');
 
     if (isValid) {
-      const apiUrl = 'http://localhost:8000/api/items/'+props.item_id+'/';
+      const apiUrl = process.env.API_URL+'/items/'+props.item_id+'/';
       const requestOptions = {
         method: 'PUT',
         headers: {

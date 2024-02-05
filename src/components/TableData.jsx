@@ -32,7 +32,7 @@ function TableData() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    fetch('http://localhost:8000/api', {
+    fetch(process.env.API_URL, {
          headers: {
             'Authorization': `Token ${token}`
          }

@@ -49,10 +49,9 @@ const FormAdd = (props) => {
 
   const handleSubmit = () => {
     const isValid = validateForm();
+    const apiUrl = process.env.API_URL;
 
     if (isValid) {
-
-        const apiUrl = 'http://localhost:8000/api';
 
         const postData = {
           name: values.reference,

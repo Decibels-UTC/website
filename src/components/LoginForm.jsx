@@ -28,8 +28,8 @@ function LoginForm() {
 
  const handleFormSubmit = async () => {
     try {
-      // Remplacez 'YOUR_API_ENDPOINT' par l'URL de votre endpoint d'authentification
-      const response = await fetch('http://localhost:8000/api/login/', {
+
+      const response = await fetch(process.env.API_URL+'/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
