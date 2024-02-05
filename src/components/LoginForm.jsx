@@ -44,6 +44,7 @@ function LoginForm() {
       if (!response.ok) {
         const data = await response.json();
         console.log("raté")
+        console.log(data)
         throw new Error(data.detail || 'Authentication failed');
       }
       const data = await response.json();

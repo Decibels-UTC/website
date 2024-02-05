@@ -45,6 +45,7 @@ function ModalDelete(props) {
         .then(response => response.json())
         .then(updatedData => {
           console.log("Données mises à jour :", updatedData);
+          window.location.reload();
         })
         .catch(error => {
           console.error("Erreur lors de la mise à jour :", error);

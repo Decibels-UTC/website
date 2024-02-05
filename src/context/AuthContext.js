@@ -4,21 +4,21 @@ import React, { createContext, useState, useEffect } from 'react';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+ const [isLoading, setIsLoading] = useState(true);
  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
- useEffect(() => {
+useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       verifyToken(token).then((valid) => {
-        if (valid) {
-          setIsAuthenticated(true);
-        } else {
-          localStorage.removeItem('token');
-        }
+        setIsAuthenticated(valid);
+        setIsLoading(false);
       }).catch((error) => {
         console.error('Erreur lors de la vérification du token:', error);
-        localStorage.removeItem('token');
+        setIsLoading(false);
       });
+    } else {
+      setIsLoading(false);
     }
  }, []);
 

@@ -12,6 +12,7 @@ from rest_framework import permissions, status
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
+from datetime import timedelta
 
 
 
@@ -92,6 +93,8 @@ class ItemView(APIView):
             )
 
 
+
+
 class LoginView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -104,11 +107,10 @@ class LoginView(APIView):
         # Générer un token pour l'utilisateur authentifié
         token, created = Token.objects.get_or_create(user=user)
 
-        # Vérifier si l'utilisateur est connecté
-        if request.user.is_authenticated:
-            print("Utilisateur connecté")
-        else:
-            print("Utilisateur non connecté")
+        # Définir une date d'expiration pour le token
+        expiry_duration = timedelta(minutes=30) # Le token expire après 30 minutes
+        token.expires = datetime.now() + expiry_duration
+        token.save()
 
         # Renvoyer le token dans la réponse
         return Response({'token': token.key}, status=status.HTTP_200_OK)

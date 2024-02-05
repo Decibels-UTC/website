@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import {
   FormInput,
-  FormGroup,
   FormSelect,
   FormButton,
   Form,
@@ -75,6 +74,7 @@ const FormAdd = (props) => {
           .then(response => response.json())
           .then(data => {
             console.log('Réponse de l\'API :', data);
+            window.location.reload();
           })
           .catch(error => {
             console.error('Erreur lors de la requête :', error);

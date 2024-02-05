@@ -1,9 +1,7 @@
 
 import { motion } from "framer-motion"
-
 import decibels from "../ressources/decibels.png";
 import onde1 from "../ressources/animations/onde1.gif";
-import item6 from "../ressources/item6.png";
 import item5 from "../ressources/item5.png";
 import item4 from "../ressources/item4.png";
 import item1 from "../ressources/item1.png";
