@@ -27,6 +27,7 @@ class ItemView(APIView):
             "name" : output.name,
             "brand" : output.brand,
             "price" : output.price,
+            "power" : output.power,
             "type": output.type,
             "state": output.state,
             "quantity" : output.quantity,
@@ -70,6 +71,8 @@ class ItemView(APIView):
                 item.removed = datetime.now(timezone.utc);
         if (item.state != None):
             item.state = request.data.get("state", item.state)
+        if (item.power != None):
+            item.power = request.data.get("power", item.power)
 
         item.save()
 
@@ -78,6 +81,7 @@ class ItemView(APIView):
             "name" : item.name,
             "brand" : item.brand,
             "price" : item.price,
+            "power" : item.power,
             "type": item.type,
             "state": item.state,
             "quantity" : item.quantity,

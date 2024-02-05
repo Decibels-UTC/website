@@ -62,6 +62,7 @@ const FormAdd = (props) => {
           type: values.type,
           quantity: values.quantity,
           state: values.state,
+          power: values.power,
         };
         const requestOptions = {
           method: 'POST',
@@ -120,6 +121,17 @@ const FormAdd = (props) => {
           name='price'
           onChange={handleChange}
           error={errors.price && { content: errors.price, pointing: 'below' }}
+        />
+        <FormInput
+
+          fluid
+          label='Puissance'
+          placeholder='Puissance'
+          type="number"
+          min="0"
+          name='power'
+          onChange={handleChange}
+          error={errors.power && { content: errors.power, pointing: 'below' }}
         />
 
         <FormInput

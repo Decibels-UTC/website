@@ -21,6 +21,7 @@ class Item(models.Model):
     brand = models.CharField(max_length = 150, null=True, blank=True)
     price = models.FloatField(validators=[MinValueValidator(0)])
     state = models.CharField(max_length=20, choices=TYPES_CHOICES2, default='neuf')
+    power = models.IntegerField(validators=[MinValueValidator(0)],default=0)
     quantity = models.IntegerField(validators=[MinValueValidator(0)])
     modification_reason = models.CharField(max_length = 500, null=True, blank=True)
     type = models.CharField(max_length=20, choices=TYPES_CHOICES1)

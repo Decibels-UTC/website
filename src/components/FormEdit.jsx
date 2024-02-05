@@ -20,6 +20,7 @@ const FormEdit = (props) => {
     brand: props.brand,
     price: props.price,
     quantity: props.quantity,
+    power:props.power,
     type: props.type,
     reason: props.reason,
     state: props.state,
@@ -45,6 +46,7 @@ const FormEdit = (props) => {
     price: values.price,
     quantity : values.quantity,
     type :    values.type,
+    power : values.power,
     modification_reason : values.reason,
     state: values.state,
     };
@@ -109,6 +111,18 @@ const FormEdit = (props) => {
           onChange={handleChange}
           error={errors.price && { content: errors.price, pointing: 'below' }}
           value={values.price}  // Correction : Utilisation de values au lieu de props
+        />
+
+       <FormInput
+          fluid
+          label='Puissance'
+          placeholder='Puissance'
+          type="number"
+          min="0"
+          name='power'
+          onChange={handleChange}
+          error={errors.power && { content: errors.power, pointing: 'below' }}
+          value={values.power}  // Correction : Utilisation de values au lieu de props
         />
 
         <FormInput
