@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-9naw!eym4c00o%v%)8s7$7p4tf+cadtv0(43qbed%$phb)$u@6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dbsapi.lchappuis.fr']
+CSRF_TRUSTED_ORIGINS = [
+    'https://dbsapi.lchappuis.fr',
+]
 
 
 # Application definition

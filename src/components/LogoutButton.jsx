@@ -11,7 +11,7 @@ function LogoutButton() {
       if (!token) {
         throw new Error('No token found');
       }
-      const response = await fetch(process.env.API_URL+'/logout/', {
+      const response = await fetch(process.env.REACT_APP_API_URL+'/logout/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -49,7 +49,7 @@ const FormAdd = (props) => {
 
   const handleSubmit = () => {
     const isValid = validateForm();
-    const apiUrl = process.env.API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     if (isValid) {
 
