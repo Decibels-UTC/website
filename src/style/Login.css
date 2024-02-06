@@ -1,15 +1,36 @@
 .login-form{
+    background-image: url("../ressources/background.jpg");
+    background-size: 100%;
+    background-size: cover;
+
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
     width: 100vw;
-    height: 100vh;
+    height: 97vh;
+    flex-direction: column;
 }
 .login-form-component{
+    margin-top: -5%;
     height: auto;
-    width: 20%;
-    background-color: #3B3B3B;
-    border-radius: 10px;
-    padding: 2%;
+    width: 15%;
+
+}
+
+.login-title{
+    flex-direction: row;
+    justify-content: center;
+    color: black;
+    margin-bottom: 10%;
+    margin-top: -10%;
+    background-color:rgba(255,255,255, 0.5);
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.login-title > h1{
+    opacity: 1;
+    font-size: xxx-large;
+    font-weight: bolder;
 }
