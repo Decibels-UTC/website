@@ -1,5 +1,16 @@
+from django.utils.translation import gettext as _  # Add this line to import gettext
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
+
+class AuthToken(models.Model):
+    user = models.ForeignKey(User, related_name='auth_tokens', on_delete=models.CASCADE)
+    token = models.CharField(_('token'), max_length=40)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    def __str__(self):
+        return self.token
 
 
 # Create your models here.
