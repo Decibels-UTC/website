@@ -18,6 +18,7 @@ class LoginSerializer(serializers.Serializer):
     )
 
     def validate(self, attrs):
+        print("coucou")
         username = attrs.get('username')
         password = attrs.get('password')
 

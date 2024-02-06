@@ -14,18 +14,21 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from django.utils import timezone as dj_timezone
 
+class CsrfExemptSessionAuthentication(SessionAuthentication):
 
+    def enforce_csrf(self, request):
+        return  # Ne rien faire pour ignorer la v  rification CSRF
 
 
 
 
 # Create your views here.
 
-permission_classes = (IsAuthenticated,)
 
 from rest_framework.exceptions import AuthenticationFailed
 
 class ItemView(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication,)
     def get(self, request):
         # Check if the request contains an Authorization header with a token
         auth_header = request.META.get('HTTP_AUTHORIZATION')
@@ -33,7 +36,9 @@ class ItemView(APIView):
             token_key = auth_header[6:]
             try:
                 token = Token.objects.get(key=token_key)
-                if token.created < datetime.now():
+                date1 = datetime.fromisoformat(str(token.created)[:19]) + timedelta(hours=1)
+                date2 = datetime.fromisoformat(str(datetime.now())[:19])
+                if date1 > date2:
                     output = [
                         {
                             "id": item.id,
@@ -61,22 +66,27 @@ class ItemView(APIView):
 
 
     def post(self, request):
-        # Check if the request contains an Authorization header with a token
+        authentication_classes = (CsrfExemptSessionAuthentication,)
         auth_header = request.META.get('HTTP_AUTHORIZATION')
         if auth_header and auth_header.startswith('Token '):
             token_key = auth_header[6:] # Remove 'Token ' prefix
             try:
                 token = Token.objects.get(key=token_key)
-                if token.created < datetime.now() :
+                date1 = datetime.fromisoformat(str(token.created)[:19]) + timedelta(hours=1)
+                date2 = datetime.fromisoformat(str(datetime.now())[:19])
+                if date1 > date2:
                     serializer = ItemSerializer(data=request.data)
                     if serializer.is_valid(raise_exception=True):
                         serializer.save()
                         return Response(serializer.data)
                 else:
+                    print("1")
                     raise AuthenticationFailed('Token has expired')
             except Token.DoesNotExist:
+                print("2")
                 raise AuthenticationFailed('Invalid token')
         else:
+            print("3")
             raise AuthenticationFailed('Authentication credentials were not provided')
 
     def put(self, request, pk):
@@ -85,8 +95,9 @@ class ItemView(APIView):
                     token_key = auth_header[6:]
                     try:
                         token = Token.objects.get(key=token_key)
-                        token_expiration_duration = timedelta(hours=1)  # Example: tokens expire after 1 hour
-                        if token.created < datetime.now() :
+                        date1 = datetime.fromisoformat(str(token.created)[:19]) + timedelta(hours=1)
+                        date2 = datetime.fromisoformat(str(datetime.now())[:19])
+                        if date1 > date2:
                             try:
                                 item = Item.objects.get(pk=pk)
                             except Item.DoesNotExist:
@@ -136,32 +147,47 @@ class ItemView(APIView):
                     raise AuthenticationFailed('Authentication credentials were not provided')
 
 
+
 class LoginView(APIView):
     permission_classes = (permissions.AllowAny,)
+    authentication_classes = (CsrfExemptSessionAuthentication,)
 
     def post(self, request, format=None):
+        print(request.data)
         serializer = LoginSerializer(data=self.request.data, context={'request': self.request})
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         login(request, user)
         token, created = Token.objects.get_or_create(user=user)
-        expiry_duration = timedelta(minutes=30)
-        token.expires = datetime.now() + expiry_duration
         token.save()
         return Response({'token': token.key}, status=status.HTTP_200_OK)
 
 class LogoutView(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication,)
     def post(self, request, format=None):
-        if request.user.is_authenticated:
-            request.user.auth_token.delete()
-        return Response(status=status.HTTP_200_OK)
+        token = request.META.get('HTTP_AUTHORIZATION', '')[6:] # Retirez 'Token ' du d  b>
+        try:
+            token_obj = Token.objects.get(key=token)
+            token_obj.delete()
+            return Response(status=status.HTTP_200_OK)
+        except:
+            return Response({'error': 'Token does not exist'}, status=401)
 
 class VerifyTokenView(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication,)
     def get(self, request):
         token = request.META.get('HTTP_AUTHORIZATION', '')[6:] # Retirez 'Token ' du début
         try:
             token_obj = Token.objects.get(key=token)
-            user = User.objects.get(id=token_obj.user_id)
-            return Response({'user': user.username})
+            date1 = datetime.fromisoformat(str(token_obj.created)[:19]) + timedelta(hours=1)
+            date2 = datetime.fromisoformat(str(datetime.now())[:19])
+            if date1 > date2 :
+               return Response({'Session valide': "valide"}, status=200)
+            else:
+                 print("expire")
+                 token_obj.delete()
+                 return Response({'error': 'Token expired'}, status=401)
         except Token.DoesNotExist:
             return Response({'error': 'Token does not exist'}, status=401)
