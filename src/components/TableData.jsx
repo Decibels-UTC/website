@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import * as XLSX from 'xlsx';
 import {
     Search,
@@ -9,7 +9,7 @@ import {
     TableCell,
     TableBody,
     Button,
-    Dropdown, Checkbox
+    Dropdown, Checkbox, Modal, Form, Input
 } from 'semantic-ui-react';
 import ModalDelete from "./ModalDelete";
 import ModalEdit from "./ModalEdit";
@@ -18,6 +18,7 @@ import ModalAdd from "./ModalAdd";
 import Stats from "./Stats";
 import ModalSuccess from "./ModalSuccess";
 import ModalFailed from "./ModalFailed";
+import TableSelectedItems from "./TableSelectedItems";
 
 function TableData() {
   const [state, setState] = useState({ isLoading: false, results: [], value: '' });
@@ -27,6 +28,27 @@ function TableData() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedState, setSelectedState] = useState(null);
   const [filteredDataCombined, setFilteredDataCombined] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [checkedItems, setCheckedItems] = useState({});
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalPower, setTotalPower] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedItemForQuantity, setSelectedItemForQuantity] = useState(null);
+ const [quantity, setQuantity] = useState(0);
+
+    const openQuantityModal = (item) => {
+      setSelectedItemForQuantity(item);
+      setOpenModal(true);
+    };
+    const closeQuantityModal = () => {
+      setOpenModal(false);
+    };
+    const handleQuantityChange = (event) => {
+      setQuantity(event.target.value);
+    };
+
 
 
   useEffect(() => {
@@ -94,10 +116,31 @@ function convertDateFormat(isoDateString) {
 };
   const handleResultSelect = (e, { result }) => setState({ value: result.title });
 
-   const [totalItems, setTotalItems] = useState(0);
-   const [totalPrice, setTotalPrice] = useState(0);
-   const [totalQuantity, setTotalQuantity] = useState(0);
-   const [totalPower, setTotalPower] = useState(0);
+const handleQuantitySubmit = useCallback((event) => {
+  event.preventDefault();
+  if (!isNaN(quantity) && quantity >=  1) {
+    const existingItemIndex = selectedItems.findIndex(item => item.id === selectedItemForQuantity.id);
+    if (existingItemIndex >=  0) {
+      const updatedSelectedItems = [...selectedItems];
+      updatedSelectedItems[existingItemIndex].quantity = parseInt(quantity,  10);
+      setSelectedItems(updatedSelectedItems);
+    } else {
+      setSelectedItems(prevSelectedItems => [...prevSelectedItems, { ...selectedItemForQuantity, quantity: parseInt(quantity,  10) }]);
+    }
+    closeQuantityModal();
+  } else {
+    console.error('La valeur de la quantité doit être un nombre entier supérieur ou égal à  1.');
+  }
+}, [selectedItemForQuantity, closeQuantityModal, quantity, selectedItems]);
+const handleCancelSelection = useCallback(() => {
+  setSelectedItems(prevSelectedItems => prevSelectedItems.filter(item => item.id !== selectedItemForQuantity.id));
+  setCheckedItems(prevCheckedItems => {
+    const updatedCheckedItems = { ...prevCheckedItems };
+    delete updatedCheckedItems[selectedItemForQuantity.id];
+    return updatedCheckedItems;
+  });
+  closeQuantityModal();
+}, [selectedItemForQuantity, closeQuantityModal]);
 
     useEffect(() => {
       // Calcul des totaux
@@ -105,12 +148,12 @@ function convertDateFormat(isoDateString) {
       const price = filteredData.reduce((acc, item) => acc + item.price*item.quantity, 0);
       const quantity = filteredData.reduce((acc, item) => acc + item.quantity, 0);
       const power  = filteredData.reduce((acc, item) => acc + item.power*item.quantity, 0);
-
       setTotalItems(items);
       setTotalPrice(price);
       setTotalQuantity(quantity);
       setTotalPower(power)
     }, [filteredData]);
+
     const options = [
     { key: 1, text: 'Light', value: 'light' },
     { key: 2, text: 'Son', value: 'son' },
@@ -270,10 +313,35 @@ const exportToExcel = () => {
       XLSX.utils.book_append_sheet(wb, ws, 'Feuille1');
       XLSX.writeFile(wb, 'export_dBs.xlsx');
     };
+const exportToExcelSelected = () => {
+      const jsonData = selectedItems;
+      const ws = XLSX.utils.json_to_sheet(jsonData);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Feuille1');
+      XLSX.writeFile(wb, 'export_selection_dBs.xlsx');
+};
 
 useEffect(() => {
   dispatch({ type: 'UPDATE_DATA', data: filteredData });
 }, [filteredData]);
+const handleCheckboxChange = (itemId) => {
+  setCheckedItems((prevCheckedItems) => {
+    const isChecked = !prevCheckedItems[itemId];
+    const updatedCheckedItems = {
+      ...prevCheckedItems,
+      [itemId]: isChecked,
+    };
+    const itemDetails = tableData.find(item => item.id === itemId);
+    if (isChecked) {
+      openQuantityModal(itemDetails);
+    } else {
+      setSelectedItems(prevSelectedItems => prevSelectedItems.filter(item => item.id !== itemId));
+    }
+    return updatedCheckedItems;
+  });
+};
+
+
 
 
 const [sort_state, dispatch] = React.useReducer(sortColumns, {
@@ -284,9 +352,36 @@ const [sort_state, dispatch] = React.useReducer(sortColumns, {
   const { column, data, direction } = sort_state
   return (
     <>
-        <div className={"stats"}>
-            <Stats qte={totalQuantity} items={totalItems} total_price={totalPrice} total={totalPower}  />
+        <div className={"info-table-wrapper"}>
+
+                <div className={"stats"}>
+                    <Stats qte={totalQuantity} items={totalItems} total_price={totalPrice} total_power={totalPower}  />
+                </div>
+            {selectedItems.length === 0 ? null  :<>
+                <TableSelectedItems tab={selectedItems} />
+                <div className={"export-button-selected"}>
+                    <Button  content='Export de la sélection' onClick={exportToExcelSelected} />
+                </div>
+
+            </>
+
+            }
         </div>
+
+      <Modal size="small" open={openModal} onClose={closeQuantityModal}>
+        <Modal.Header>Entrez la quantité</Modal.Header>
+        <Modal.Content>
+          <Form onSubmit={handleQuantitySubmit}>
+                <Form.Field>
+                <label>Quantité</label>
+                <Input type="number" min="1" required value={quantity} onChange={handleQuantityChange} />
+                </Form.Field>
+            <Button color='green' type="submit">Valider</Button>
+              <Button color='red' onClick={handleCancelSelection}>Annuler</Button>
+          </Form>
+        </Modal.Content>
+      </Modal>
+
       <div className={"wrapper-export"}>
           <div className={"wrapper-options-tabledata"} >
               <Search
@@ -352,7 +447,9 @@ const [sort_state, dispatch] = React.useReducer(sortColumns, {
         <TableBody>
           {sort_state.data.map((item, index) => (
             <TableRow key={index}>
-                {showDeleted ? null : <TableCell><Checkbox/></TableCell> }
+                {showDeleted ? null : <TableCell><Checkbox
+                                checked={!!checkedItems[item.id]}
+                                onChange={() => handleCheckboxChange(item.id)} /></TableCell> }
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.brand}</TableCell>
               <TableCell>{item.type}</TableCell>

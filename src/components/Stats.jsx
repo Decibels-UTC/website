@@ -23,7 +23,7 @@ function Stats(props) {
           <StatisticLabel>Prix total</StatisticLabel>
         </Statistic>
         <Statistic>
-          <StatisticValue>{props.power === null ? 0 : props.total_price}</StatisticValue>
+          <StatisticValue>{props.power === null ? 0 : props.total_power}</StatisticValue>
           <StatisticLabel>Puissance totale</StatisticLabel>
         </Statistic>
 

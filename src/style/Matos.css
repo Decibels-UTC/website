@@ -14,7 +14,24 @@ p{
 
 }
 .table-data{
-    width: 80%;
+    width: 90%;
+}
+.selected-items{
+    margin-left: 5%;
+}
+
+.export-button-selected{
+    height: 20%;
+    margin-left: 2%;
+    display: flex;
+}
+
+.info-table-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+    margin-top: -10%;
+    justify-content: center;
 }
 
 .modal-wrapper{
@@ -48,8 +65,7 @@ p{
 .stats{
     display: flex;
     justify-content: center;
-    margin-bottom: 5%;
-    margin-top: -10%;
+    margin-right: -3%;
 }
 
 .wrapper-export{
