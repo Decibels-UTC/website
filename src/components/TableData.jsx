@@ -107,15 +107,19 @@ function convertDateFormat(isoDateString) {
    const [totalItems, setTotalItems] = useState(0);
    const [totalPrice, setTotalPrice] = useState(0);
    const [totalQuantity, setTotalQuantity] = useState(0);
+   const [totalPower, setTotalPower] = useState(0);
+
     useEffect(() => {
       // Calcul des totaux
       const items = filteredData.length;
-      const price = filteredData.reduce((acc, item) => acc + item.price, 0);
+      const price = filteredData.reduce((acc, item) => acc + item.price*item.quantity, 0);
       const quantity = filteredData.reduce((acc, item) => acc + item.quantity, 0);
+      const power  = filteredData.reduce((acc, item) => acc + item.power*item.quantity, 0);
 
       setTotalItems(items);
       setTotalPrice(price);
       setTotalQuantity(quantity);
+      setTotalPower(power)
     }, [filteredData]);
     const options = [
     { key: 1, text: 'Light', value: 'light' },
@@ -251,7 +255,7 @@ const exportToExcel = () => {
   return (
     <>
         <div className={"stats"}>
-            <Stats qte={totalQuantity} items={totalItems} total_price={totalPrice}  />
+            <Stats qte={totalQuantity} items={totalItems} total_price={totalPrice} total={totalPower}  />
         </div>
       <div className={"wrapper-export"}>
           <div className={"wrapper-options-tabledata"} >
