@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
 import {
-  Search,
-  Table,
-  TableRow,
-  TableHeaderCell,
-  TableHeader,
-  TableCell,
-  TableBody,
-  Button,
-  Dropdown
+    Search,
+    Table,
+    TableRow,
+    TableHeaderCell,
+    TableHeader,
+    TableCell,
+    TableBody,
+    Button,
+    Dropdown, Checkbox
 } from 'semantic-ui-react';
 import ModalDelete from "./ModalDelete";
 import ModalEdit from "./ModalEdit";
@@ -24,7 +24,6 @@ function TableData() {
   const [tableData, setTableData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [showDeleted, setShowDeleted] = useState(false);
-  const [sortedColumn, setSortedColumn] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedState, setSelectedState] = useState(null);
   const [filteredDataCombined, setFilteredDataCombined] = useState([]);
@@ -94,16 +93,7 @@ function convertDateFormat(isoDateString) {
   }, 0);
 };
   const handleResultSelect = (e, { result }) => setState({ value: result.title });
-   const sortByColumn = (columnName) => {
-    const sortedData = [...filteredData].sort((a, b) => {
-      if (columnName === 'price' || columnName === 'creation') {
-        return a[columnName] - b[columnName];
-      }
-    });
 
-    setFilteredData(sortedData);
-    setSortedColumn(columnName);
-  };
    const [totalItems, setTotalItems] = useState(0);
    const [totalPrice, setTotalPrice] = useState(0);
    const [totalQuantity, setTotalQuantity] = useState(0);
@@ -179,6 +169,36 @@ const handleStateChange = (e, { value }) => {
         }
 
     };
+function sortColumns(sort_state, action) {
+  switch (action.type) {
+    case 'CHANGE_SORT':
+      if (sort_state.column === action.column) {
+        // Si on clique sur la même colonne, on inverse l'ordre de tri
+        const sortedData = _.orderBy(sort_state.data, [action.column], [sort_state.direction === 'ascending' ? 'desc' : 'asc']);
+        return {
+          ...sort_state,
+          data: sortedData,
+          direction: sort_state.direction === 'ascending' ? 'descending' : 'ascending',
+        };
+      } else {
+        // Sinon, on trie par la nouvelle colonne en ordre croissant
+        const sortedData = _.orderBy(sort_state.data, [action.column], ['asc']);
+        return {
+          column: action.column,
+          data: sortedData,
+          direction: 'ascending',
+        };
+      }
+    case 'UPDATE_DATA':
+      // Mettre à jour les données sans changer l'ordre de tri
+      return {
+        ...sort_state,
+        data: action.data,
+      };
+    default:
+      throw new Error('Unknown action type');
+  }
+}
 
 
 const [tableDataTemp1, setTableDataTemp1] = useState(null);
@@ -251,7 +271,17 @@ const exportToExcel = () => {
       XLSX.writeFile(wb, 'export_dBs.xlsx');
     };
 
+useEffect(() => {
+  dispatch({ type: 'UPDATE_DATA', data: filteredData });
+}, [filteredData]);
 
+
+const [sort_state, dispatch] = React.useReducer(sortColumns, {
+    column: null,
+    data: filteredData,
+    direction: null,
+  })
+  const { column, data, direction } = sort_state
   return (
     <>
         <div className={"stats"}>
@@ -272,6 +302,7 @@ const exportToExcel = () => {
         <Button content='Items supprimés' onClick={() => setShowDeleted(true) && setSelectedCategory(null) && setSelectedState(null) && setTableDataTemp1([])&& setTableDataTemp2([])} />
          <div className={"dropdown-filters"}>
               <Dropdown
+                placeholder="Catégorie"
                 options={options}
                 onChange={handleCategoryChange}
                 value={selectedCategory}
@@ -281,6 +312,7 @@ const exportToExcel = () => {
               </div>
               <div className={"dropdown-filters"}>
               <Dropdown
+                placeholder="Etat"
                 options={options2}
                 onChange={handleStateChange}
                 value={selectedState}
@@ -295,21 +327,22 @@ const exportToExcel = () => {
 
 
 
-            <Table striped>
+            <Table striped sortable fixed>
         <TableHeader>
           <TableRow>
-            <TableHeaderCell onClick={() => sortByColumn('name')}>Référence</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('brand')}>Marque</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('category')}>Catégorie</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('state')}>Etat</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('power')}>Puissance</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('price')}>Prix</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('quantity')}>Quantité</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('modification_reason')}>Modification</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('creation')}>Date d'ajout</TableHeaderCell>
-            {showDeleted ? <TableHeaderCell>Date de suppression</TableHeaderCell> :
+            {showDeleted ? null : <TableHeaderCell>Sélection</TableHeaderCell> }
+            <TableHeaderCell sorted={column === 'name' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'name' })}>Référence</TableHeaderCell>
+            <TableHeaderCell sorted={column === 'brand' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'brand' })}>Marque</TableHeaderCell>
+            <TableHeaderCell>Catégorie</TableHeaderCell>
+            <TableHeaderCell>Etat</TableHeaderCell>
+            <TableHeaderCell sorted={column === 'power' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'power' })}>Puissance</TableHeaderCell>
+            <TableHeaderCell sorted={column === 'price' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'price' })}>Prix</TableHeaderCell>
+            <TableHeaderCell sorted={column === 'quantity' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'quantity' })}>Quantité</TableHeaderCell>
+            <TableHeaderCell>Modification</TableHeaderCell>
+            <TableHeaderCell sorted={column === 'creation' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'creation' })}>Date d'ajout</TableHeaderCell>
+            {showDeleted ? <TableHeaderCell sorted={column === 'removed' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'removed' })} >Date de suppression</TableHeaderCell> :
                 <>
-                    <TableHeaderCell onClick={() => sortByColumn('modification_date')}>Date de modification</TableHeaderCell>
+                    <TableHeaderCell  sorted={column === 'modification_date' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'modification_date' })}>Date de modification</TableHeaderCell>
                     <TableHeaderCell>Actions</TableHeaderCell>
                 </>
             }
@@ -317,8 +350,9 @@ const exportToExcel = () => {
         </TableHeader>
 
         <TableBody>
-          {filteredData.map((item, index) => (
+          {sort_state.data.map((item, index) => (
             <TableRow key={index}>
+                {showDeleted ? null : <TableCell><Checkbox/></TableCell> }
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.brand}</TableCell>
               <TableCell>{item.type}</TableCell>
