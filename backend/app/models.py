@@ -36,7 +36,7 @@ class Item(models.Model):
     quantity = models.IntegerField(validators=[MinValueValidator(0)])
     modification_reason = models.CharField(max_length = 500, null=True, blank=True)
     type = models.CharField(max_length=20, choices=TYPES_CHOICES1)
-    creation = models.DateTimeField(auto_now=True)
+    creation = models.DateTimeField(auto_now_add=True)
     removed = models.DateTimeField(null=True, blank=True)
     modification_date = models.DateTimeField(auto_now=True)
 

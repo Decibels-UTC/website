@@ -24,7 +24,35 @@ function LoginForm() {
       navigate('/inventory');
  }
 }, [isAuthenticated]);
+    const token = localStorage.getItem('token');
 
+  const checkUserAuthentication = async () => {
+    try {
+      const response = await fetch(process.env.REACT_APP_API_URL + 'verify-token/', {
+        method: 'GET',
+      headers: {
+        'Authorization': `Token ${token}`,
+      },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        if (data.authenticated) {
+          setIsAuthenticated(true);
+          navigate('/inventory');
+        }
+      } else {
+        console.log("Token expiré");
+      }
+    } catch (error) {
+      console.log("Erreur lors de la vérification d'authentification", error);
+    }
+  };
+
+useEffect(() => {
+    if (token) {
+      checkUserAuthentication();
+    }
+  }, []);
 
  const handleFormSubmit = async () => {
     try {

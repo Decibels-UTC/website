@@ -1,4 +1,5 @@
 import uuid
+import pytz
 from django.utils import timezone as dj_timezone
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -163,16 +164,16 @@ class ItemView(APIView):
                             if (request.data.get("quantity") != None):
                                 item.quantity = request.data.get("quantity")
                                 if (item.quantity == 0):
-                                    item.removed = datetime.now(dj_timezone.utc)
+                                    item.removed = datetime.now(pytz.UTC)
                             if (request.data.get("modification_reason") != None):
                                 item.modification_reason = request.data.get("modification_reason")
                                 if item.modification_reason == "item deleted":
-                                    item.removed = datetime.now(dj_timezone.utc)
+                                    item.removed = datetime.now(pytz.UTC)
                             if (request.data.get("state") != None):
                                 item.state = request.data.get("state")
                             if (request.data.get("power") != None):
                                 item.power = request.data.get("power")
-                            print(item.creation)
+
 
                             item.save()
 

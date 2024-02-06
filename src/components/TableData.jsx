@@ -47,12 +47,16 @@ function TableData() {
       });
   }, [showDeleted]);
 
-  function convertDateFormat(isoDateString) {
-      const dateObject = new Date(isoDateString);
-      const readableDate = dateObject.toISOString().replace("T", " ").replace("Z", "");
-
-      return readableDate;
-  }
+function convertDateFormat(isoDateString) {
+    const dateObject = new Date(isoDateString);
+    const day = String(dateObject.getDate()).padStart(2, '0');
+    const month = String(dateObject.getMonth() +  1).padStart(2, '0');
+    const year = dateObject.getFullYear();
+    const hours = String(dateObject.getHours()).padStart(2, '0');
+    const minutes = String(dateObject.getMinutes()).padStart(2, '0');
+    const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
+    return formattedDate;
+}
   const handleSearchChange = (e, { value }) => {
   setState({ isLoading: true, value });
 
@@ -292,15 +296,19 @@ const exportToExcel = () => {
           <TableRow>
             <TableHeaderCell onClick={() => sortByColumn('name')}>Référence</TableHeaderCell>
             <TableHeaderCell onClick={() => sortByColumn('brand')}>Marque</TableHeaderCell>
-            {!showDeleted && <TableHeaderCell onClick={() => sortByColumn('category')}>Catégorie</TableHeaderCell>}
+            <TableHeaderCell onClick={() => sortByColumn('category')}>Catégorie</TableHeaderCell>
             <TableHeaderCell onClick={() => sortByColumn('state')}>Etat</TableHeaderCell>
             <TableHeaderCell onClick={() => sortByColumn('power')}>Puissance</TableHeaderCell>
             <TableHeaderCell onClick={() => sortByColumn('price')}>Prix</TableHeaderCell>
             <TableHeaderCell onClick={() => sortByColumn('quantity')}>Quantité</TableHeaderCell>
             <TableHeaderCell onClick={() => sortByColumn('modification_reason')}>Modification</TableHeaderCell>
-            <TableHeaderCell onClick={() => sortByColumn('modification_date')}>Date de modification</TableHeaderCell>
             <TableHeaderCell onClick={() => sortByColumn('creation')}>Date d'ajout</TableHeaderCell>
-            {showDeleted ? null : <TableHeaderCell>Actions</TableHeaderCell>}
+            {showDeleted ? <TableHeaderCell>Date de suppression</TableHeaderCell> :
+                <>
+                    <TableHeaderCell onClick={() => sortByColumn('modification_date')}>Date de modification</TableHeaderCell>
+                    <TableHeaderCell>Actions</TableHeaderCell>
+                </>
+            }
           </TableRow>
         </TableHeader>
 
@@ -315,13 +323,16 @@ const exportToExcel = () => {
               <TableCell>{item.price}</TableCell>
               <TableCell>{item.quantity}</TableCell>
               <TableCell>{item.modification_reason ? item.modification_reason : '/'}</TableCell>
-              <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
               <TableCell>{convertDateFormat(item.creation)}</TableCell>
-              {showDeleted ? null :
+              {showDeleted ? <TableCell>{convertDateFormat(item.removed)}</TableCell> :
+                  <>
+              <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
               <TableCell>
                  <ModalEdit item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
                  <ModalDelete item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
-              </TableCell>}
+              </TableCell>
+              </>
+              }
             </TableRow>
           ))}
         </TableBody>
