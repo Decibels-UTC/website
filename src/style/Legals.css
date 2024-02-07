@@ -1,6 +1,10 @@
-.main-content-legals > article{
+.main-content-legals > .article-legals{
     display: flex;
-    justify-content: center;    
+    justify-content: center;
+}
+
+.article-legals > p{
+    color: white;
 }
 
 .legals-title{
