@@ -14,7 +14,7 @@ function Legals(){
 
             <section className={"container text-legals"}>
                 <h1>Politique de confidentialité</h1>
-                <article>
+                <article className={"article-legals"}>
                     <br/>
                     <h2 className={"second-title-legals"}>I - Informations légales</h2>
                     <p>Le site internet dbs.etu-utc.fr appartient à PAE - Decibels (ci-après dénommée «dBs»), comission
@@ -36,7 +36,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>II - Définitions</h2>
                     <p>Utilisateur : toute personne qui utilise le site de dBs.<br/><br/>CGU : Conditions générales
                         d’utilisation<br/><br/>
@@ -59,7 +59,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>III - Objet des présentes CGU</h2>
                     <p>Les présentes Conditions Générales ont pour objet de définir les conditions d’utilisation et de
                         mise à disposition du site et ses services pour l’Utilisateur (ci-après désignées les « CGU»).
@@ -84,7 +84,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>IV - Données à caractère personnel</h2>
                     <p>dBs met à disposition des utilisateurs sa Politique de Confidentialité.</p>
 
@@ -145,7 +145,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>V - Cookies</h2>
                     <p>L’utilisateur est informé qu’un ou plusieurs cookies, pourront être déposés sur son navigateur
                         lors de sa visite sur le site internet de dBs.</p>
@@ -184,7 +184,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>VI - Propriété intellectuelle</h2>
                     <p>Les contenus de ce site (structure, design, texte, image, animation, logo, logiciel…) sont la
                         propriété exclusive de la commission PAE-Décibels. Toute reproduction totale ou partielle de ce
@@ -199,7 +199,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>VII - Limitation de responsabilité</h2>
                     <p>dBs met tout en œuvre pour offrir aux utilisateurs des informations et/ou outils disponibles et
                         vérifiés, mais ne saurait être tenu pour responsable direct ou indirect des erreurs, d’une
@@ -217,7 +217,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>VIII - Comportement de l’utilisateur</h2>
                     <p>L’utilisateur est seul juge de sa faculté, légale, contractuelle et/ou judiciaire à accéder au
                         site et/ou utiliser le site. À ce titre, en utilisant le Site, l’utilisateur reconnait qu’il ne
@@ -244,7 +244,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>IX - Nullité partielle</h2>
                     <p>Si l’une des dispositions des CGU est déclarée nulle et sans effet par une décision
                         définitive rendue par une autorité compétente, les conditions restantes resteront en vigueur
@@ -252,7 +252,7 @@ function Legals(){
                 </article>
                 <br/>
                 <br/>
-                <article>
+                <article className={"article-legals"}>
                     <h2 className={"second-title-legals"}>X - Droit applicable en cas de litiges</h2>
                     <p>Les CGU, et toute question relative à l’interprétation, à l’exécution ou à l’inexécution de
                         celles-ci sont régies par les lois françaises, sans préjudice de l’application de la
