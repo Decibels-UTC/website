@@ -1,9 +1,16 @@
-.main-content-legals > div{
+.main-content-legals > article{
     display: flex;
-    justify-content: center;
+    justify-content: center;    
 }
+
 .legals-title{
     z-index: 2;
+    text-align: center;
+    margin-left: 0%;
+}
+
+.second-title-legals{
+    padding-bottom: 10px;
 }
 
 .keyword{
@@ -16,6 +23,7 @@
     width: 80%;
     height: auto;
 }
+
 .main-content-legals-3{
     margin-top: -30%;
     padding-bottom: 5%;
@@ -29,6 +37,8 @@
 
 .text-legals{
     margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
     width: 50%;
     height: auto;
 }
