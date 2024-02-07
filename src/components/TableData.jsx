@@ -306,15 +306,26 @@ const handleResetFilter = () => {
   }
   // si déjà à null ne rien faire
 };
+const findTextByValue = (options, value) => {
+  const foundOption = options.find(option => option.value === value);
+  return foundOption ? foundOption.text : ''; // Retourne le texte ou une chaîne vide si aucune correspondance n'est trouvée
+};
+const transformData = (data, options, options2) => {
+  return data.map(item => ({
+    ...item,
+    type: findTextByValue(options, item.type),
+    state: findTextByValue(options2, item.state)
+  }));
+};
 const exportToExcel = () => {
-      const jsonData = filteredData;
+      const jsonData = transformData(filteredData,options, options2);
       const ws = XLSX.utils.json_to_sheet(jsonData);
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Feuille1');
       XLSX.writeFile(wb, 'export_dBs.xlsx');
     };
 const exportToExcelSelected = () => {
-      const jsonData = selectedItems;
+      const jsonData = transformData(selectedItems,options, options2);
       const ws = XLSX.utils.json_to_sheet(jsonData);
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Feuille1');
@@ -463,8 +474,8 @@ const handleDeselectButton = () => {
                                 onChange={() => handleCheckboxChange(item.id)} /></TableCell> }
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.brand}</TableCell>
-              <TableCell>{item.type}</TableCell>
-              <TableCell>{item.state}</TableCell>
+              <TableCell>{options.find(option => option.value === item.type).text}</TableCell>
+              <TableCell>{options2.find(option => option.value === item.state).text}</TableCell>
               <TableCell>{item.power}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>{item.quantity}</TableCell>
