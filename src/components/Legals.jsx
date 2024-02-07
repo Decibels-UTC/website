@@ -11,12 +11,12 @@ function Legals(){
 
 
             <h1 className={"title legals-title"}>Mentions légales</h1>
-            
-            <section className={"main-content-legals-2"}>
+
+            <section className={"container text-legals"}>
                 <h1>Politique de confidentialité</h1>
-                <br/>
                 <article>
-                    <h2>I - Informations légales</h2>
+                    <br/>
+                    <h2 className={"second-title-legals"}>I - Informations légales</h2>
                     <p>Le site internet dbs.etu-utc.fr appartient à PAE - Decibels (ci-après dénommée «dBs»), comission
                         de l'association loi 1901 PAE-UTC (Pôle Artistique et Evénementiel de l'Université de
                         Technologie de Compiègne) immatriculé au numéro de siret 53236661400016.</p>
@@ -37,8 +37,7 @@ function Legals(){
                 <br/>
                 <br/>
                 <article>
-                    <h2>II - Définitions</h2>
-                    <br/>
+                    <h2 className={"second-title-legals"}>II - Définitions</h2>
                     <p>Utilisateur : toute personne qui utilise le site de dBs.<br/><br/>CGU : Conditions générales
                         d’utilisation<br/><br/>
                         Donnée à caractère personnel / Donnée personnelle : toute information se rapportant à une
@@ -61,7 +60,7 @@ function Legals(){
                 <br/>
                 <br/>
                 <article>
-                    <h2>III - Objet des présentes CGU</h2>
+                    <h2 className={"second-title-legals"}>III - Objet des présentes CGU</h2>
                     <p>Les présentes Conditions Générales ont pour objet de définir les conditions d’utilisation et de
                         mise à disposition du site et ses services pour l’Utilisateur (ci-après désignées les « CGU»).
                         Tout accès et/ou utilisation du site de dBs suppose l’acceptation des termes des présentes
@@ -86,8 +85,7 @@ function Legals(){
                 <br/>
                 <br/>
                 <article>
-                    <h2>IV - Données à caractère personnel</h2>
-
+                    <h2 className={"second-title-legals"}>IV - Données à caractère personnel</h2>
                     <p>dBs met à disposition des utilisateurs sa Politique de Confidentialité.</p>
 
                     <p>D’une façon générale, l’utilisateur peut visiter le site internet de dBs sans avoir à décliner
@@ -148,8 +146,7 @@ function Legals(){
                 <br/>
                 <br/>
                 <article>
-                    <h2>V - Cookies</h2>
-
+                    <h2 className={"second-title-legals"}>V - Cookies</h2>
                     <p>L’utilisateur est informé qu’un ou plusieurs cookies, pourront être déposés sur son navigateur
                         lors de sa visite sur le site internet de dBs.</p>
 
@@ -188,7 +185,7 @@ function Legals(){
                 <br/>
                 <br/>
                 <article>
-                    <h2>VI - Propriété intellectuelle</h2>
+                    <h2 className={"second-title-legals"}>VI - Propriété intellectuelle</h2>
                     <p>Les contenus de ce site (structure, design, texte, image, animation, logo, logiciel…) sont la
                         propriété exclusive de la commission PAE-Décibels. Toute reproduction totale ou partielle de ce
                         site sans l’autorisation préalable, écrite et expresse de la commission PAE-Décibels est
@@ -203,7 +200,7 @@ function Legals(){
                 <br/>
                 <br/>
                 <article>
-                    <h2>VII - Limitation de responsabilité</h2>
+                    <h2 className={"second-title-legals"}>VII - Limitation de responsabilité</h2>
                     <p>dBs met tout en œuvre pour offrir aux utilisateurs des informations et/ou outils disponibles et
                         vérifiés, mais ne saurait être tenu pour responsable direct ou indirect des erreurs, d’une
                         absence de disponibilité des informations et/ou de la présence de virus sur son site internet.
@@ -221,7 +218,7 @@ function Legals(){
                 <br/>
                 <br/>
                 <article>
-                    <h2>VIII - Comportement de l’utilisateur</h2>
+                    <h2 className={"second-title-legals"}>VIII - Comportement de l’utilisateur</h2>
                     <p>L’utilisateur est seul juge de sa faculté, légale, contractuelle et/ou judiciaire à accéder au
                         site et/ou utiliser le site. À ce titre, en utilisant le Site, l’utilisateur reconnait qu’il ne
                         viole aucune disposition légale, contractuelle ou statutaire.
@@ -248,19 +245,19 @@ function Legals(){
                 <br/>
                 <br/>
                 <article>
-                        <h2>IX - Nullité partielle</h2>
-                        <p>Si l’une des dispositions des CGU est déclarée nulle et sans effet par une décision
-                            définitive rendue par une autorité compétente, les conditions restantes resteront en vigueur
-                            et ne seront pas affectées par une telle déclaration de nullité.</p>
+                    <h2 className={"second-title-legals"}>IX - Nullité partielle</h2>
+                    <p>Si l’une des dispositions des CGU est déclarée nulle et sans effet par une décision
+                        définitive rendue par une autorité compétente, les conditions restantes resteront en vigueur
+                        et ne seront pas affectées par une telle déclaration de nullité.</p>
                 </article>
                 <br/>
                 <br/>
                 <article>
-                        <h2>X - Droit applicable en cas de litiges</h2>
-                        <p>Les CGU, et toute question relative à l’interprétation, à l’exécution ou à l’inexécution de
-                            celles-ci sont régies par les lois françaises, sans préjudice de l’application de la
-                            réglementation communautaire et des traités internationaux en vigueur, le cas échéant.
-                            Tout litige afférent aux CGU sera de la compétence des tribunaux français.</p>
+                    <h2 className={"second-title-legals"}>X - Droit applicable en cas de litiges</h2>
+                    <p>Les CGU, et toute question relative à l’interprétation, à l’exécution ou à l’inexécution de
+                        celles-ci sont régies par les lois françaises, sans préjudice de l’application de la
+                        réglementation communautaire et des traités internationaux en vigueur, le cas échéant.
+                        Tout litige afférent aux CGU sera de la compétence des tribunaux français.</p>
                 </article>
             </section>
 
