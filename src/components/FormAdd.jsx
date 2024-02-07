@@ -155,7 +155,7 @@ const FormAdd = (props) => {
           onChange={(_, { value }) => setValues({ ...values, type: value })}
         />
 
-      <FormButton floated='right' content='Submit' >Valider</FormButton>
+      <FormButton color='green' floated='right' content='Submit' >Valider</FormButton>
     </Form>
   );
 };

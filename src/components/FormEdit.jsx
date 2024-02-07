@@ -155,7 +155,7 @@ const FormEdit = (props) => {
             onChange={handleChange}
             value={values.reason}  // Correction : Utilisation de values au lieu de props
         />
-      <FormButton floated='right' content='Submit'>Valider</FormButton>
+      <FormButton color='green' floated='right' content='Submit'>Valider</FormButton>
     </Form>
   );
 };
