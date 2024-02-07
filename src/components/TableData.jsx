@@ -342,13 +342,19 @@ const handleCheckboxChange = (itemId) => {
 };
 
 
-
-
 const [sort_state, dispatch] = React.useReducer(sortColumns, {
     column: null,
     data: filteredData,
     direction: null,
   })
+
+const handleDeselectButton = () => {
+    setSelectedItemForQuantity(null);
+    setSelectedItems([]);
+    setQuantity(0);
+    setCheckedItems({});
+};
+
   const { column, data, direction } = sort_state
   return (
     <>
@@ -360,7 +366,12 @@ const [sort_state, dispatch] = React.useReducer(sortColumns, {
             {selectedItems.length === 0 ? null  :<>
                 <TableSelectedItems tab={selectedItems} />
                 <div className={"export-button-selected"}>
-                    <Button  content='Export de la sélection' onClick={exportToExcelSelected} />
+                    <div className="export-button-selected-button">
+                        <Button   content='Export de la sélection' onClick={exportToExcelSelected} />
+                    </div>
+                    <div className="export-button-selected-button">
+                        <Button  content='Tout déselectionner' onClick={handleDeselectButton} />
+                    </div>
                 </div>
 
             </>

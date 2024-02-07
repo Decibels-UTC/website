@@ -21,10 +21,18 @@ p{
 }
 
 .export-button-selected{
+    display: flex;
+    flex-direction: column;
     height: 20%;
     margin-left: 2%;
     display: flex;
+    justify-content: space-between;
 }
+
+.export-button-selected-button{
+    margin: 1%;
+}
+
 
 .info-table-wrapper{
     display: flex;
