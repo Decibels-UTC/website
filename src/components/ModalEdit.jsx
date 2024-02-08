@@ -9,7 +9,7 @@ import {
 import CardRecap from "./CardRecap";
 import FormEdit from "./FormEdit";
 
-function exampleReducer(state, action) {
+function Reducer(state, action) {
   switch (action.type) {
     case 'close':
       return { open: false }
@@ -22,7 +22,7 @@ function exampleReducer(state, action) {
 
 function  ModalEdit(props){
 
-  const [state, dispatch] = React.useReducer(exampleReducer, {
+  const [state, dispatch] = React.useReducer(Reducer, {
     open: false,
     size: undefined,
   })
