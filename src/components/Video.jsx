@@ -4,7 +4,7 @@ import { Link } from 'react-scroll';
 const VideoComponent = (props) => {
   return (
     <div>
-      <video width={props.width} height={props.height} autoPlay loop muted>
+      <video className={props.className} width={props.width} height={props.height} autoPlay loop muted>
         <source src={props.src} type="video/mp4" />
         Votre navigateur ne supporte pas la balise vidéo.
       </video>
