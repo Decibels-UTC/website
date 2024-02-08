@@ -26,7 +26,7 @@ function ModalAdd(props) {
   });
   const { open, size } = state;
 
-  const [formData, setFormData] = useState({}); // Nouvel état pour stocker les valeurs du formulaire
+  const [formData, setFormData] = useState({});
 
 
   return (
@@ -48,8 +48,8 @@ function ModalAdd(props) {
             <FormAdd
             submission={props.submission}
             className={'form-edit'}
-            onSubmit={(formValues) => setFormData(formValues)} // Passer la fonction de mise à jour de l'état local
-            closeModal={() => dispatch({ type: 'close' })} // Ajoutez cette ligne
+            onSubmit={(formValues) => setFormData(formValues)} 
+            closeModal={() => dispatch({ type: 'close' })} 
           />
           </div>
         </ModalContent>
