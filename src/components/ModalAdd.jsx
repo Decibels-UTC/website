@@ -8,7 +8,7 @@ import {
 } from 'semantic-ui-react';
 import FormAdd from './FormAdd';
 
-function exampleReducer(state, action) {
+function Reducer(state, action) {
   switch (action.type) {
     case 'close':
       return { open: false };
@@ -20,7 +20,7 @@ function exampleReducer(state, action) {
 }
 
 function ModalAdd(props) {
-  const [state, dispatch] = React.useReducer(exampleReducer, {
+  const [state, dispatch] = React.useReducer(Reducer, {
     open: false,
     size: undefined,
   });
@@ -46,16 +46,14 @@ function ModalAdd(props) {
             <br />
 
             <FormAdd
+            submission={props.submission}
             className={'form-edit'}
             onSubmit={(formValues) => setFormData(formValues)} // Passer la fonction de mise à jour de l'état local
+            closeModal={() => dispatch({ type: 'close' })} // Ajoutez cette ligne
           />
           </div>
         </ModalContent>
-        <ModalActions>
-          <Button negative onClick={() => dispatch({ type: 'close' })}>
-            Fermer
-          </Button>
-        </ModalActions>
+
       </Modal>
     </>
   );

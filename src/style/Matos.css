@@ -32,7 +32,17 @@ p{
 .export-button-selected-button{
     margin: 1%;
 }
+.form-add-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
 
+.form-edit-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
 
 .info-table-wrapper{
     display: flex;

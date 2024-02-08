@@ -67,7 +67,8 @@ const FormEdit = (props) => {
         .then(response => response.json())
         .then(updatedData => {
           console.log("Données mises à jour :", updatedData);
-          window.location.reload();
+          props.submission();
+          props.closeModal();
         })
         .catch(error => {
           console.error("Erreur lors de la mise à jour :", error);
@@ -155,7 +156,12 @@ const FormEdit = (props) => {
             onChange={handleChange}
             value={values.reason}  // Correction : Utilisation de values au lieu de props
         />
-      <FormButton color='green' floated='right' content='Submit'>Valider</FormButton>
+        <div className={"form-edit-actions"}>
+            <FormButton color='green' floated='right' content='Submit'>Valider</FormButton>
+            <FormButton color='red' floated='right' onClick={props.closeModal}>Fermer</FormButton>
+        </div>
+
+
     </Form>
   );
 };

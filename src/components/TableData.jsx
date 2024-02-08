@@ -27,7 +27,6 @@ function TableData() {
   const [showDeleted, setShowDeleted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedState, setSelectedState] = useState(null);
-  const [filteredDataCombined, setFilteredDataCombined] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [checkedItems, setCheckedItems] = useState({});
   const [totalItems, setTotalItems] = useState(0);
@@ -36,7 +35,8 @@ function TableData() {
   const [totalPower, setTotalPower] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [selectedItemForQuantity, setSelectedItemForQuantity] = useState(null);
- const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const token = localStorage.getItem('token');
 
     const openQuantityModal = (item) => {
       setSelectedItemForQuantity(item);
@@ -49,10 +49,77 @@ function TableData() {
       setQuantity(event.target.value);
     };
 
+const handleSubmission = () => {
+  // Reset all filters and showDeleted state
+  setSelectedCategory(null);
+  setSelectedState(null);
+  setShowDeleted(false);
+  setCheckedItems({});
+  setSelectedItems([]);
+  setState({ isLoading: false, results: [], value: '' });
+
+  // Fetch fresh data from the API
+  fetch(process.env.REACT_APP_API_URL, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  })
+  .then((resp) => resp.json())
+  .then(function (data) {
+    // Update the table data and filtered data
+    setTableData(data);
+    setFilteredData(data.filter(item => showDeleted ? item.removed !== null : item.removed === null));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+};
+
+const applyFilters = (rawData) => {
+  let filteredData = rawData;
+
+  // Appliquer le filtre par catégorie
+  if (selectedCategory) {
+    filteredData = filteredData.filter(item => item.type === selectedCategory);
+  }
+
+  // Appliquer le filtre par état
+  if (selectedState) {
+    filteredData = filteredData.filter(item => item.state === selectedState);
+  }
+
+  // Appliquer le filtre par éléments supprimés
+  if (!showDeleted) {
+    filteredData = filteredData.filter(item => !item.removed);
+  }
+
+  // Appliquer le filtre de recherche
+  if (state.value) {
+    const re = new RegExp(_.escapeRegExp(state.value), 'i');
+    filteredData = filteredData.filter(item => re.test(item.name) || re.test(item.brand));
+  }
+
+  return filteredData;
+};
+
+const handleSubmissionEdit = () => {
+  fetch(process.env.REACT_APP_API_URL, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  })
+  .then((resp) => resp.json())
+  .then(function (data) {
+    setTableData(data);
+    setFilteredData(applyFilters(data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+};
 
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     fetch(process.env.REACT_APP_API_URL, {
          headers: {
             'Authorization': `Token ${token}`
@@ -116,7 +183,7 @@ function convertDateFormat(isoDateString) {
 };
   const handleResultSelect = (e, { result }) => setState({ value: result.title });
 
-const handleQuantitySubmit = useCallback((event) => {
+    const handleQuantitySubmit = useCallback((event) => {
   event.preventDefault();
   if (!isNaN(quantity) && quantity >=  1) {
     const existingItemIndex = selectedItems.findIndex(item => item.id === selectedItemForQuantity.id);
@@ -132,9 +199,9 @@ const handleQuantitySubmit = useCallback((event) => {
     console.error('La valeur de la quantité doit être un nombre entier supérieur ou égal à  1.');
   }
 }, [selectedItemForQuantity, closeQuantityModal, quantity, selectedItems]);
-const handleCancelSelection = useCallback(() => {
-  setSelectedItems(prevSelectedItems => prevSelectedItems.filter(item => item.id !== selectedItemForQuantity.id));
-  setCheckedItems(prevCheckedItems => {
+    const handleCancelSelection = useCallback(() => {
+    setSelectedItems(prevSelectedItems => prevSelectedItems.filter(item => item.id !== selectedItemForQuantity.id));
+    setCheckedItems(prevCheckedItems => {
     const updatedCheckedItems = { ...prevCheckedItems };
     delete updatedCheckedItems[selectedItemForQuantity.id];
     return updatedCheckedItems;
@@ -185,7 +252,6 @@ const handleCategoryChange = (e, { value }) => {
       );
       setShowDeleted(tempShowDeleted);
       setFilteredData(filteredByCategory);
-      setFilteredDataCombined(filteredByCategory);
       }
 
     };
@@ -208,10 +274,10 @@ const handleStateChange = (e, { value }) => {
 
             setShowDeleted(tempShowDeleted);
             setFilteredData(filteredByState);
-            setFilteredDataCombined(filteredByState);
         }
 
     };
+
 function sortColumns(sort_state, action) {
   switch (action.type) {
     case 'CHANGE_SORT':
@@ -358,6 +424,12 @@ const [sort_state, dispatch] = React.useReducer(sortColumns, {
     data: filteredData,
     direction: null,
   })
+    useEffect(() => {
+  dispatch({ type: 'UPDATE_DATA', data: filteredData });
+}, [filteredData, dispatch]);
+
+
+
 
 const handleDeselectButton = () => {
     setSelectedItemForQuantity(null);
@@ -437,6 +509,10 @@ const handleDeselectButton = () => {
                 />
             <Button icon={"delete"} onClick={() => handleResetFilterState()} />
               </div>
+          {showDeleted ? null :
+          <div className={""}>
+           <ModalAdd submission={handleSubmission} />
+          </div>}
          </div>
 
             <Button content='Export' onClick={exportToExcel} />
@@ -485,8 +561,8 @@ const handleDeselectButton = () => {
                   <>
               <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
               <TableCell>
-                 <ModalEdit item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
-                 <ModalDelete item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
+                 <ModalEdit submission={handleSubmissionEdit} item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
+                 <ModalDelete submission={handleSubmission} item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
               </TableCell>
               </>
               }
@@ -494,10 +570,7 @@ const handleDeselectButton = () => {
           ))}
         </TableBody>
       </Table>
-      {showDeleted ? null :
-      <div className={"modal-add-wrapper"}>
-       <ModalAdd />
-      </div>}
+
     </>
   );
 }

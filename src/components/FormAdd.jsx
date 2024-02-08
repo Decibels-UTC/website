@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 import {
-  FormInput,
-  FormSelect,
-  FormButton,
-  Form,
+    FormInput,
+    FormSelect,
+    FormButton,
+    Form, ModalActions,
 } from 'semantic-ui-react';
 
 const options1 = [
@@ -75,7 +75,8 @@ const FormAdd = (props) => {
           .then(response => response.json())
           .then(data => {
             console.log('Réponse de l\'API :', data);
-            window.location.reload();
+            props.submission();
+            props.closeModal();
           })
           .catch(error => {
             console.error('Erreur lors de la requête :', error);
@@ -154,8 +155,14 @@ const FormAdd = (props) => {
           name='type'
           onChange={(_, { value }) => setValues({ ...values, type: value })}
         />
+        <ModalActions>
+            <div className={"form-add-actions"}>
+                <FormButton color='green' floated='right' content='Submit'>Valider</FormButton>
+                <FormButton color='red' floated='right' onClick={props.closeModal}>Annuler</FormButton>
+            </div>
 
-      <FormButton color='green' floated='right' content='Submit' >Valider</FormButton>
+        </ModalActions>
+
     </Form>
   );
 };
