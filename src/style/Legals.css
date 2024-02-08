@@ -9,6 +9,10 @@
     margin-left: 0%;
 }
 
+.text-legals > article > p{
+    color: white;
+}
+
 .second-title-legals{
     padding-bottom: 10px;
 }
