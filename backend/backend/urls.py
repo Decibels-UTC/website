@@ -23,6 +23,8 @@ urlpatterns = [
     path('api/', ItemView.as_view(), name="Main"),
     path('api/items/<int:pk>/', ItemView.as_view(), name='item-update'),
     path('api/login/', LoginView.as_view(), name='login'),
+    path('api/user/', UserView.as_view(), name='user info'),
     path('api/logout/', LogoutView.as_view(), name='logout'),
+    path('api/history/', HistoryView.as_view(), name="historique"),
     path('api/verify-token/', VerifyTokenView.as_view(), name='verify-token'),
 ]

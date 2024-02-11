@@ -1,31 +1,34 @@
-// AuthContext.js
+// UserContext.js
 import React, { createContext, useState, useEffect } from 'react';
 
-export const AuthContext = createContext();
+export const UserContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const UserProvider = ({ children }) => {
  const [isLoading, setIsLoading] = useState(true);
- const [isAuthenticated, setIsAuthenticated] = useState(false);
+ const [userId, setUserId] = useState(1);
 
 useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
-      verifyToken(token).then((valid) => {
-        setIsAuthenticated(valid);
+    const user_id = sessionStorage.getItem('user_id');
+    if (user_id) {
+      setUserId(user_id);
+      setIsLoading(false);
+    } else if(token){
+      getUserId(token).then((valid) => {
+        setUserId(valid);
         setIsLoading(false);
       }).catch((error) => {
         console.error('Erreur lors de la vérification du token:', error);
         setIsLoading(false);
       });
-    } else {
+    }else{
       setIsLoading(false);
     }
  }, []);
 
- 
- const verifyToken = async (token) => {
+ const getUserId = async (token) => {
  try {
-    const response = await fetch(process.env.REACT_APP_API_URL+'verify-token/', {
+    const response = await fetch(process.env.REACT_APP_API_URL+'user/', {
       method: 'GET',
       headers: {
         'Authorization': `Token ${token}`, 
@@ -34,15 +37,16 @@ useEffect(() => {
     if (!response.ok) {
       throw new Error('Token invalid');
     }
-    return true;
+    const data = await response.json();
+    return data.id;
  } catch (error) {
     console.log("une erreur est survenue");
     return false;
  }
 };
  return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <UserContext.Provider value={{ userId, setUserId }}>
       {children}
-    </AuthContext.Provider>
+    </UserContext.Provider>
  );
 };

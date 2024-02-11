@@ -1,4 +1,5 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState, useContext} from 'react';
+import {UserContext} from "../context/UserContext";
 import * as XLSX from 'xlsx';
 import {
     Search,
@@ -21,6 +22,7 @@ import ModalFailed from "./ModalFailed";
 import TableSelectedItems from "./TableSelectedItems";
 
 function TableData() {
+  const {userId} = useContext(UserContext);
   const [state, setState] = useState({ isLoading: false, results: [], value: '' });
   const [tableData, setTableData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -430,7 +432,6 @@ const [sort_state, dispatch] = React.useReducer(sortColumns, {
 
 
 
-
 const handleDeselectButton = () => {
     setSelectedItemForQuantity(null);
     setSelectedItems([]);
@@ -509,12 +510,11 @@ const handleDeselectButton = () => {
                 />
             <Button icon={"delete"} onClick={() => handleResetFilterState()} />
               </div>
-          {showDeleted ? null :
+          {showDeleted || userId === 2 ? null:
           <div className={""}>
            <ModalAdd submission={handleSubmission} />
           </div>}
          </div>
-
             <Button content='Export' onClick={exportToExcel} />
          </div>
 
@@ -534,10 +534,21 @@ const handleDeselectButton = () => {
             <TableHeaderCell>Modification</TableHeaderCell>
             <TableHeaderCell sorted={column === 'creation' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'creation' })}>Date d'ajout</TableHeaderCell>
             {showDeleted ? <TableHeaderCell sorted={column === 'removed' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'removed' })} >Date de suppression</TableHeaderCell> :
-                <>
+                
+                null
+            }
+            {!showDeleted && userId!==2 ? <>
                     <TableHeaderCell  sorted={column === 'modification_date' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'modification_date' })}>Date de modification</TableHeaderCell>
                     <TableHeaderCell>Actions</TableHeaderCell>
-                </>
+                </> :
+                
+                null
+            }
+            {!showDeleted && userId===2 ? <>
+                    <TableHeaderCell  sorted={column === 'modification_date' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'modification_date' })}>Date de modification</TableHeaderCell>
+                    
+                </> :
+                null
             }
           </TableRow>
         </TableHeader>
@@ -558,13 +569,19 @@ const handleDeselectButton = () => {
               <TableCell>{item.modification_reason ? item.modification_reason : '/'}</TableCell>
               <TableCell>{convertDateFormat(item.creation)}</TableCell>
               {showDeleted ? <TableCell>{convertDateFormat(item.removed)}</TableCell> :
-                  <>
+                  null
+              }
+              {!showDeleted && userId !==2  ? <>
               <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
               <TableCell>
                  <ModalEdit submission={handleSubmissionEdit} item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
                  <ModalDelete submission={handleSubmission} item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
               </TableCell>
-              </>
+              </> : null  
+              }
+              {!showDeleted && userId ===2  ? <>
+              <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
+              </> : null  
               }
             </TableRow>
           ))}

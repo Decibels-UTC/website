@@ -33,4 +33,7 @@ class LoginSerializer(serializers.Serializer):
 
 
 
-
+class HistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = History
+        fields = ['date','user','action']

@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { Form, FormInput, Button } from 'semantic-ui-react';
 import {AuthContext} from "../context/AuthContext";
+import {UserContext} from "../context/UserContext";
 import {useNavigate} from "react-router-dom";
 
 function LoginForm() {
@@ -8,6 +9,8 @@ function LoginForm() {
  const [password, setPassword] = useState('');
  const [error, setError] = useState(null);
  const {isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+ const {userId, setUserId } = useContext(UserContext);
+
 
  const handleInputChange = (e, { name, value }) => {
     if (name === 'username') {
@@ -78,6 +81,9 @@ useEffect(() => {
       const data = await response.json();
       setIsAuthenticated(true);
       localStorage.setItem('token', data.token);
+      sessionStorage.setItem('user_id', data.id);
+      console.log(data.id);
+      setUserId(data.id);
        navigate('/inventory');
     } catch (error) {
         console.log("raté")
