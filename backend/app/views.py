@@ -23,6 +23,8 @@ from django.contrib.auth.models import User, update_last_login
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.decorators import api_view, permission_classes
 
+session_time = 3 # amount of hours 
+
 class CsrfExemptSessionAuthentication(SessionAuthentication):
     def enforce_csrf(self, request):
         return  # Ne rien faire pour ignorer la v  rification CSRF
@@ -56,7 +58,7 @@ class VerifyTokenView(APIView):
         try:
             token_obj = AuthToken.objects.get(token=token_value)
             # Check if the token has expired
-            if token_obj.created + timedelta(hours=1) > dj_timezone.now():
+            if token_obj.created + timedelta(hours=session_time) > dj_timezone.now():
                 return Response({'Session valid': "valide"}, status=status.HTTP_200_OK)
             else:
                 # Token has expired, delete it
@@ -97,7 +99,7 @@ class UserView(APIView):
             try:
                 token_obj = AuthToken.objects.get(token=token_value)
                 # Check if the token has expired
-                if token_obj.created + timedelta(hours=1) > dj_timezone.now():
+                if token_obj.created + timedelta(hours=session_time) > dj_timezone.now():
                     user = User.objects.get(id=token_obj.user_id)
                     return Response({'username':user.username, 'id':user.id, 'is_staff':user.is_staff, 'is_superuser': user.is_superuser}, status=status.HTTP_200_OK)
                 else:
@@ -116,7 +118,7 @@ class ItemView(APIView):
             try:
                 token = AuthToken.objects.get(token=token_key)
 
-                if token.created + timedelta(hours=1) > dj_timezone.now():
+                if token.created + timedelta(hours=session_time) > dj_timezone.now():
                     output = [
                         {
                             "id": item.id,
@@ -153,7 +155,7 @@ class ItemView(APIView):
                 if user.id == 2: 
                     return Response({'response' :'unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
 
-                if token.created + timedelta(hours=1) > dj_timezone.now():
+                if token.created + timedelta(hours=session_time) > dj_timezone.now():
                     serializer = ItemSerializer(data=request.data)
                     if serializer.is_valid(raise_exception=True):
                         serializer.save()
@@ -181,7 +183,7 @@ class ItemView(APIView):
                         if user.id == 2: 
                             return Response({'response' :'unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
 
-                        if token.created + timedelta(hours=1) > dj_timezone.now():
+                        if token.created + timedelta(hours=session_time) > dj_timezone.now():
                             try:
                                 item = Item.objects.get(pk=pk)
                             except Item.DoesNotExist:
@@ -264,7 +266,7 @@ class HistoryView(APIView):
             try:
                 token = AuthToken.objects.get(token=token_key)
 
-                if token.created + timedelta(hours=1) > dj_timezone.now():
+                if token.created + timedelta(hours=session_time) > dj_timezone.now():
                     output = [
                         {
                             "action": item.action,
