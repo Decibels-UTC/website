@@ -195,12 +195,12 @@ class ItemView(APIView):
                             if (request.data.get("type") != None):
                                 item.type = request.data.get("type")
                             if (request.data.get("quantity") != None):
-                                item.quantity = request.data.get("quantity")
-                                if (item.quantity == 0):
+                                item.quantity = int(request.data.get("quantity"))
+                                if item.quantity == 0:
                                     item.removed = datetime.now(pytz.UTC)
                             if (request.data.get("modification_reason") != None):
                                 item.modification_reason = request.data.get("modification_reason")
-                                if item.modification_reason == "item deleted":
+                                if item.modification_reason == "item deleted" or item.quantity == 0:
                                     item.removed = datetime.now(pytz.UTC)
                                     history = HistorySerializer(
                                         data={'user': user.username,
@@ -214,10 +214,18 @@ class ItemView(APIView):
                                     history.is_valid(raise_exception=True)
                                     history.save()
                             else:
-                                history = HistorySerializer(data={'user': user.username,
-                                                                  'action': f"A modifié un item : {request.data.get('name')}"})
-                                history.is_valid(raise_exception=True)
-                                history.save()
+                                if item.quantity != 0:
+                                    history = HistorySerializer(data={'user': user.username,
+                                                                    'action': f"A modifié un item : {request.data.get('name')}"})
+                                    history.is_valid(raise_exception=True)
+                                    history.save()
+                                else:
+                                    history = HistorySerializer(
+                                        data={'user': user.username,
+                                              'action': f"A supprimé un item : {request.data.get('name')}"})
+                                    history.is_valid(raise_exception=True)
+                                    history.save()
+
                             if (request.data.get("state") != None):
                                 item.state = request.data.get("state")
                             if (request.data.get("power") != None):
