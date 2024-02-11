@@ -41,8 +41,10 @@ class LoginView(APIView):
         token_value = str(uuid.uuid4())
         # Create a new AuthToken instance with the generated token
         token = AuthToken.objects.create(user=user, token=token_value)
-        return Response({'token': token.token}, status=status.HTTP_200_OK)
+        return Response({'token': token.token, 'username':user.username, 'id':user.id, 'is_staff':user.is_staff, 'is_superuser': user.is_superuser}, status=status.HTTP_200_OK)
+    
 class VerifyTokenView(APIView):
+
     authentication_classes = (CsrfExemptSessionAuthentication,)
 
     def get(self, request):
@@ -62,6 +64,7 @@ class VerifyTokenView(APIView):
                 return Response({'error': 'Token expired'}, status=status.HTTP_401_UNAUTHORIZED)
         except AuthToken.DoesNotExist:
             return Response({'error': 'Token does not exist'}, status=status.HTTP_401_UNAUTHORIZED)
+
 class LogoutView(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication,)
 
@@ -83,7 +86,26 @@ class LogoutView(APIView):
             print(f"Error deleting token: {e}")
             return Response({'detail': 'An error occurred while trying to delete the token.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class UserView(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication,)
+    def get(self, request):
+            token_header = request.META.get('HTTP_AUTHORIZATION', '')
+            if not token_header.startswith('Token '):
+                return Response({'error': 'Invalid token header format'}, status=status.HTTP_401_UNAUTHORIZED)
 
+            token_value = token_header[6:]  # Remove 'Token ' from the beginning
+            try:
+                token_obj = AuthToken.objects.get(token=token_value)
+                # Check if the token has expired
+                if token_obj.created + timedelta(hours=1) > dj_timezone.now():
+                    user = User.objects.get(id=token_obj.user_id)
+                    return Response({'username':user.username, 'id':user.id, 'is_staff':user.is_staff, 'is_superuser': user.is_superuser}, status=status.HTTP_200_OK)
+                else:
+                    # Token has expired, delete it
+                    token_obj.delete()
+                    return Response({'error': 'Token expired'}, status=status.HTTP_401_UNAUTHORIZED)
+            except AuthToken.DoesNotExist:
+                return Response({'error': 'Token does not exist'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class ItemView(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication,)
@@ -127,10 +149,17 @@ class ItemView(APIView):
             token_key = auth_header[6:] # Remove 'Token ' prefix
             try:
                 token = AuthToken.objects.get(token=token_key)
+                user = User.objects.get(id=token.user_id)
+                if user.id == 2: 
+                    return Response({'response' :'unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+
                 if token.created + timedelta(hours=1) > dj_timezone.now():
                     serializer = ItemSerializer(data=request.data)
                     if serializer.is_valid(raise_exception=True):
                         serializer.save()
+                        history = HistorySerializer(data={'user':user.username, 'action':f"A ajouté un item : {request.data.get('name')}"})
+                        history.is_valid(raise_exception=True)
+                        history.save()
                         return Response(serializer.data)
                 else:
                     print("1")
@@ -148,6 +177,10 @@ class ItemView(APIView):
                     token_key = auth_header[6:]
                     try:
                         token = AuthToken.objects.get(token=token_key)
+                        user = User.objects.get(id=token.user_id)
+                        if user.id == 2: 
+                            return Response({'response' :'unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+
                         if token.created + timedelta(hours=1) > dj_timezone.now():
                             try:
                                 item = Item.objects.get(pk=pk)
@@ -169,6 +202,22 @@ class ItemView(APIView):
                                 item.modification_reason = request.data.get("modification_reason")
                                 if item.modification_reason == "item deleted":
                                     item.removed = datetime.now(pytz.UTC)
+                                    history = HistorySerializer(
+                                        data={'user': user.username,
+                                              'action': f"A supprimé un item : {request.data.get('name')}"})
+                                    history.is_valid(raise_exception=True)
+                                    history.save()
+                                else:
+                                    history = HistorySerializer(
+                                        data={'user': user.username,
+                                              'action': f"A modifié un item : {request.data.get('name')}"})
+                                    history.is_valid(raise_exception=True)
+                                    history.save()
+                            else:
+                                history = HistorySerializer(data={'user': user.username,
+                                                                  'action': f"A modifié un item : {request.data.get('name')}"})
+                                history.is_valid(raise_exception=True)
+                                history.save()
                             if (request.data.get("state") != None):
                                 item.state = request.data.get("state")
                             if (request.data.get("power") != None):
@@ -197,3 +246,29 @@ class ItemView(APIView):
                         raise AuthenticationFailed('Invalid token')
                 else:
                     raise AuthenticationFailed('Authentication credentials were not provided')
+
+class HistoryView(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication,)
+    def get(self, request):
+        auth_header = request.META.get('HTTP_AUTHORIZATION')
+        if auth_header and auth_header.startswith('Token '):
+            token_key = auth_header[6:]
+            try:
+                token = AuthToken.objects.get(token=token_key)
+
+                if token.created + timedelta(hours=1) > dj_timezone.now():
+                    output = [
+                        {
+                            "action": item.action,
+                            "user": item.user,
+                            "date": item.date,
+                        }
+                        for item in History.objects.all()
+                    ]
+                    return Response(output)
+                else:
+                    raise AuthenticationFailed('Token has expired')
+            except AuthToken.DoesNotExist:
+                raise AuthenticationFailed('Invalid token')
+        else:
+            raise AuthenticationFailed('Authentication credentials were not provided')

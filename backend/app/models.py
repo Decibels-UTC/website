@@ -43,7 +43,10 @@ class Item(models.Model):
 
 
 
-
+class History(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    user = models.CharField(max_length = 50, null=True, blank=True)
+    action = models.CharField(max_length = 500, null=True, blank=True)
 
 
 
