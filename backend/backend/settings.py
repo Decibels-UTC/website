@@ -28,6 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+
 ALLOWED_HOSTS = ['dbsapi.lchappuis.fr', 'localhost', 'dbs.etu-utc.fr']
 CSRF_TRUSTED_ORIGINS = [
     'https://dbsapi.lchappuis.fr',
