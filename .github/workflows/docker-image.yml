@@ -50,6 +50,6 @@ jobs:
                        -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
                        -e DATABASE_PORT=${{ secrets.DATABASE_PORT }} \
                        -e SECRET_KEY=${{ secrets.SECRET_KEY }} \
-                       -p  3003:3003 \
+                       -p  3002:3002 \
                        -d --restart always --name dbs-website \
                        ${{ secrets.DOCKER_USERNAME }}/dbs-website:latest
