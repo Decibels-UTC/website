@@ -35,7 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 STATIC_URL = '/django_static/'
-STATIC_ROOT = '/home/leo/website/backend/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 
