@@ -477,7 +477,7 @@ const handleDeselectButton = () => {
         </Modal.Content>
       </Modal>
 
-     <div className='main-content-wrapper'   >
+     <div className='main-content-wrapper'>
       <div className={"wrapper-export"}>
           <div className={"wrapper-options-tabledata"} >
               <Search
