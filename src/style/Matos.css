@@ -116,6 +116,12 @@ p{
     }
 
 
+    .main-content-wrapper{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
 }
 
 
