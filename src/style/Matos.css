@@ -121,15 +121,25 @@ p{
     .header-inventory{
         margin-bottom: 10%;
     }
-    .info-table-wrapper{
+    /*.info-table-wrapper{
         visibility: hidden;
     }
 
     .wrapper-options-tabledata{
         margin-top: -19%;
         margin-bottom: 2%;
-    }
+    }*/
 
+
+    .export-button-selected{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 20%;
+        margin-left: 2%;
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 
