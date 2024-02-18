@@ -46,6 +46,8 @@ function TableData() {
   const [price, setPrice] = useState('Prix');
   const [qte, setQte] = useState('Quantité');
   const [action, setAction] = useState('Actions');
+  const [supp, setSuppr] = useState('Date de suppression');
+
 
 
   useEffect(() => {
@@ -56,6 +58,7 @@ function TableData() {
       setPrice("Prix");
       setQte("Quantité");
       setAction("Actions");
+      setSuppr("Date de suppression");
     } else {
       setSelection(<Icon name="tasks" />);
       setRef(<Icon name="address card outline" />);
@@ -63,6 +66,7 @@ function TableData() {
       setPrice(<Icon name="money" />);
       setQte(<Icon name="boxes" />);
       setAction(<Icon name="edit outline" />);
+      setSuppr(<Icon name="delete calendar" />);
     }
   }, [isLargeScreen]); 
 
@@ -581,7 +585,7 @@ const handleDeselectButton = () => {
             <TableHeaderCell sorted={column === 'quantity' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'quantity' })}>{qte}</TableHeaderCell>
             
             {isLargeScreen && <><TableHeaderCell>Modification</TableHeaderCell><TableHeaderCell sorted={column === 'creation' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'creation' })}>Date d'ajout</TableHeaderCell></>}
-            {showDeleted ? <TableHeaderCell sorted={column === 'removed' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'removed' })} >Date de suppression</TableHeaderCell> :
+            {showDeleted ? <TableHeaderCell sorted={column === 'removed' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'removed' })} >{supp}</TableHeaderCell> :
                 
                 null
             }
@@ -637,7 +641,7 @@ const handleDeselectButton = () => {
               </TableCell>
               </> : null  
               }
-              {!showDeleted && userId ===2  ? <>
+              {!showDeleted && userId ===2 &&isLargeScreen ? <>
               <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
               </> : null  
               }
