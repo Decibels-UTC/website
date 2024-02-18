@@ -14,6 +14,16 @@ function TableSelectedItems(props){
   const [itemCountByType, setItemCountByType] = useState({});
   const [totalPower, setTotalPower] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >  1024);
+
+  useEffect(() => {
+      const handleResize = () => {
+          setIsLargeScreen(window.innerWidth >  1024);
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
 
   let items = props.tab;
@@ -22,17 +32,14 @@ function TableSelectedItems(props){
   const categories = ['light', 'son', 'structure', 'autre'];
   const counts = {};
 
-  // Initialiser les comptages pour chaque catégorie
   categories.forEach((category) => {
     counts[category] =  0;
   });
 
-  // Compter les items pour chaque catégorie
   items.forEach((item) => {
     if (categories.includes(item.type)) {
       counts[item.type] += item.quantity;
     } else {
-      // Si le type n'est pas dans la liste des catégories, on peut soit ignorer, soit ajouter à une catégorie 'autre'
       counts['autre'] += item.quantity;
     }
   });
@@ -62,10 +69,13 @@ function TableSelectedItems(props){
             <TableHeader>
               <TableRow>
                 <TableHeaderCell>Items sélectionnés</TableHeaderCell>
+                {isLargeScreen &&
+                <>
                 <TableHeaderCell>Nombre de lights</TableHeaderCell>
                 <TableHeaderCell>Nombre de son</TableHeaderCell>
                 <TableHeaderCell>Nombre de structure</TableHeaderCell>
-                <TableHeaderCell>Nombre autre</TableHeaderCell>
+                <TableHeaderCell>Nombre autre</TableHeaderCell></>}
+
                 <TableHeaderCell>Puissance totale</TableHeaderCell>
                 <TableHeaderCell>Prix total</TableHeaderCell>
               </TableRow>
@@ -74,10 +84,12 @@ function TableSelectedItems(props){
             <TableBody>
               <TableRow>
                 <TableCell>{itemCountByType.son+itemCountByType.structure+itemCountByType.light+itemCountByType.autre}</TableCell>
+                {isLargeScreen &&
+                <>
                 <TableCell>{itemCountByType.light}</TableCell>
                 <TableCell>{itemCountByType.son}</TableCell>
                 <TableCell>{itemCountByType.structure}</TableCell>
-                <TableCell>{itemCountByType.autre}</TableCell>
+                <TableCell>{itemCountByType.autre}</TableCell></>}
                 <TableCell>{totalPower}</TableCell>
                 <TableCell>{totalPrice}</TableCell>
               </TableRow>

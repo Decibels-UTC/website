@@ -39,6 +39,17 @@ function TableData() {
   const [selectedItemForQuantity, setSelectedItemForQuantity] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const token = localStorage.getItem('token');
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >  1024);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLargeScreen(window.innerWidth >  1024);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
 
     const openQuantityModal = (item) => {
       setSelectedItemForQuantity(item);
@@ -442,11 +453,16 @@ const handleDeselectButton = () => {
   const { column, data, direction } = sort_state
   return (
     <>
+      
+
         <div className={"info-table-wrapper"}>
 
-                <div className={"stats"}>
-                    <Stats qte={totalQuantity} items={totalItems} total_price={totalPrice} total_power={totalPower}  />
-                </div>
+        {isLargeScreen &&
+            <div className={"stats"}>
+                <Stats qte={totalQuantity} items={totalItems} total_price={totalPrice} total_power={totalPower} />
+            </div>
+        }
+
             {selectedItems.length === 0 ? null  :<>
                 <TableSelectedItems tab={selectedItems} />
                 <div className={"export-button-selected"}>
@@ -462,6 +478,7 @@ const handleDeselectButton = () => {
 
             }
         </div>
+
 
       <Modal size="small" open={openModal} onClose={closeQuantityModal}>
         <Modal.Header>Entrez la quantité</Modal.Header>
@@ -526,25 +543,31 @@ const handleDeselectButton = () => {
             {showDeleted ? null : <TableHeaderCell>Sélection</TableHeaderCell> }
             <TableHeaderCell sorted={column === 'name' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'name' })}>Référence</TableHeaderCell>
             <TableHeaderCell sorted={column === 'brand' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'brand' })}>Marque</TableHeaderCell>
+            {isLargeScreen &&
+            <>
             <TableHeaderCell>Catégorie</TableHeaderCell>
             <TableHeaderCell>Etat</TableHeaderCell>
+            </>}
             <TableHeaderCell sorted={column === 'power' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'power' })}>Puissance</TableHeaderCell>
             <TableHeaderCell sorted={column === 'price' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'price' })}>Prix</TableHeaderCell>
             <TableHeaderCell sorted={column === 'quantity' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'quantity' })}>Quantité</TableHeaderCell>
-            <TableHeaderCell>Modification</TableHeaderCell>
-            <TableHeaderCell sorted={column === 'creation' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'creation' })}>Date d'ajout</TableHeaderCell>
+            
+            {isLargeScreen && <><TableHeaderCell>Modification</TableHeaderCell><TableHeaderCell sorted={column === 'creation' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'creation' })}>Date d'ajout</TableHeaderCell></>}
             {showDeleted ? <TableHeaderCell sorted={column === 'removed' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'removed' })} >Date de suppression</TableHeaderCell> :
                 
                 null
             }
-            {!showDeleted && userId!==2 ? <>
+            {!showDeleted && userId!==2 &&isLargeScreen ? <>
                     <TableHeaderCell  sorted={column === 'modification_date' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'modification_date' })}>Date de modification</TableHeaderCell>
-                    <TableHeaderCell>Actions</TableHeaderCell>
                 </> :
-                
                 null
             }
-            {!showDeleted && userId===2 ? <>
+            {!showDeleted && userId!==2 ? <>
+                    <TableHeaderCell>Actions</TableHeaderCell>
+                </> :
+                null
+            }
+            {!showDeleted && userId===2 &&isLargeScreen ? <>
                     <TableHeaderCell  sorted={column === 'modification_date' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'modification_date' })}>Date de modification</TableHeaderCell>
                     
                 </> :
@@ -561,18 +584,25 @@ const handleDeselectButton = () => {
                                 onChange={() => handleCheckboxChange(item.id)} /></TableCell> }
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.brand}</TableCell>
+              {isLargeScreen && <>
               <TableCell>{options.find(option => option.value === item.type).text}</TableCell>
-              <TableCell>{options2.find(option => option.value === item.state).text}</TableCell>
+              <TableCell>{options2.find(option => option.value === item.state).text}</TableCell></>}
               <TableCell>{item.power}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>{item.quantity}</TableCell>
+              {isLargeScreen && <>
               <TableCell>{item.modification_reason ? item.modification_reason : '/'}</TableCell>
-              <TableCell>{convertDateFormat(item.creation)}</TableCell>
+              <TableCell>{convertDateFormat(item.creation)}</TableCell></>}
               {showDeleted ? <TableCell>{convertDateFormat(item.removed)}</TableCell> :
                   null
               }
-              {!showDeleted && userId !==2  ? <>
+              {!showDeleted && userId !==2 &&isLargeScreen ? 
+              <>
               <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
+              </> : null  
+              }
+              {!showDeleted && userId !==2  ? 
+              <>
               <TableCell>
                  <ModalEdit submission={handleSubmissionEdit} item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
                  <ModalDelete submission={handleSubmission} item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
