@@ -10,7 +10,7 @@ import {
     TableCell,
     TableBody,
     Button,
-    Dropdown, Checkbox, Modal, Form, Input
+    Dropdown, Checkbox, Modal, Form, Input, Icon
 } from 'semantic-ui-react';
 import ModalDelete from "./ModalDelete";
 import ModalEdit from "./ModalEdit";
@@ -40,12 +40,39 @@ function TableData() {
   const [quantity, setQuantity] = useState(0);
   const token = localStorage.getItem('token');
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >  1024);
+  const [selection, setSelection] = useState('Sélection');
+  const [ref, setRef] = useState('Référence');
+  const [power, setPower] = useState('Puissance');
+  const [price, setPrice] = useState('Prix');
+  const [qte, setQte] = useState('Quantité');
+  const [action, setAction] = useState('Actions');
+
+
+  useEffect(() => {
+    if (isLargeScreen) {
+      setSelection("Sélection");
+      setRef("Référence");
+      setPower("Puissance");
+      setPrice("Prix");
+      setQte("Quantité");
+      setAction("Actions");
+    } else {
+      setSelection(<Icon name="tasks" />);
+      setRef(<Icon name="address card outline" />);
+      setPower(<Icon name="power cord" />);
+      setPrice(<Icon name="money" />);
+      setQte(<Icon name="boxes" />);
+      setAction(<Icon name="edit outline" />);
+    }
+  }, [isLargeScreen]); 
+
+
+
 
     useEffect(() => {
         const handleResize = () => {
             setIsLargeScreen(window.innerWidth >  1024);
         };
-
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -537,20 +564,21 @@ const handleDeselectButton = () => {
 
 
 
-            <Table striped sortable fixed>
+        <Table striped sortable fixed unstackable>
         <TableHeader>
           <TableRow>
-            {showDeleted ? null : <TableHeaderCell>Sélection</TableHeaderCell> }
-            <TableHeaderCell sorted={column === 'name' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'name' })}>Référence</TableHeaderCell>
-            <TableHeaderCell sorted={column === 'brand' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'brand' })}>Marque</TableHeaderCell>
+            {showDeleted ? null : <TableHeaderCell>{selection}</TableHeaderCell> }
+
+            <TableHeaderCell sorted={column === 'name' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'name' })}>{ref}</TableHeaderCell>
             {isLargeScreen &&
             <>
+            <TableHeaderCell sorted={column === 'brand' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'brand' })}>Marque</TableHeaderCell>
             <TableHeaderCell>Catégorie</TableHeaderCell>
             <TableHeaderCell>Etat</TableHeaderCell>
             </>}
-            <TableHeaderCell sorted={column === 'power' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'power' })}>Puissance</TableHeaderCell>
-            <TableHeaderCell sorted={column === 'price' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'price' })}>Prix</TableHeaderCell>
-            <TableHeaderCell sorted={column === 'quantity' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'quantity' })}>Quantité</TableHeaderCell>
+            <TableHeaderCell sorted={column === 'power' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'power' })}>{power}</TableHeaderCell>
+            <TableHeaderCell sorted={column === 'price' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'price' })}>{price}</TableHeaderCell>
+            <TableHeaderCell sorted={column === 'quantity' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'quantity' })}>{qte}</TableHeaderCell>
             
             {isLargeScreen && <><TableHeaderCell>Modification</TableHeaderCell><TableHeaderCell sorted={column === 'creation' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'creation' })}>Date d'ajout</TableHeaderCell></>}
             {showDeleted ? <TableHeaderCell sorted={column === 'removed' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'removed' })} >Date de suppression</TableHeaderCell> :
@@ -563,7 +591,7 @@ const handleDeselectButton = () => {
                 null
             }
             {!showDeleted && userId!==2 ? <>
-                    <TableHeaderCell>Actions</TableHeaderCell>
+                    <TableHeaderCell>{action}</TableHeaderCell>
                 </> :
                 null
             }
@@ -583,8 +611,8 @@ const handleDeselectButton = () => {
                                 checked={!!checkedItems[item.id]}
                                 onChange={() => handleCheckboxChange(item.id)} /></TableCell> }
               <TableCell>{item.name}</TableCell>
-              <TableCell>{item.brand}</TableCell>
               {isLargeScreen && <>
+              <TableCell>{item.brand}</TableCell>
               <TableCell>{options.find(option => option.value === item.type).text}</TableCell>
               <TableCell>{options2.find(option => option.value === item.state).text}</TableCell></>}
               <TableCell>{item.power}</TableCell>
