@@ -65,7 +65,7 @@ function TableSelectedItems(props){
   return(
        <div className={"selected-items"}>
 
-          <Table color='red'>
+          <Table color='red' unstackable>
             <TableHeader>
               <TableRow>
                 <TableHeaderCell>Items sélectionnés</TableHeaderCell>
