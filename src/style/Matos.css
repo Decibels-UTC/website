@@ -71,6 +71,11 @@ p{
 .wrapper-options-tabledata{
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.wrapper-options-tabledata > *{
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .search {
@@ -111,11 +116,19 @@ p{
 }
 
 
+
 @media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
     .header-inventory{
         margin-bottom: 10%;
     }
+    .info-table-wrapper{
+        visibility: hidden;
+    }
 
+    .wrapper-options-tabledata{
+        margin-top: -19%;
+        margin-bottom: 2%;
+    }
 
 }
 
