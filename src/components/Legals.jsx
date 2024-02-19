@@ -32,7 +32,7 @@ function Legals(){
                         decibels@assos.utc.fr
                     </p>
                     <p>Hébergement</p>
-                    <p>OVH - Adresse : 2, rue Kellermann, 59100 Roubaix</p>
+                    <p>Adresse : 11, rue de la 8e division, 60200 Compiègne</p>
                 </article>
                 <br/>
                 <br/>
