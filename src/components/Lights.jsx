@@ -26,7 +26,7 @@ function Lights(){
                     <motion.div className={"container container-light"}
                     whileHover={{scale : 1.1}}
                     >
-                    <h1>Une expérience lumineuse</h1>
+                    <h1>Une expérience <span className="highlight">lumineuse</span></h1>
                     <h5>Décibels s'occupe également des lumières ...</h5>
                   </motion.div>
 

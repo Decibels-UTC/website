@@ -1,5 +1,5 @@
 body{
-  font-family: "Robotto", sans-serif;
+  font-family: "Inter", sans-serif;
   color: beige;
   overflow-x: hidden;
   opacity: 1;
@@ -32,7 +32,11 @@ display: none;
   text-align: center;
 }
 
-
+.highlightdbs{
+  background: linear-gradient(to right, red , rgb(178, 121, 151) , red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 
 .title{
@@ -40,6 +44,9 @@ display: none;
   margin-top: 2%;
   margin-left: 2%;
 }
+
+
+
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
   .title{

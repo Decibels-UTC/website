@@ -17,7 +17,7 @@ function Son(){
                     <motion.div className={"container text-son"}
                     whileHover={{scale : 1.1}}
                     >
-                    <h1>Une expérience du son</h1>
+                    <h1>Une expérience du <span className="highlight">son</span></h1>
                     <h5>Depuis de nombreuses années, dBs est une chance donnée aux étudiants d'avoir un apperçu du monde de la sonorisation.<br/>
 
                     </h5>

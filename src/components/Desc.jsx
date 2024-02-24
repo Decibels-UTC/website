@@ -10,7 +10,7 @@ function Desc() {
   return (
       <>
           <div className="page-desc">
-              <h1 className={"title desc-title"}>Décibels c'est : </h1>
+              <h1 className={"title desc-title"}><span className="highlightdbs">Décibels</span> c'est : </h1>
           </div>
           <div className={"grid-desc"}>
 
@@ -40,7 +40,7 @@ function Desc() {
                   <motion.div className={"container first-container-desc"}
                               whileHover={{scale: 1.1}}
                   >
-                      <h2>Tout au long de l'année...</h2>
+                      <h2>Tout au long de l'<span className="highlight">année</span>...</h2>
                       <h5>Décibels c'est 12 évènnements en A23</h5>
                   </motion.div>
               </div>
@@ -50,7 +50,7 @@ function Desc() {
                   <motion.div className={"container second-container-desc"}
                               whileHover={{scale: 1.1}}
                   >
-                      <h2>Une grande famille</h2>
+                      <h2>Une grande <span className="highlight">famille</span></h2>
                       <h5>Une équipe de plus de 20 personnes ! </h5>
                   </motion.div>
 
@@ -61,7 +61,7 @@ function Desc() {
                   <motion.div className={"container third-container-desc"}
                               whileHover={{scale: 1.1}}
                   >
-                      <h2>Matériel</h2>
+                      <h2><span className="highlight">Matériel</span></h2>
                       <h5>Décibels a amassé au fur et à mesure de son avancement 100 000 euros de matériel son & lumières !</h5>
                   </motion.div>
               </div>
