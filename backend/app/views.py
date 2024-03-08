@@ -54,14 +54,13 @@ class VerifyTokenView(APIView):
         if not token_header.startswith('Token '):
             return Response({'error': 'Invalid token header format'}, status=status.HTTP_401_UNAUTHORIZED)
 
-        token_value = token_header[6:]  # Remove 'Token ' from the beginning
+        token_value = token_header[6:]  
         try:
             token_obj = AuthToken.objects.get(token=token_value)
             # Check if the token has expired
             if token_obj.created + timedelta(hours=session_time) > dj_timezone.now():
                 return Response({'Session valid': "valide"}, status=status.HTTP_200_OK)
             else:
-                # Token has expired, delete it
                 token_obj.delete()
                 return Response({'error': 'Token expired'}, status=status.HTTP_401_UNAUTHORIZED)
         except AuthToken.DoesNotExist:
@@ -75,7 +74,7 @@ class LogoutView(APIView):
         if not token_header.startswith('Token '):
             return Response({'detail': 'Invalid token header format.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        token_value = token_header[6:]  # Retire 'Token ' du début
+        token_value = token_header[6:]  
         print(f"Attempting to delete token: {token_value}")
 
         try:
@@ -95,15 +94,13 @@ class UserView(APIView):
             if not token_header.startswith('Token '):
                 return Response({'error': 'Invalid token header format'}, status=status.HTTP_401_UNAUTHORIZED)
 
-            token_value = token_header[6:]  # Remove 'Token ' from the beginning
+            token_value = token_header[6:]  
             try:
                 token_obj = AuthToken.objects.get(token=token_value)
-                # Check if the token has expired
                 if token_obj.created + timedelta(hours=session_time) > dj_timezone.now():
                     user = User.objects.get(id=token_obj.user_id)
                     return Response({'username':user.username, 'id':user.id, 'is_staff':user.is_staff, 'is_superuser': user.is_superuser}, status=status.HTTP_200_OK)
                 else:
-                    # Token has expired, delete it
                     token_obj.delete()
                     return Response({'error': 'Token expired'}, status=status.HTTP_401_UNAUTHORIZED)
             except AuthToken.DoesNotExist:
@@ -148,7 +145,7 @@ class ItemView(APIView):
         authentication_classes = (CsrfExemptSessionAuthentication,)
         auth_header = request.META.get('HTTP_AUTHORIZATION')
         if auth_header and auth_header.startswith('Token '):
-            token_key = auth_header[6:] # Remove 'Token ' prefix
+            token_key = auth_header[6:] 
             try:
                 token = AuthToken.objects.get(token=token_key)
                 user = User.objects.get(id=token.user_id)
