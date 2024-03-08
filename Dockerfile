@@ -37,9 +37,10 @@ ENV PYTHONIOENCODING=UTF-8
 
 WORKDIR /app/djangoapp/backend
 RUN apk update
-RUN apk add nodejs npm nginx python3-dev mariadb-dev build-base serve
+RUN apk add nodejs npm nginx python3-dev mariadb-dev build-base
 RUN apk add --no-cache python3 py3-pip build-base libffi-dev openssl-dev cargo supervisor mariadb-connector-c-dev pkgconfig
 RUN pip3 install -r requirements.txt --break-system-package
+RUN npm install -g serve
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 
