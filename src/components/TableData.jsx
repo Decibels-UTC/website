@@ -270,12 +270,15 @@ function convertDateFormat(isoDateString) {
     { key: 2, text: 'Son', value: 'son' },
     { key: 3, text: 'Structure', value: 'structure' },
     { key: 4, text: 'Autre', value: 'autre' },
+    {key : 5, text: 'Elec', value: 'elec'},
+    {key : 6, text: 'Secu', value: 'secu'}
   ];
    const options2 = [
     { key: 1, text: 'Neuf', value: 'neuf' },
     { key: 2, text: 'Usé', value: 'use' },
     { key: 3, text: 'Réparable', value: 'reparable' },
     { key: 4, text: 'Cassé', value: 'casse' },
+    { key: 5, text: 'Bien', value: 'bien' },
   ];
 
 const handleCategoryChange = (e, { value }) => {

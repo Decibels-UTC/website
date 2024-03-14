@@ -20,9 +20,12 @@ class Item(models.Model):
         ('son', 'Son'),
         ('structure', 'Structure'),
         ('autre', 'Autre'),
+        ('elec', 'Elec'),
+        ('secu', 'Secu')
     ]
     TYPES_CHOICES2 = [
         ('neuf', 'Neuf'),
+        ('bien', 'Bien'),
         ('use', 'Usé'),
         ('reparable', 'Réparable'),
         ('casse', 'Cassé'),

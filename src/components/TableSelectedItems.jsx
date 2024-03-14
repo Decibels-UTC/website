@@ -29,7 +29,7 @@ function TableSelectedItems(props){
   let items = props.tab;
 
  const countItemsByType = (items) => {
-  const categories = ['light', 'son', 'structure', 'autre'];
+  const categories = ['light', 'son', 'structure', 'autre', 'elec', 'secu'];
   const counts = {};
 
   categories.forEach((category) => {
@@ -74,6 +74,8 @@ function TableSelectedItems(props){
                 <TableHeaderCell>Nombre de lights</TableHeaderCell>
                 <TableHeaderCell>Nombre de son</TableHeaderCell>
                 <TableHeaderCell>Nombre de structure</TableHeaderCell>
+                <TableHeaderCell>Nombre d'elec</TableHeaderCell>
+                <TableHeaderCell>Nombre de secu</TableHeaderCell>
                 <TableHeaderCell>Nombre autre</TableHeaderCell></>}
 
                 <TableHeaderCell>Puissance totale</TableHeaderCell>
@@ -83,12 +85,14 @@ function TableSelectedItems(props){
 
             <TableBody>
               <TableRow>
-                <TableCell>{itemCountByType.son+itemCountByType.structure+itemCountByType.light+itemCountByType.autre}</TableCell>
+                <TableCell>{itemCountByType.son+itemCountByType.structure+itemCountByType.light+itemCountByType.autre+itemCountByType.elec+itemCountByType.secu}</TableCell>
                 {isLargeScreen &&
                 <>
                 <TableCell>{itemCountByType.light}</TableCell>
                 <TableCell>{itemCountByType.son}</TableCell>
                 <TableCell>{itemCountByType.structure}</TableCell>
+                <TableCell>{itemCountByType.elec}</TableCell>
+                <TableCell>{itemCountByType.secu}</TableCell>
                 <TableCell>{itemCountByType.autre}</TableCell></>}
                 <TableCell>{totalPower}</TableCell>
                 <TableCell>{totalPrice}</TableCell>

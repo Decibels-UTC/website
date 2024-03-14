@@ -6,9 +6,13 @@ const options = [
   { key: 'son', text: 'Son', value: 'son' },
   { key: 'autre', text: 'Autre', value: 'autre' },
   { key: 'structure', text: 'Structure', value: 'structure' },
+  { key: 'elec', text: 'Elec', value: 'elec' },
+  { key: 'secu', text: 'Secu', value: 'secu' },
+
 ];
 const options2 = [
   { key: 'neuf', text: 'Neuf', value: 'neuf' },
+  { key: 'bien', text: 'Bien', value: 'bien' },
   { key: 'use', text: 'Usé', value: 'use' },
   { key: 'reparable', text: 'Réparable', value: 'reparable' },
   { key: 'casse', text: 'Cassé', value: 'casse' },
