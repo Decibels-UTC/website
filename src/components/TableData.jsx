@@ -71,8 +71,9 @@ function TableData() {
   }, [isLargeScreen]); 
 
 
+ 
 
-
+  
     useEffect(() => {
         const handleResize = () => {
             setIsLargeScreen(window.innerWidth >  1024);
