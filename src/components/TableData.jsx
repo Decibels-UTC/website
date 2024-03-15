@@ -534,7 +534,7 @@ const handleDeselectButton = () => {
           </Form>
         </Modal.Content>
       </Modal>
-
+      
       <div className={"wrapper-export"}>
           <div className={"wrapper-options-tabledata"} >
               <Search
@@ -573,7 +573,12 @@ const handleDeselectButton = () => {
            <ModalAdd submission={handleSubmission} />
           </div>:null}
          </div>
+         {
+        isAuthenticated?
+        <>
             <Button content='Export' onClick={exportToExcel} />
+        </>:null
+        }
          </div>
 
 
