@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState, useContext} from 'react';
 import {UserContext} from "../context/UserContext";
+import {AuthContext} from "../context/AuthContext";
 import * as XLSX from 'xlsx';
 import {
     Search,
@@ -21,8 +22,11 @@ import ModalSuccess from "./ModalSuccess";
 import ModalFailed from "./ModalFailed";
 import TableSelectedItems from "./TableSelectedItems";
 
+
+
 function TableData() {
   const {userId} = useContext(UserContext);
+  const {isAuthenticated} = useContext(AuthContext);
   const [state, setState] = useState({ isLoading: false, results: [], value: '' });
   const [tableData, setTableData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -47,6 +51,10 @@ function TableData() {
   const [qte, setQte] = useState('Quantité');
   const [action, setAction] = useState('Actions');
   const [supp, setSuppr] = useState('Date de suppression');
+
+
+  console.log(isAuthenticated)
+  console.log(userId)
 
 
 
@@ -560,10 +568,10 @@ const handleDeselectButton = () => {
                 />
             <Button icon={"delete"} onClick={() => handleResetFilterState()} />
               </div>
-          {showDeleted || userId === 2 ? null:
+          {!showDeleted && userId !== 2 && isAuthenticated?
           <div className={""}>
            <ModalAdd submission={handleSubmission} />
-          </div>}
+          </div>:null}
          </div>
             <Button content='Export' onClick={exportToExcel} />
          </div>
@@ -573,7 +581,7 @@ const handleDeselectButton = () => {
         <Table striped sortable fixed unstackable>
         <TableHeader>
           <TableRow>
-            {showDeleted ? null : <TableHeaderCell>{selection}</TableHeaderCell> }
+            {!showDeleted && isAuthenticated ? <TableHeaderCell>{selection}</TableHeaderCell> : null}
 
             <TableHeaderCell sorted={column === 'name' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'name' })}>{ref}</TableHeaderCell>
             {isLargeScreen &&
@@ -592,17 +600,17 @@ const handleDeselectButton = () => {
                 
                 null
             }
-            {!showDeleted && userId!==2 &&isLargeScreen ? <>
+            {!showDeleted && userId !== 2 && isLargeScreen ? <>
                     <TableHeaderCell  sorted={column === 'modification_date' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'modification_date' })}>Date de modification</TableHeaderCell>
                 </> :
                 null
             }
-            {!showDeleted && userId!==2 ? <>
+            { (!showDeleted && userId !== 2 && isAuthenticated) ? <>
                     <TableHeaderCell>{action}</TableHeaderCell>
                 </> :
                 null
             }
-            {!showDeleted && userId===2 &&isLargeScreen ? <>
+            {!showDeleted && userId === 2 && isLargeScreen ? <>
                     <TableHeaderCell  sorted={column === 'modification_date' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'modification_date' })}>Date de modification</TableHeaderCell>
                     
                 </> :
@@ -614,9 +622,9 @@ const handleDeselectButton = () => {
         <TableBody>
           {sort_state.data.map((item, index) => (
             <TableRow key={index}>
-                {showDeleted ? null : <TableCell><Checkbox
+                {!showDeleted && isAuthenticated ? <TableCell><Checkbox
                                 checked={!!checkedItems[item.id]}
-                                onChange={() => handleCheckboxChange(item.id)} /></TableCell> }
+                                onChange={() => handleCheckboxChange(item.id)} /></TableCell> : null}
               <TableCell>{item.name}</TableCell>
               {isLargeScreen && <>
               <TableCell>{item.brand}</TableCell>
@@ -637,7 +645,7 @@ const handleDeselectButton = () => {
               <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
               </> : null  
               }
-              {!showDeleted && userId !==2  ? 
+              {!showDeleted && userId !==2  && isAuthenticated ? 
               <>
               <TableCell>
                  <ModalEdit submission={handleSubmissionEdit} item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} description={item.description} price={item.price} quantity={item.quantity} date={item.creation} />
@@ -645,7 +653,7 @@ const handleDeselectButton = () => {
               </TableCell>
               </> : null  
               }
-              {!showDeleted && userId ===2 &&isLargeScreen ? <>
+              {!showDeleted && userId ===2 && isLargeScreen ? <>
               <TableCell>{convertDateFormat(item.modification_date)}</TableCell>
               </> : null  
               }

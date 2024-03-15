@@ -8,11 +8,7 @@ function Inventory(){
                     <Matos/>
                 </div>
             </body>
-
-
-
             <Footer/>
-
         </>
     );
 }

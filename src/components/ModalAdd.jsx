@@ -53,7 +53,6 @@ function ModalAdd(props) {
           />
           </div>
         </ModalContent>
-
       </Modal>
     </>
   );

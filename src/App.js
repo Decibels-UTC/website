@@ -20,7 +20,8 @@ function App() {
             <Route path="/" element={<Site />} />
             <Route path="legals" element={<MentionLegals />} />
             <Route path="login" element={<Login />} />
-            <Route path="/inventory" element={<ProtectedRoute element={<Inventory/>}/>}/>
+            <Route path="/inventory" element={<Inventory/>}/>
+            {/*<Route path="/inventory" element={<ProtectedRoute element={<Inventory/>}/>}/>*/}
             <Route path="*" element={<NoSite />} />
           </Routes>
         </BrowserRouter>

@@ -2,13 +2,19 @@ import { motion } from "framer-motion"
 import TableData from "./TableData";
 import '../style/Matos.css'
 import LogoutButton from "./LogoutButton";
+import LoginButton from "./LoginButton";
 import {MenuItem, Menu, MenuMenu} from "semantic-ui-react";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import HistoryTable from "./History";
+import {AuthContext} from "../context/AuthContext";
 
 
 
 function Matos(){
+
+    const {isAuthenticated} = useContext(AuthContext);
+    
+
         const [activeItem, setActiveItem] = useState(() => {
             const savedActiveItem = localStorage.getItem('activeItem');
             return savedActiveItem || 'inventaire';
@@ -28,6 +34,9 @@ function Matos(){
                 <h1>Gestion du matériel</h1>
                 {/* menu*/}
                 <Menu secondary>
+
+                    {isAuthenticated?
+                    <>
                     <MenuItem
                         name='inventaire'
                         active={activeItem === 'inventaire'}
@@ -38,9 +47,12 @@ function Matos(){
                         active={activeItem === 'historique'}
                         onClick={handleItemClick}
                     />
+                    </>
+                    :null}
                 </Menu>
                 <div>
-                    <LogoutButton/>
+                    {isAuthenticated?<LogoutButton/>:<LoginButton/>
+                    }
                 </div>
 
             </div>

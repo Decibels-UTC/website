@@ -1,9 +1,12 @@
 import { Button } from 'semantic-ui-react';
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { UserContext } from "../context/UserContext";
+
 
 function LogoutButton() {
  const { setIsAuthenticated } = useContext(AuthContext);
+ const {setUserId} = useContext(UserContext);
 
  const handleLogout = async () => {
     try {
@@ -23,8 +26,10 @@ function LogoutButton() {
       }
       // Supprimer le token du local storage
       localStorage.removeItem('token');
+      localStorage.removeItem('user_id');
+      setUserId(-1);
       setIsAuthenticated(false);
-      window.location.href = '/login';
+      // window.location.href = '/login';
     } catch (error) {
       console.error('Erreur lors de la déconnexion:', error);
     }

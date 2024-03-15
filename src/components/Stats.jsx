@@ -1,12 +1,16 @@
-import React from 'react';
+import {React,useContext} from 'react';
 import {
   StatisticValue,
   StatisticLabel,
   StatisticGroup,
   Statistic,
 } from 'semantic-ui-react';
+import {AuthContext} from "../context/AuthContext";
 
 function Stats(props) {
+  const {isAuthenticated} = useContext(AuthContext);
+
+
   return (
     <div>
 
@@ -18,7 +22,9 @@ function Stats(props) {
           <StatisticValue>{props.qte === null ? 0 : props.qte}</StatisticValue>
           <StatisticLabel>Quantité totale</StatisticLabel>
         </Statistic>
-        <Statistic>
+        {isAuthenticated?
+        <>
+          <Statistic>
           <StatisticValue>{props.total_price === null ? 0 : props.total_price}</StatisticValue>
           <StatisticLabel>Prix total</StatisticLabel>
         </Statistic>
@@ -26,6 +32,9 @@ function Stats(props) {
           <StatisticValue>{props.power === null ? 0 : props.total_power}</StatisticValue>
           <StatisticLabel>Puissance totale</StatisticLabel>
         </Statistic>
+        </> 
+        : null}
+
 
     </div>
   );

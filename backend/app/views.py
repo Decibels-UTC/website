@@ -108,7 +108,7 @@ class UserView(APIView):
 
 class ItemView(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication,)
-    def get(self, request):
+    """ def get(self, request):
         auth_header = request.META.get('HTTP_AUTHORIZATION')
         if auth_header and auth_header.startswith('Token '):
             token_key = auth_header[6:]
@@ -140,7 +140,29 @@ class ItemView(APIView):
             except AuthToken.DoesNotExist:
                 raise AuthenticationFailed('Invalid token')
         else:
-            raise AuthenticationFailed('Authentication credentials were not provided')
+             raise AuthenticationFailed('Authentication credentials were not provided')"""
+        
+    def get(self, request):
+            output = [
+                        {
+                            "id": item.id,
+                            "name": item.name,
+                            "brand": item.brand,
+                            "price": item.price,
+                            "power": item.power,
+                            "type": item.type,
+                            "state": item.state,
+                            "quantity": item.quantity,
+                            "description" : item.description,
+                            "modification_reason": item.modification_reason,
+                            "creation": item.creation,
+                            "removed": item.removed,
+                            "modification_date": item.modification_date,
+                        }
+                        for item in Item.objects.all()
+                    ]
+            return Response(output)
+                
 
     def post(self, request):
         authentication_classes = (CsrfExemptSessionAuthentication,)
