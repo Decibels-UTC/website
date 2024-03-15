@@ -404,8 +404,6 @@ const handleResetFilter = () => {
           );
           setFilteredData(filteredByCategory);
     }else{
-        console.log("coucou")
-        console.log(tableData)
         setFilteredData(tableData);
         const filteredByState = tableData.filter(item => {
             if (showDeleted) {
@@ -582,6 +580,7 @@ const handleDeselectButton = () => {
             <TableHeaderCell sorted={column === 'brand' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'brand' })}>Marque</TableHeaderCell>
             <TableHeaderCell>Catégorie</TableHeaderCell>
             <TableHeaderCell>Etat</TableHeaderCell>
+            <TableHeaderCell>Description</TableHeaderCell>
             </>}
             <TableHeaderCell sorted={column === 'power' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'power' })}>{power}</TableHeaderCell>
             <TableHeaderCell sorted={column === 'price' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'price' })}>{price}</TableHeaderCell>
@@ -622,6 +621,7 @@ const handleDeselectButton = () => {
               <TableCell>{item.brand}</TableCell>
               <TableCell>{options.find(option => option.value === item.type).text}</TableCell>
               <TableCell>{options2.find(option => option.value === item.state).text}</TableCell></>}
+              <TableCell>{item.description}</TableCell>
               <TableCell>{item.power}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>{item.quantity}</TableCell>
@@ -639,8 +639,8 @@ const handleDeselectButton = () => {
               {!showDeleted && userId !==2  ? 
               <>
               <TableCell>
-                 <ModalEdit submission={handleSubmissionEdit} item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
-                 <ModalDelete submission={handleSubmission} item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} price={item.price} quantity={item.quantity} date={item.creation} />
+                 <ModalEdit submission={handleSubmissionEdit} item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} description={item.description} price={item.price} quantity={item.quantity} date={item.creation} />
+                 <ModalDelete submission={handleSubmission} item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} description={item.description} price={item.price} quantity={item.quantity} date={item.creation} />
               </TableCell>
               </> : null  
               }

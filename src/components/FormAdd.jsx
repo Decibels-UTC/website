@@ -4,7 +4,7 @@ import {
     FormInput,
     FormSelect,
     FormButton,
-    Form, ModalActions,
+    Form, ModalActions, FormTextArea
 } from 'semantic-ui-react';
 
 const options1 = [
@@ -61,6 +61,7 @@ const FormAdd = (props) => {
           name: values.reference,
           brand: values.brand,
           price: values.price,
+          description : values.description,
           type: values.type,
           quantity: values.quantity,
           state: values.state,
@@ -158,6 +159,14 @@ const FormAdd = (props) => {
           placeholder='Type'
           name='type'
           onChange={(_, { value }) => setValues({ ...values, type: value })}
+        />
+        <FormTextArea
+            fluid
+            label='description'
+            placeholder='Description'
+            name='description'
+            onChange={handleChange}
+            value={values.description}  
         />
         <ModalActions>
             <div className={"form-add-actions"}>

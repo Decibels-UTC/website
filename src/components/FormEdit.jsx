@@ -24,6 +24,7 @@ const FormEdit = (props) => {
     brand: props.brand,
     price: props.price,
     quantity: props.quantity,
+    description: props.description,
     power:props.power,
     type: props.type,
     reason: props.reason,
@@ -49,6 +50,7 @@ const FormEdit = (props) => {
     brand: values.brand,
     price: values.price,
     quantity : values.quantity,
+    description: values.description,
     type :    values.type,
     power : values.power,
     modification_reason : values.reason,
@@ -151,6 +153,14 @@ const FormEdit = (props) => {
           name='type'
           onChange={(_, { value }) => setValues({ ...values, type: value })}
           value={values.type}  // Correction : Utilisation de values au lieu de props
+        />
+        <FormTextArea
+            fluid
+            label='description'
+            placeholder='Description'
+            name='description'
+            onChange={handleChange}
+            value={values.description}  
         />
         <FormTextArea
             fluid

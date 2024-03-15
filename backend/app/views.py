@@ -126,6 +126,7 @@ class ItemView(APIView):
                             "type": item.type,
                             "state": item.state,
                             "quantity": item.quantity,
+                            "description" : item.description,
                             "modification_reason": item.modification_reason,
                             "creation": item.creation,
                             "removed": item.removed,
@@ -193,6 +194,8 @@ class ItemView(APIView):
                                 item.price = request.data.get("price")
                             if (request.data.get("type") != None):
                                 item.type = request.data.get("type")
+                            if (request.data.get("description") != None):
+                                item.description = request.data.get("description")                                
                             if (request.data.get("quantity") != None):
                                 item.quantity = int(request.data.get("quantity"))
                                 if item.quantity == 0:
@@ -240,6 +243,7 @@ class ItemView(APIView):
                                 "price": item.price,
                                 "power": item.power,
                                 "type": item.type,
+                                "description" :item.description,
                                 "state": item.state,
                                 "quantity": item.quantity,
                                 "modification_reason": item.modification_reason,
