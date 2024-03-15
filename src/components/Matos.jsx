@@ -7,6 +7,8 @@ import {MenuItem, Menu, MenuMenu} from "semantic-ui-react";
 import {useEffect, useState, useContext} from "react";
 import HistoryTable from "./History";
 import {AuthContext} from "../context/AuthContext";
+import item4 from "../ressources/item4.png";
+
 
 
 
@@ -28,10 +30,17 @@ function Matos(){
             setActiveItem(name);
      };
 
+     function handleClickMain(){
+        window.location.href = '/';
+    }
 
     return(<>
             <div className={"header-inventory"}>
-                <h1>Gestion du matériel</h1>
+                <div className="top-left-wrapper">
+                    <img className={"image-flyht"} src={item4}  onClick={handleClickMain} />
+                    <h1>Gestion du matériel</h1>
+                </div>
+            
                 {/* menu*/}
                 <Menu secondary>
 

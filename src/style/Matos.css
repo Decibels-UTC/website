@@ -3,6 +3,8 @@
     color: black;
 }
 
+
+
 p{
     color: black;
 }
@@ -115,6 +117,20 @@ p{
     padding: 2%;
 }
 
+.image-flyht{
+    width: 30%;
+    height: auto;
+    margin-right: 2%;
+    cursor: pointer;
+}
+.top-left-wrapper{
+    margin-left: -2%;
+    height: auto;
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 1024px) {
