@@ -1,4 +1,5 @@
 import "../style/Links.css";
+import { motion } from "framer-motion"
 
 
 function Links() {
@@ -13,13 +14,15 @@ function Links() {
   return (
       <>
       <div className="links-wrapper">
-        <div className="link" onClick={handleClickInventory}>
+        <motion.div className="link" onClick={handleClickInventory} whileHover={{scale: 1.1}}>
             <h2>Inventaire</h2>
-        </div>
-
+        </motion.div>
+        {/*
         <div className="link" onClick={handleClickPortfolio}>
             <h2>Historique des évennements</h2>
         </div>
+        */}
+        
 
       </div>
       </>

@@ -10,7 +10,7 @@ function Site(){
     return(
         <>
          <Main/>
-         {/*<Links/>*/}
+         <Links/>
          <Desc/>
          <Son/>
          <Lights/>
