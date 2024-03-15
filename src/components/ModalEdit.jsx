@@ -45,7 +45,7 @@ function  ModalEdit(props){
               className={"form-edit"}
               submission={props.submission}
               closeModal={() => dispatch({ type: 'close' })}
-              state={props.state} description={props.description} power={props.power} item_id={props.item_id} name={props.name} brand={props.brand} type={props.type} quantity={props.quantity} price = {props.price} date={props.date} />
+              state={props.state} description={props.description} power={props.power} item_id={props.item_id} pretable={props.pretable} name={props.name} brand={props.brand} type={props.type} quantity={props.quantity} price = {props.price} date={props.date} />
           </div>
         </ModalContent>
       </Modal>

@@ -52,13 +52,15 @@ function TableData() {
   const [qte, setQte] = useState('Quantité');
   const [action, setAction] = useState('Actions');
   const [supp, setSuppr] = useState('Date de suppression');
+  const [pretable, setPretable] = useState('Pretable');
 
 
-
-
-  useEffect(() => {
-    // actualiser userID
-  }, []);
+  function convertDataPret(my_var){
+      if(my_var){
+        return "Yes";
+      }
+      return "No";
+  }
 
 
 
@@ -71,6 +73,7 @@ function TableData() {
       setQte("Quantité");
       setAction("Actions");
       setSuppr("Date de suppression");
+      setPretable("Pretable");
     } else {
       setSelection(<Icon name="tasks" />);
       setRef(<Icon name="address card outline" />);
@@ -79,6 +82,7 @@ function TableData() {
       setQte(<Icon name="boxes" />);
       setAction(<Icon name="edit outline" />);
       setSuppr(<Icon name="delete calendar" />);
+      setPretable(<Icon name="paper plane outline"/>);
     }
   }, [isLargeScreen]); 
 
@@ -603,7 +607,7 @@ const handleDeselectButton = () => {
             <TableHeaderCell sorted={column === 'power' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'power' })}>{power}</TableHeaderCell>
             <TableHeaderCell sorted={column === 'price' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'price' })}>{price}</TableHeaderCell>
             <TableHeaderCell sorted={column === 'quantity' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'quantity' })}>{qte}</TableHeaderCell>
-            
+            <TableHeaderCell>{pretable}</TableHeaderCell>
             {isLargeScreen && <><TableHeaderCell>Modification</TableHeaderCell><TableHeaderCell sorted={column === 'creation' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'creation' })}>Date d'ajout</TableHeaderCell></>}
             {showDeleted ? <TableHeaderCell sorted={column === 'removed' ? direction : null} onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'removed' })} >{supp}</TableHeaderCell> :
                 
@@ -643,6 +647,7 @@ const handleDeselectButton = () => {
               <TableCell>{item.power}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>{item.quantity}</TableCell>
+              <TableCell>{convertDataPret(item.pretable)}</TableCell>
               {isLargeScreen && <>
               <TableCell>{item.modification_reason ? item.modification_reason : '/'}</TableCell>
               <TableCell>{convertDateFormat(item.creation)}</TableCell></>}
@@ -657,8 +662,8 @@ const handleDeselectButton = () => {
               {!showDeleted && (userId !== 2)  && isAuthenticated ? 
               <>
               <TableCell>
-                 <ModalEdit submission={handleSubmissionEdit} item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} description={item.description} price={item.price} quantity={item.quantity} date={item.creation} />
-                 <ModalDelete submission={handleSubmission} item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} description={item.description} price={item.price} quantity={item.quantity} date={item.creation} />
+                 <ModalEdit submission={handleSubmissionEdit} item_id={item.id} reason={item.modification_reason} state={item.state}  power={item.power} name={item.name} brand={item.brand} type={item.type} description={item.description} pretable={item.pretable} price={item.price} quantity={item.quantity} date={item.creation} />
+                 <ModalDelete submission={handleSubmission} item_id={item.id} reason={item.modification_reason} state={item.state} power={item.power} name={item.name} brand={item.brand} type={item.type} description={item.description} pretable={item.pretable} price={item.price} quantity={item.quantity} date={item.creation} />
               </TableCell>
               </> : null  
               }

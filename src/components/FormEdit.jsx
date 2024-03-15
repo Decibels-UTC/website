@@ -18,6 +18,11 @@ const options2 = [
   { key: 'casse', text: 'Cassé', value: 'casse' },
 ];
 
+const options3 = [
+  { key: 'true', text: 'Yes', value: true },
+  { key: 'false', text: 'No', value: false },
+]
+
 const FormEdit = (props) => {
   const [values, setValues] = useState({
     reference: props.name,
@@ -29,6 +34,7 @@ const FormEdit = (props) => {
     type: props.type,
     reason: props.reason,
     state: props.state,
+    pretable : props.pretable,
   });
 
   const [errors, setErrors] = useState({});
@@ -55,6 +61,7 @@ const FormEdit = (props) => {
     power : values.power,
     modification_reason : values.reason,
     state: values.state,
+    pretable : values.pretable,
     };
     const token = localStorage.getItem('token');
 
@@ -154,6 +161,14 @@ const FormEdit = (props) => {
           onChange={(_, { value }) => setValues({ ...values, type: value })}
           value={values.type}  // Correction : Utilisation de values au lieu de props
         />
+        <FormSelect
+            fluid
+            label='Pretable'
+            options={options3}
+            placeholder='Pretable'
+            name='pretable'
+            onChange={(_, { value }) => setValues({ ...values, pretable: value })}
+            />
         <FormTextArea
             fluid
             label='description'
@@ -162,6 +177,7 @@ const FormEdit = (props) => {
             onChange={handleChange}
             value={values.description}  
         />
+        
         <FormTextArea
             fluid
             label='reason'

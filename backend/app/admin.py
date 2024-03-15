@@ -3,7 +3,7 @@ from .models import Item
 
 # Register your models here.
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('id','name' , 'brand','state','power', 'price','type', 'quantity','description', 'modification_reason', 'creation', 'removed', 'modification_date')
+    list_display = ('id','name' , 'brand','state','power', 'price','type', 'quantity','description','pretable', 'modification_reason', 'creation', 'removed', 'modification_date')
 
 # Register your models here.
 

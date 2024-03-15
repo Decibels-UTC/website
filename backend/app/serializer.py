@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ['id','name' , 'brand','state','power', 'price','type', 'quantity','description', 'modification_reason', 'creation', 'removed', 'modification_date']
+        fields = ['id','name' , 'brand','state','power', 'price','type', 'quantity','description','pretable', 'modification_reason', 'creation', 'removed', 'modification_date']
 
 
 class LoginSerializer(serializers.Serializer):

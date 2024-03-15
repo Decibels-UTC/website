@@ -155,6 +155,7 @@ class ItemView(APIView):
                             "quantity": item.quantity,
                             "description" : item.description,
                             "modification_reason": item.modification_reason,
+                            "pretable" : item.pretable,
                             "creation": item.creation,
                             "removed": item.removed,
                             "modification_date": item.modification_date,
@@ -217,7 +218,9 @@ class ItemView(APIView):
                             if (request.data.get("type") != None):
                                 item.type = request.data.get("type")
                             if (request.data.get("description") != None):
-                                item.description = request.data.get("description")                                
+                                item.description = request.data.get("description")   
+                            if (request.data.get("pretable") != None):
+                                item.pretable = request.data.get("pretable")                                  
                             if (request.data.get("quantity") != None):
                                 item.quantity = int(request.data.get("quantity"))
                                 if item.quantity == 0:
@@ -267,6 +270,7 @@ class ItemView(APIView):
                                 "type": item.type,
                                 "description" :item.description,
                                 "state": item.state,
+                                "pretable" : item.pretable,
                                 "quantity": item.quantity,
                                 "modification_reason": item.modification_reason,
                                 "creation": item.creation,

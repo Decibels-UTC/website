@@ -24,6 +24,12 @@ const options2 = [
   { key: 'casse', text: 'Cassé', value: 'casse' },
 ];
 
+
+const options3 = [
+  { key: 'true', text: 'Yes', value: true },
+  { key: 'false', text: 'No', value: false },
+]
+
 const FormAdd = (props) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -43,6 +49,9 @@ const FormAdd = (props) => {
     }
     if (!values.type) {
       newErrors.type = "Type obligatoire";
+    }
+    if(!values.pretable){
+      newErrors.type = "Prétabilité obligatoire";
     }
 
     setErrors(newErrors);
@@ -66,6 +75,7 @@ const FormAdd = (props) => {
           quantity: values.quantity,
           state: values.state,
           power: values.power,
+          pretable: values.pretable
         };
         const token = localStorage.getItem('token');
         const requestOptions = {
@@ -160,6 +170,14 @@ const FormAdd = (props) => {
           name='type'
           onChange={(_, { value }) => setValues({ ...values, type: value })}
         />
+        <FormSelect
+            fluid
+            label='Pretable'
+            options={options3}
+            placeholder='Pretable'
+            name='pretable'
+            onChange={(_, { value }) => setValues({ ...values, pretable: value })}
+            />
         <FormTextArea
             fluid
             label='description'
@@ -168,6 +186,7 @@ const FormAdd = (props) => {
             onChange={handleChange}
             value={values.description}  
         />
+
         <ModalActions>
             <div className={"form-add-actions"}>
                 <FormButton color='green' floated='right' content='Submit'>Valider</FormButton>
