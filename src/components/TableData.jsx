@@ -21,6 +21,7 @@ import Stats from "./Stats";
 import ModalSuccess from "./ModalSuccess";
 import ModalFailed from "./ModalFailed";
 import TableSelectedItems from "./TableSelectedItems";
+import { LucideArrowUpRightFromSquare } from 'lucide-react';
 
 
 
@@ -53,8 +54,11 @@ function TableData() {
   const [supp, setSuppr] = useState('Date de suppression');
 
 
-  console.log(isAuthenticated)
-  console.log(userId)
+
+
+  useEffect(() => {
+    // actualiser userID
+  }, []);
 
 
 

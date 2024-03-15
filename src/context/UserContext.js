@@ -11,12 +11,12 @@ useEffect(() => {
     const token = localStorage.getItem('token');
     const user_id = sessionStorage.getItem('user_id');
     if (user_id) {
-      setUserId(user_id);
-      console.log(user_id)
+      setUserId(parseInt(user_id));
+      //console.log(userId === 2)
       setIsLoading(false);
     } else if(token){
       getUserId(token).then((valid) => {
-        setUserId(valid);
+        setUserId(parseInt(valid));
         setIsLoading(false);
       }).catch((error) => {
         console.error('Erreur lors de la vérification du token:', error);
