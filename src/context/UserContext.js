@@ -5,13 +5,14 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
  const [isLoading, setIsLoading] = useState(true);
- const [userId, setUserId] = useState(1);
+ const [userId, setUserId] = useState(-1);
 
 useEffect(() => {
     const token = localStorage.getItem('token');
     const user_id = sessionStorage.getItem('user_id');
     if (user_id) {
       setUserId(user_id);
+      console.log(user_id)
       setIsLoading(false);
     } else if(token){
       getUserId(token).then((valid) => {

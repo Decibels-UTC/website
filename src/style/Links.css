@@ -1,0 +1,24 @@
+.links-wrapper{
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10vh;
+}
+
+.links-wrapper > div{
+    color: white;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 7px;
+    background-color: black;
+    border-color: white;
+    border-width: 10px;
+    height: auto;
+}
+
+.link:hover{
+    cursor: pointer;
+}

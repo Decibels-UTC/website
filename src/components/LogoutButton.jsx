@@ -26,7 +26,7 @@ function LogoutButton() {
       }
       // Supprimer le token du local storage
       localStorage.removeItem('token');
-      localStorage.removeItem('user_id');
+      sessionStorage.removeItem('user_id');
       setUserId(-1);
       setIsAuthenticated(false);
       // window.location.href = '/login';
