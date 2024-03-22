@@ -1,5 +1,12 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
- build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,25 +24,32 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/bot_dbs:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/dbs-website:latest
           platforms: linux/amd64,linux/arm64
 
- deploy:
+  deploy:
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: Deploy
-        run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
-          docker pull ${{ secrets.DOCKER_USERNAME }}/dbs_bot:latest
-          docker stop dbs_bot || true
-          docker rm dbs_bot || true
-          docker run -e TOKEN=${{ secrets.TOKEN }} \
-                     -e DB_NAME=${{ secrets.DB_NAME }} \
-                     -e DB_USER=${{ secrets.DB_USER }} \
-                     -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
-                     -e DB_HOST=${{ secrets.DB_HOST }} \
-                     -e MAIL=${{ secrets.MAIL }} \
-                     -e ID_DISCORD_CHANNEL_MAIL=${{ secrets.ID_DISCORD_CHANNEL_MAIL }} \
-                     -d --restart always --name dbs_bot \
-                     ${{ secrets.DOCKER_USERNAME }}/dbs_bot:latest
+      - name: Deploy to Debian Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEBIAN_SERVER_HOST }}
+          username: ${{ secrets.DEBIAN_SERVER_USERNAME }}
+          password: ${{ secrets.DEBIAN_SERVER_PASSWORD }}
+          key: ${{ secrets.DEBIAN_SERVER_SSH_KEY }}
+          script: |
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
+            docker pull ${{ secrets.DOCKER_USERNAME }}/dbs-website:latest
+            docker stop dbs-website || true
+            docker rm dbs-website || true
+            docker run -e REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }} \
+                       -e DATABASE_HOST=${{ secrets.DATABASE_HOST }} \
+                       -e DATABASE_NAME=${{ secrets.DATABASE_NAME }} \
+                       -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
+                       -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
+                       -e DATABASE_PORT=${{ secrets.DATABASE_PORT }} \
+                       -e SECRET_KEY=${{ secrets.SECRET_KEY }} \
+                       -p  3002:3002 \
+                       -d --restart always --name dbs-website \
+                       ${{ secrets.DOCKER_USERNAME }}/dbs-website:latest
