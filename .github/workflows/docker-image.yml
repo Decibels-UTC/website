@@ -29,20 +29,14 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Deploy to Debian Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.DEBIAN_SERVER_HOST }}
-          username: ${{ secrets.DEBIAN_SERVER_USERNAME }}
-          password: ${{ secrets.DEBIAN_SERVER_PASSWORD }}
-          key: ${{ secrets.DEBIAN_SERVER_SSH_KEY }}
-          script: |
-            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
-            docker pull ${{ secrets.DOCKER_USERNAME }}/dbs-website:latest
-            docker stop dbs-website || true
-            docker rm dbs-website || true
+      - name: Deploy
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
+          docker pull ${{ secrets.DOCKER_USERNAME }}/dbs-website:latest
+          docker stop dbs-website || true
+          docker rm dbs-website || true
             docker run -e REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }} \
                        -e DATABASE_HOST=${{ secrets.DATABASE_HOST }} \
                        -e DATABASE_NAME=${{ secrets.DATABASE_NAME }} \
