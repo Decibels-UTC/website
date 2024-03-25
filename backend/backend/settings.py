@@ -28,10 +28,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['dbsapi.lchappuis.fr', 'localhost', 'dbs.etu-utc.fr']
+ALLOWED_HOSTS = ['dbsapi.lchappuis.fr', 'localhost', 'dbs.etu-utc.fr', 'decibels.assos.utc.fr','dbs-serv-eth.mde.utc']
 CSRF_TRUSTED_ORIGINS = [
     'https://dbsapi.lchappuis.fr',
     'https://dbs.etu-utc.fr',
+    'https://decibels.assos.utc.fr',
 ]
 
 STATIC_URL = '/django_static/'
