@@ -4,3 +4,4 @@ djangorestframework
 mysqlclient
 python-dotenv
 tzdata
+pytz
