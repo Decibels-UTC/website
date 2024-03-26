@@ -27,7 +27,7 @@ function HistoryTable() {
       .then((resp) => resp.json())
       .then(function (data) {
         if (Array.isArray(data)) {
-          setTableHistory(data);
+          setTableHistory(data.reverse());
           dispatch({ type: 'SET_DATA', payload: data });
         } else {
           console.error("Data received from API is not an array:", data);
