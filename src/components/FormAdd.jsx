@@ -30,6 +30,8 @@ const options3 = [
   { key: 'false', text: 'No', value: false },
 ]
 
+
+
 const FormAdd = (props) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -49,9 +51,6 @@ const FormAdd = (props) => {
     }
     if (!values.type) {
       newErrors.type = "Type obligatoire";
-    }
-    if(!values.pretable){
-      newErrors.type = "Prétabilité obligatoire";
     }
 
     setErrors(newErrors);
